@@ -1,0 +1,18 @@
+Source ID: cvpr2026-38602
+Title: DynamicVGGT: Learning Dynamic Point Maps for 4D Scene Reconstruction in Autonomous Driving
+Venue: CVPR 2026 Accept (Poster)
+Official URL: https://cvpr.thecvf.com/virtual/2026/poster/38602
+Official confirmation URL: https://cvpr.thecvf.com/static/virtual/data/cvpr-2026-orals-posters.json
+CVPR virtualsite URL: /virtual/2026/poster/38602
+Decision: Accept (Poster)
+Event type: Poster
+Authors: Zhuolin He (Fudan University); Jing Li (Huawei Technologies Ltd.); Guanghao Li (Fudan University); Xiaolei Chen (Fudan University); Jiacheng Tang (Fudan University); Siyang Zhang (The Chinese University of Hong Kong, Shenzhen); ZhouNanJin ZhouNanJin (Huawei Technologies Ltd.); Feipeng Cai (Shenzhen Yinwang Intelligent Technology Co., Ltd.); Bin Li (Fudan University); Jian Pu (Fudan University); Jia Cai; Xiangyang Xue (Fudan University)
+Keywords: 
+
+Abstract:
+Dynamic scene reconstruction in autonomous driving remains a fundamental challenge due to significant temporal variations, moving objects, and complex scene dynamics. Existing feed-forward 3D models have demonstrated strong performance in static reconstruction but still struggle to capture dynamic motion. To address these limitations, we propose DynamicVGGT, a unified feed-forward framework that extends VGGT from static 3D perception to dynamic 4D reconstruction. Our goal is to model point motion within feed-forward 3D models in a dynamic and temporally coherent manner. To this end, we jointly predict the current and future point maps within a shared reference coordinate system, allowing the model to implicitly learn dynamic point representations through temporal correspondence. To efficiently capture temporal dependencies, we introduce a Motion-aware Temporal Attention (MTA) module that learns motion continuity. Furthermore, we design a Dynamic 3D Gaussian Splatting Head (DGSH) that explicitly models point motion by predicting Gaussian velocities using learnable motion tokens under scene flow supervision. It refines dynamic geometry through continuous 3D Gaussian optimization. Extensive experiments on autonomous driving datasets demonstrate that DynamicVGGT significantly outperforms existing methods in reconstruction accuracy and temporal consistency, achieving robust feed-forward 4D dynamic scene reconstruction under complex driving scenarios.
+
+Raw provenance:
+Extracted from run-local official CVPR 2026 virtual-site JSON artifact cvpr-2026-orals-posters.json.
+paper_pdf_url: null
+paper_url: 

@@ -1,0 +1,18 @@
+Source ID: iclr2026-cognimap3d
+Title: CogniMap3D: Cognitive 3D Mapping and Rapid Retrieval
+Original URL: https://openreview.net/forum?id=9agaxh8ClV
+PDF URL checked: https://openreview.net/pdf?id=9agaxh8ClV
+Extraction method: OpenReview forum metadata extraction. Browser PDF extraction did not return usable text during ingest.
+
+Parsed content:
+CogniMap3D is an ICLR 2026 Poster focused on dynamic 3D scene understanding and reconstruction with persistent memory. The OpenReview abstract describes a memory bank for static scenes, a multi-stage motion cue framework for identifying dynamic objects, a cognitive mapping system for storing and updating static scenes across visits, and factor graph optimization for camera-pose refinement.
+
+Technical elements reported in the OpenReview abstract:
+- The model consumes an image stream.
+- It uses depth and camera-pose priors to identify dynamic regions through motion cues.
+- It matches static elements against a persistent memory bank.
+- On revisits, it retrieves stored scenes, relocates cameras, and updates memory with new observations.
+- Evaluations include video depth estimation, camera pose reconstruction, and 3D mapping.
+
+Citation trace:
+- Raw forum capture: runs/run-1777908967/raw/sources/iclr2026-cognimap3d.openreview.txt

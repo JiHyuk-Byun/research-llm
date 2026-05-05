@@ -1,0 +1,465 @@
+{
+  "run_id": "run-1777971225",
+  "source_scope_obeyed": true,
+  "queries": [
+    "Plan query: \"online streaming video 3d point map reconstruction\" within CVPR 2026 official CVF/CVPR sources, ICLR 2026 official OpenReview sources, and ICML 2026 official conference/OpenReview/PMLR sources.",
+    "Plan query: \"online streaming video\" \"3d point map\" reconstruction within the same official 2026 venue sources.",
+    "Plan query: \"streaming video\" \"3D\" \"point map\" reconstruction within the same official 2026 venue sources.",
+    "Plan query: \"online\" \"3D reconstruction\" \"streaming video\" within the same official 2026 venue sources.",
+    "Plan query: \"point map\" \"video\" \"reconstruction\" within the same official 2026 venue sources.",
+    "Searched location: https://cvpr.thecvf.com/virtual/2026/papers.html and rendered-discovered official data file https://cvpr.thecvf.com/static/virtual/data/cvpr-2026-orals-posters.json.",
+    "Searched location: OpenReview API notes with invitation=ICLR.cc/2026/Conference/-/Submission and accepted venue labels ICLR 2026 Oral / ICLR 2026 Poster.",
+    "Searched location: OpenReview group/API for ICML.cc/2026/Conference with accepted venue labels ICML 2026 spotlight / ICML 2026 regular; browser-rendered group page fallback also attempted.",
+    "Searched location: PMLR proceedings landing pages for ICML 2026 availability; no in-scope ICML 2026 proceedings entries found as of 2026-05-05."
+  ],
+  "browser_render_attempts": [
+    {
+      "url": "https://cvpr.thecvf.com/virtual/2026/papers.html",
+      "status": "success",
+      "method": "playwright",
+      "records_found": 375,
+      "notes": "Static page stated JavaScript was required. Repo-local render-source helper loaded the page and revealed the official /static/virtual/data/cvpr-2026-orals-posters.json source list; that JSON was fetched under raw/sources/ for candidate enumeration."
+    },
+    {
+      "url": "https://openreview.net/group?id=ICLR.cc/2026/Conference",
+      "status": "not_needed",
+      "method": "official_openreview_api",
+      "records_found": 5352,
+      "notes": "Static group page exposed accepted-paper tab queries. Official OpenReview API returned 224 oral and 5128 poster accepted records, so browser rendering was not needed for ICLR source enumeration."
+    },
+    {
+      "url": "https://openreview.net/group?id=ICML.cc/2026/Conference",
+      "status": "success",
+      "method": "playwright",
+      "records_found": 0,
+      "notes": "Static group page showed public_submissions=false and accepted-paper tab queries, but OpenReview API returned no public accepted records. Repo-local render-source helper loaded the rendered page and found no source-like records."
+    }
+  ],
+  "results": [
+    {
+      "source_id": "cvpr2026-37067",
+      "title": "Point4Cast: Streaming Dynamic Scene Reconstruction and Forecasting",
+      "authors_or_org": [
+        "Xinhang Liu",
+        "Pedro Miraldo",
+        "Suhas Lohit",
+        "Huaizu Jiang",
+        "Naoko Sawada",
+        "Yu-Wing Tai",
+        "Chi-Keung Tang",
+        "Moitreya Chatterjee"
+      ],
+      "date": "2026",
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37067",
+      "source_type": "paper",
+      "venue_or_publisher": "CVPR 2026 Accept (Highlight)",
+      "abstract_or_snippet": "Understanding how the 3D world evolves over time is a fundamental task in computer vision, essential for embodied settings, autonomous driving, etc. It requires not only the reconstruction of the observed scene but also the anticipation of how the scene dynamics will unfold in the future. While the area of 3D reconstruction has progressed rapidly with the advent of recent feed-forward neural networks, forecasting future dynamics in 3D, given the 2D frames of a video remains unexplored. We present Point4Cast, a unified framework that processes streaming 2D frame sequences of a video to estimate the past, present, and future of the underlying dynamic scene, in 3D. At the core of our approach lies a persistently evolving latent \\emph{spacetime representation} that models the environment’s evolution across time. Upon receiving a new 2D frame, an update operation integrates the incoming evidence to refine the latent spacetime representation. When queried for any time instant, whether before, at, or beyond the timestamp of the last update.  A readout procedure predicts temporally conditioned point maps and camera parameters describing the scene geometry at the queried time. Unlike prior approaches for online dynamic scene reconstruction that estimate each frame’s point map solely at the timestamp of the last observed frame, Point4Cast achieves coherent reconstruction across any queried time. Empirical evaluations show that \\emph{Point4Cast} achieves state-of-the-art performance on streaming dynamic scene reconstruction and forecasting benchmarks, across multiple challenging datasets, while providing scene flow estimation and forecasting for free. The code will be released publicly.",
+      "discovery_method": "browser_rendered_dom+official_json",
+      "official_confirmation_url": "https://cvpr.thecvf.com/static/virtual/data/cvpr-2026-orals-posters.json",
+      "scope_match_rationale": "Official CVPR 2026 virtual-site paper record from the rendered CVPR 2026 papers page data file."
+    },
+    {
+      "source_id": "cvpr2026-39439",
+      "title": "V-DPM: Video Reconstruction with Dynamic Point Maps",
+      "authors_or_org": [
+        "Edgar Sucar",
+        "Eldar Insafutdinov",
+        "Zihang Lai",
+        "Andrea Vedaldi"
+      ],
+      "date": "2026",
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39439",
+      "source_type": "paper",
+      "venue_or_publisher": "CVPR 2026 Accept (Poster)",
+      "abstract_or_snippet": "New, powerful 3D representations such as DUSt3R’s invariant point maps, which encode 3D shape and camera parameters, have significantly advanced feed-forward 3D reconstruction. While point maps assume static scenes, Dynamic Point Maps (DPMs) extend the concept to dynamic 3D content, also representing 3D scene motion.However, DPMs have so far been limited to image pairs and, like DUSt3R, require post-processing via optimization when more than two views are involved. We argue that DPMs are far more meaningful when applied to videos and introduce V-DPM to demonstrate this.First, we show how to set up DPMs for videos to optimize their representational power, ease of neural prediction, and reuse of pre-trained models. Second, we implement these ideas on top of VGGT, a recent state-of-the-art 3D reconstructor. Although VGGT was trained on static scenes, we show that a small amount of synthetic data suffices to adapt it into an effective V-DPM predictor.This yields state-of-the-art 3D and 4D reconstruction in dynamic settings. In particular, unlike recent dynamic extensions of VGGT such as P3, DPMs reconstruct not only dynamic depth but also the full 3D motion of every point in the scene.",
+      "discovery_method": "browser_rendered_dom+official_json",
+      "official_confirmation_url": "https://cvpr.thecvf.com/static/virtual/data/cvpr-2026-orals-posters.json",
+      "scope_match_rationale": "Official CVPR 2026 virtual-site paper record from the rendered CVPR 2026 papers page data file."
+    },
+    {
+      "source_id": "cvpr2026-37759",
+      "title": "Ov3R: Open-Vocabulary Semantic 3D Reconstruction from RGB Videos",
+      "authors_or_org": [
+        "ZIREN GONG",
+        "Xiaohan Li",
+        "Fabio Tosi",
+        "Jiawei Han",
+        "Stefano Mattoccia",
+        "Jianfei Cai",
+        "Matteo Poggi"
+      ],
+      "date": "2026",
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37759",
+      "source_type": "paper",
+      "venue_or_publisher": "CVPR 2026 Accept (Highlight)",
+      "abstract_or_snippet": "We present Ov3R, a novel framework for open-vocabulary semantic 3D reconstruction from RGB video streams, designed to advance Spatial AI. The system features two key components: CLIP3R, a CLIP-informed 3D reconstruction module that predicts dense point maps from overlapping clips alongside object-level semantics; and 2D–3D OVS, a 2D-3D open-vocabulary semantic module that lifts 2D features into 3D by learning fused descriptors integrating spatial, geometric, and semantic cues. Unlike prior methods, Ov3R incorporates CLIP semantics directly into the reconstruction process, enabling globally consistent geometry and fine-grained semantic alignment. Our framework achieves state-of-the-art performance in both dense 3D reconstruction and open-vocabulary 3D segmentation — marking a step forward toward real-time, semantics-aware Spatial AI.",
+      "discovery_method": "browser_rendered_dom+official_json",
+      "official_confirmation_url": "https://cvpr.thecvf.com/static/virtual/data/cvpr-2026-orals-posters.json",
+      "scope_match_rationale": "Official CVPR 2026 virtual-site paper record from the rendered CVPR 2026 papers page data file."
+    },
+    {
+      "source_id": "cvpr2026-38602",
+      "title": "DynamicVGGT: Learning Dynamic Point Maps for 4D Scene Reconstruction in Autonomous Driving",
+      "authors_or_org": [
+        "Zhuolin He",
+        "Jing Li",
+        "Guanghao Li",
+        "Xiaolei Chen",
+        "Jiacheng Tang",
+        "Siyang Zhang",
+        "ZhouNanJin ZhouNanJin",
+        "Feipeng Cai",
+        "Bin Li",
+        "Jian Pu",
+        "Jia Cai",
+        "Xiangyang Xue"
+      ],
+      "date": "2026",
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38602",
+      "source_type": "paper",
+      "venue_or_publisher": "CVPR 2026 Accept (Poster)",
+      "abstract_or_snippet": "Dynamic scene reconstruction in autonomous driving remains a fundamental challenge due to significant temporal variations, moving objects, and complex scene dynamics. Existing feed-forward 3D models have demonstrated strong performance in static reconstruction but still struggle to capture dynamic motion. To address these limitations, we propose DynamicVGGT, a unified feed-forward framework that extends VGGT from static 3D perception to dynamic 4D reconstruction. Our goal is to model point motion within feed-forward 3D models in a dynamic and temporally coherent manner. To this end, we jointly predict the current and future point maps within a shared reference coordinate system, allowing the model to implicitly learn dynamic point representations through temporal correspondence. To efficiently capture temporal dependencies, we introduce a Motion-aware Temporal Attention (MTA) module that learns motion continuity. Furthermore, we design a Dynamic 3D Gaussian Splatting Head (DGSH) that explicitly models point motion by predicting Gaussian velocities using learnable motion tokens under scene flow supervision. It refines dynamic geometry through continuous 3D Gaussian optimization. Extensive experiments on autonomous driving datasets demonstrate that DynamicVGGT significantly outperforms existing methods in reconstruction accuracy and temporal consistency, achieving robust feed-forward 4D dynamic scene reconstruction under complex driving scenarios.",
+      "discovery_method": "browser_rendered_dom+official_json",
+      "official_confirmation_url": "https://cvpr.thecvf.com/static/virtual/data/cvpr-2026-orals-posters.json",
+      "scope_match_rationale": "Official CVPR 2026 virtual-site paper record from the rendered CVPR 2026 papers page data file."
+    },
+    {
+      "source_id": "cvpr2026-36688",
+      "title": "LASER: Layer-wise Scale Alignment for Training-Free Streaming 4D Reconstruction",
+      "authors_or_org": [
+        "Tianye Ding",
+        "Yiming Xie",
+        "Yiqing Liang",
+        "Moitreya Chatterjee",
+        "Pedro Miraldo",
+        "Huaizu Jiang"
+      ],
+      "date": "2026",
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36688",
+      "source_type": "paper",
+      "venue_or_publisher": "CVPR 2026 Accept (Poster)",
+      "abstract_or_snippet": "Recent feed-forward reconstruction models like VGGT and $\\pi^3$ achieve impressive reconstruction quality but cannot process streaming videos due to quadratic memory complexity, limiting their practical deployment. While existing streaming methods address this through learned memory mechanisms or causal attention, they require extensive retraining and may not fully leverage the strong geometric priors of state-of-the-art offline models. We propose LASER, a training-free framework that converts an offline reconstruction model into a streaming system byaligning predictions across consecutive temporal windows. We observe that simple similarity transformation ($Sim(3)$) alignment fails due to layer depth misalignment: monocular scale ambiguity causes relative depth scales of different scene layers to vary inconsistently between windows. To address this, we introduce layer-wise scale alignment, which segments depth predictions into discrete layers, computes per-layer scale factors, and propagates them across both adjacent windows and timestamps.Extensive experiments show that LASER achieves state-of-the-art performance on camera pose estimation and point map reconstruction while operating at 14 FPS with 6 GB peak memory on a RTX A6000 GPU, enabling practical deployment for kilometer-scale streaming videos.Our code will be released publicly.",
+      "discovery_method": "browser_rendered_dom+official_json",
+      "official_confirmation_url": "https://cvpr.thecvf.com/static/virtual/data/cvpr-2026-orals-posters.json",
+      "scope_match_rationale": "Official CVPR 2026 virtual-site paper record from the rendered CVPR 2026 papers page data file."
+    },
+    {
+      "source_id": "cvpr2026-36695",
+      "title": "MoRGS: Efficient Per-Gaussian Motion Reasoning for Streamable Dynamic 3D Scenes",
+      "authors_or_org": [
+        "Wonjoon Lee",
+        "Sungmin Woo",
+        "Donghyeong Kim",
+        "Jungho Lee",
+        "Sangheon Park",
+        "Sangyoun Lee"
+      ],
+      "date": "2026",
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36695",
+      "source_type": "paper",
+      "venue_or_publisher": "CVPR 2026 Accept (Poster)",
+      "abstract_or_snippet": "Online reconstruction of dynamic scenes aims to learn from streaming multi-view inputs under low-latency constraints. The fast training and real-time rendering capabilities of 3D Gaussian Splatting have made on-the-fly reconstruction practically feasible, enabling online 4D reconstruction. However, existing online approaches, despite their efficiency and visual quality, fail to learn per-Gaussian motion that reflects true scene dynamics. Without explicit motion cues, appearance and motion are optimized solely under photometric loss, causing per-Gaussian motion to chase pixel residuals rather than true 3D motion. To address this, we propose MoRGS, an efficient online per-Gaussian motion reasoning framework that treats Gaussian movement as a core modeling object. Specifically, we efficiently leverage optical flow on a sparse  set of key views as a lightweight motion cue to guide per-Gaussian motion toward the scene’s true dynamics. To compensate for the sparsity and view-dependence of flow, we learn a per-Gaussian motion offset field that reconciles discrepancies between projected 3D motion and observed flow across views and time. In addition, we introduce a per-Gaussian motion confidence that separates dynamic from static Gaussians and weights Gaussian attribute residual updates, thereby suppressing redundant motion in static regions for better temporal consistency and accelerating the modeling of large motions. Extensive experiments demonstrate that MoRGS achieves state-of-the-art reconstruction quality and motion fidelity among online methods, while maintaining streamable performance.",
+      "discovery_method": "browser_rendered_dom+official_json",
+      "official_confirmation_url": "https://cvpr.thecvf.com/static/virtual/data/cvpr-2026-orals-posters.json",
+      "scope_match_rationale": "Official CVPR 2026 virtual-site paper record from the rendered CVPR 2026 papers page data file."
+    },
+    {
+      "source_id": "cvpr2026-39409",
+      "title": "MoRe: Motion-aware Feed-forward 4D Reconstruction Transrformer",
+      "authors_or_org": [
+        "Juntong Fang",
+        "Zequn Chen",
+        "Weiqi Zhang",
+        "Donglin Di",
+        "Xuancheng Zhang",
+        "Chengmin Yang",
+        "Yu-Shen Liu"
+      ],
+      "date": "2026",
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39409",
+      "source_type": "paper",
+      "venue_or_publisher": "CVPR 2026 Accept (Highlight)",
+      "abstract_or_snippet": "Reconstructing dynamic 4D scenes remains challenging due to the presence of moving objects that corrupt camera pose estimation. Existing optimization methods alleviate this issue with additional supervision, but they are mostly computationally expensive and impractical in real-time applications. To address these limitations, we propose MoRe, a feedforward 4D reconstruction network that efficiently recovers dynamic 3D scenes from monocular videos. Built upon a strong static reconstruction backbone, MoRe employs an attention-forcing strategy to disentangle dynamic motion from static structure. To further enhance robustness, we fine-tune the model on large-scale, diverse datasets encompassing both dynamic and static scenes. Moreover, our grouped causal attention captures temporal dependencies and adapts to varying token lengths across frames, ensuring temporally coherent geometry reconstruction. Extensive experiments on multiple benchmarks demonstrate that MoRe achieves high-quality dynamic reconstructions with exceptional efficiency.",
+      "discovery_method": "browser_rendered_dom+official_json",
+      "official_confirmation_url": "https://cvpr.thecvf.com/static/virtual/data/cvpr-2026-orals-posters.json",
+      "scope_match_rationale": "Official CVPR 2026 virtual-site paper record from the rendered CVPR 2026 papers page data file."
+    },
+    {
+      "source_id": "cvpr2026-37041",
+      "title": "MotionCrafter: Repurposing Video Generators for Dense Geometry and Motion Reconstruction",
+      "authors_or_org": [
+        "Ruijie Zhu",
+        "Jiahao Lu",
+        "Wenbo Hu",
+        "Xiaoguang Han",
+        "Jianfei Cai",
+        "Ying Shan",
+        "Chuanxia Zheng"
+      ],
+      "date": "2026",
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37041",
+      "source_type": "paper",
+      "venue_or_publisher": "CVPR 2026 Accept (Highlight)",
+      "abstract_or_snippet": "We introduce MotionCrafter, the first video diffusion-based framework that jointly reconstructs 4D geometry and estimates dense motion from a monocular video. To represent them effectively in latent space, we propose a 4D VAE that encodes point maps and scene flows as a unified latent compatible with pretrained video generators. Unlike prior work that forces the 3D value and latents to align strictly with RGB VAE latents—despite their fundamentally different distributions—we show that such alignment is unnecessary and leads to suboptimal performance. Instead, we introduce a new data normalization and VAE training strategy that better transfers diffusion priors and greatly improves reconstruction quality. Extensive experiments across multiple datasets demonstrate that MotionCrafter achieves state-of-the-art performance in joint 4D geometry reconstruction and dense scene flow estimation, delivering 38.64\\% and 25.0\\% improvements in geometry and motion reconstruction, respectively, all without any post-optimization.",
+      "discovery_method": "browser_rendered_dom+official_json",
+      "official_confirmation_url": "https://cvpr.thecvf.com/static/virtual/data/cvpr-2026-orals-posters.json",
+      "scope_match_rationale": "Official CVPR 2026 virtual-site paper record from the rendered CVPR 2026 papers page data file."
+    },
+    {
+      "source_id": "cvpr2026-39496",
+      "title": "MoVieS: Motion-Aware 4D Dynamic View Synthesis in One Second",
+      "authors_or_org": [
+        "Chenguo Lin",
+        "Yuchen Lin",
+        "Panwang Pan",
+        "Yifan Yu",
+        "Tao Hu",
+        "Honglei Yan",
+        "Katerina Fragkiadaki",
+        "Yadong Mu"
+      ],
+      "date": "2026",
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39496",
+      "source_type": "paper",
+      "venue_or_publisher": "CVPR 2026 Accept (Poster)",
+      "abstract_or_snippet": "We present MoVieS, a motion-aware view synthesis model that reconstruct 4D dynamic scenes from monocular videos in one second. It represents dynamic 3D scenes with pixel-aligned Gaussian primitives and explicitly supervises their time-varying motions. This allows, for the first time, the unified modeling of appearance, geometry and motion from monocular videos, and enables reconstruction, view synthesis and 3D point tracking within a single learning-based framework. By bridging view synthesis with geometry reconstruction, MoVieS enables large-scale training on diverse datasets with minimal dependence on task-specific supervision. As a result, it also naturally supports a wide range of zero-shot applications, such as scene flow estimation and moving object segmentation. Extensive experiments validate the effectiveness and efficiency of MoVieS across multiple tasks, achieving competitive performance while offering several orders of magnitude speedups.",
+      "discovery_method": "browser_rendered_dom+official_json",
+      "official_confirmation_url": "https://cvpr.thecvf.com/static/virtual/data/cvpr-2026-orals-posters.json",
+      "scope_match_rationale": "Official CVPR 2026 virtual-site paper record from the rendered CVPR 2026 papers page data file."
+    },
+    {
+      "source_id": "cvpr2026-37570",
+      "title": "ClipGStream: Clip-Stream Gaussian Splatting for Any Length and Any Motion Multi-View Dynamic Scene Reconstruction",
+      "authors_or_org": [
+        "Jie Liang",
+        "Jiahao Wu",
+        "Chao Wang",
+        "Jiayu Yang",
+        "Xiaoyun Zheng",
+        "Kaiqiang Xiong",
+        "Zhanke Wang",
+        "Jinbo Yan",
+        "Feng Gao",
+        "Ronggang Wang"
+      ],
+      "date": "2026",
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37570",
+      "source_type": "paper",
+      "venue_or_publisher": "CVPR 2026 Accept (Poster)",
+      "abstract_or_snippet": "Dynamic 3D scene reconstruction is essential for immersive media such as VR, MR, and XR, yet remains challenging for long multi-view sequences with large-scale motion. Existing dynamic Gaussian approaches are either Frame-Stream, offering scalability but poor temporal stability, or Clip, achieving local consistency at the cost of high memory and limited sequence length.We propose ClipGStream, a hybrid reconstruction framework that performs stream optimization at the clip level rather than the frame level. The sequence is divided into short clips, where dynamic motion is modeled using clip-independent spatio-temporal fields and residual anchor compensation to capture local variations efficiently, while inter-clip inherited anchors and decoders maintain structural consistency across clips. This Clip-Stream design enables scalable, flicker-free reconstruction of long dynamic videos with high temporal coherence and reduced memory overhead. Extensive experiments demonstrate that ClipGStream achieves state-of-the-art reconstruction quality and efficiency.",
+      "discovery_method": "browser_rendered_dom+official_json",
+      "official_confirmation_url": "https://cvpr.thecvf.com/static/virtual/data/cvpr-2026-orals-posters.json",
+      "scope_match_rationale": "Official CVPR 2026 virtual-site paper record from the rendered CVPR 2026 papers page data file."
+    },
+    {
+      "source_id": "cvpr2026-38662",
+      "title": "KV-Tracker: Real-Time Pose Tracking with Transformers",
+      "authors_or_org": [
+        "Marwan Taher",
+        "Ignacio Alzugaray",
+        "Kirill Mazur",
+        "Xin Kong",
+        "Andrew J. Davison"
+      ],
+      "date": "2026",
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38662",
+      "source_type": "paper",
+      "venue_or_publisher": "CVPR 2026 Accept (Poster)",
+      "abstract_or_snippet": "Multi-view 3D geometry networks offer a powerful prior but are prohibitively slow for real-time applications. We propose a novel way to adapt them for online use, enabling real-time 6-DoF pose tracking and online reconstruction of objects and scenes from monocular RGB videos. Our method rapidly selects and manages a set of images as keyframes to map a scene or object via $\\pi^3$~\\cite{wang2025pi3} with full bidirectional attention. We then cache the global self-attention block's key-value (KV) pairs and use them as the sole scene representation for online tracking. This allows for up to $15\\times$ speedup during inference without the fear of drift or catastrophic forgetting. Our caching strategy is model-agnostic and can be applied to other off-the-shelf multi-view networks without retraining.We demonstrate KV-Tracker on both scene-level tracking and the more challenging task of on-the-fly object tracking and reconstruction without depth measurements or object priors. Experiments on the TUM RGB-D, 7-Scenes, Arctic and OnePose datasets show the strong performance of our system while maintaining high frame-rates up to ${\\sim}27$ FPS.",
+      "discovery_method": "browser_rendered_dom+official_json",
+      "official_confirmation_url": "https://cvpr.thecvf.com/static/virtual/data/cvpr-2026-orals-posters.json",
+      "scope_match_rationale": "Official CVPR 2026 virtual-site paper record from the rendered CVPR 2026 papers page data file."
+    },
+    {
+      "source_id": "iclr2026-RTTYGeC2Io",
+      "title": "STream3R: Scalable Sequential 3D Reconstruction with Causal Transformer",
+      "authors_or_org": [
+        "Yushi LAN",
+        "Yihang Luo",
+        "Fangzhou Hong",
+        "Shangchen Zhou",
+        "Honghua Chen",
+        "Zhaoyang Lyu",
+        "Bo Dai",
+        "Shuai Yang",
+        "Chen Change Loy",
+        "Xingang Pan"
+      ],
+      "date": "2026-04",
+      "url_or_path": "https://openreview.net/forum?id=RTTYGeC2Io",
+      "pdf_url": "https://openreview.net/pdf?id=RTTYGeC2Io",
+      "source_type": "paper",
+      "venue_or_publisher": "ICLR 2026 Poster",
+      "abstract_or_snippet": "We present STream3R, a novel approach to 3D reconstruction that reformulates pointmap prediction as a decoder-only Transformer problem. Existing state-of-the-art methods for multi-view reconstruction either depend on expensive global optimization or rely on simplistic memory mechanisms that scale poorly with sequence length. In contrast, STream3R introduces a streaming framework that processes image sequences efficiently using causal attention, inspired by advances in modern language modeling. By learning geometric priors from large-scale 3D datasets, STream3R generalizes well to diverse and challenging scenarios, including dynamic scenes where traditional methods often fail. Extensive experiments show that our method consistently outperforms prior work across both static and dynamic scene benchmarks. Moreover, STream3R is inherently compatible with LLM-style training infrastructure, enabling efficient large-scale pretraining and fine-tuning for various downstream 3D tasks. Our results underscore the potential of causal Transformer models for online 3D perception, paving the way for real-time 3D understanding in streaming environments.",
+      "discovery_method": "official_openreview_api",
+      "official_confirmation_url": "https://openreview.net/forum?id=RTTYGeC2Io",
+      "scope_match_rationale": "Official OpenReview record with ICLR.cc/2026/Conference submission invitation and accepted ICLR 2026 venue label."
+    },
+    {
+      "source_id": "iclr2026-SaiDRQU7Ez",
+      "title": "StreamSplat: Towards Online Dynamic 3D Reconstruction from Uncalibrated Video Streams",
+      "authors_or_org": [
+        "Zike Wu",
+        "Qi Yan",
+        "Xuanyu Yi",
+        "Lele Wang",
+        "Renjie Liao"
+      ],
+      "date": "2026-04",
+      "url_or_path": "https://openreview.net/forum?id=SaiDRQU7Ez",
+      "pdf_url": "https://openreview.net/pdf?id=SaiDRQU7Ez",
+      "source_type": "paper",
+      "venue_or_publisher": "ICLR 2026 Poster",
+      "abstract_or_snippet": "Real-time reconstruction of dynamic 3D scenes from uncalibrated video streams demands robust online methods that recover scene dynamics from sparse observations under strict latency and memory constraints. Yet most dynamic reconstruction methods rely on hours of per-scene optimization under full-sequence access, limiting practical deployment.\nIn this work, we introduce **StreamSplat**, a fully feed-forward framework that instantly transforms uncalibrated video streams of arbitrary length into dynamic 3D Gaussian Splatting (3DGS) representations in an online manner. \nIt is achieved via three key technical innovations: 1) a probabilistic sampling mechanism that robustly predicts 3D Gaussians from uncalibrated inputs; 2) a bidirectional deformation field that yields reliable associations across frames and mitigates long-term error accumulation; 3) an adaptive Gaussian fusion operation that propagates persistent Gaussians while handling emerging and vanishing ones.\nExtensive experiments on standard dynamic and static benchmarks demonstrate that StreamSplat achieves state-of-the-art reconstruction quality and dynamic scene modeling. Uniquely, our method supports the online reconstruction of arbitrarily long video streams with a $1200\\times$ speedup over optimization-based methods. \nOur code and models are available at https://streamsplat3d.github.io/.",
+      "discovery_method": "official_openreview_api",
+      "official_confirmation_url": "https://openreview.net/forum?id=SaiDRQU7Ez",
+      "scope_match_rationale": "Official OpenReview record with ICLR.cc/2026/Conference submission invitation and accepted ICLR 2026 venue label."
+    },
+    {
+      "source_id": "iclr2026-DTQIjngDta",
+      "title": "$\\pi^3$: Permutation-Equivariant Visual Geometry Learning",
+      "authors_or_org": [
+        "Yifan Wang",
+        "Jianjun Zhou",
+        "Haoyi Zhu",
+        "Wenzheng Chang",
+        "Yang Zhou",
+        "Zizun Li",
+        "Junyi Chen",
+        "Jiangmiao Pang",
+        "Chunhua Shen",
+        "Tong He"
+      ],
+      "date": "2026-04",
+      "url_or_path": "https://openreview.net/forum?id=DTQIjngDta",
+      "pdf_url": "https://openreview.net/pdf?id=DTQIjngDta",
+      "source_type": "paper",
+      "venue_or_publisher": "ICLR 2026 Poster",
+      "abstract_or_snippet": "We introduce $\\pi^3$, a feed-forward neural network that offers a novel approach to visual geometry reconstruction, breaking the reliance on a conventional fixed reference view. Previous methods often anchor their reconstructions to a designated viewpoint, an inductive bias that can lead to instability and failures if the reference is suboptimal. In contrast, $\\pi^3$ employs a fully permutation-equivariant architecture to predict affine-invariant camera poses and scale-invariant local point maps without any reference frames. This design not only makes our model inherently robust to input ordering, but also leads to higher accuracy and performance. These advantages enable our simple and bias-free approach to achieve state-of-the-art performance on a wide range of tasks, including camera pose estimation, monocular/video depth estimation, and dense point map reconstruction. Code and models are available at https://github.com/yyfz/Pi3.",
+      "discovery_method": "official_openreview_api",
+      "official_confirmation_url": "https://openreview.net/forum?id=DTQIjngDta",
+      "scope_match_rationale": "Official OpenReview record with ICLR.cc/2026/Conference submission invitation and accepted ICLR 2026 venue label."
+    },
+    {
+      "source_id": "iclr2026-kxVjQhkAWz",
+      "title": "Dens3R: A Foundation Model for 3D Geometry Prediction",
+      "authors_or_org": [
+        "Xianze Fang",
+        "Jingnan Gao",
+        "Zhe Wang",
+        "Zhuo Chen",
+        "Xingyu Ren",
+        "Jiangjing Lyu",
+        "Qiao-Mu Ren",
+        "Zhonglei Yang",
+        "Xiaokang Yang",
+        "Yichao Yan",
+        "chengfei lv"
+      ],
+      "date": "2026-04",
+      "url_or_path": "https://openreview.net/forum?id=kxVjQhkAWz",
+      "pdf_url": "https://openreview.net/pdf?id=kxVjQhkAWz",
+      "source_type": "paper",
+      "venue_or_publisher": "ICLR 2026 Poster",
+      "abstract_or_snippet": "Recent advances in dense 3D reconstruction have led to significant progress, yet achieving accurate unified geometric prediction remains a major challenge. Most existing methods are limited to predicting a single geometry quantity from input images. However, geometric quantities such as depth, surface normals, and point maps are inherently correlated, and estimating them in isolation often fails to ensure consistency, thereby limiting both accuracy and practical applicability. This motivates us to explore a unified framework that explicitly models the structural coupling among different geometric properties to enable joint regression. In this paper, we present Dens3R, a 3D foundation model designed for joint geometric dense prediction and adaptable to a wide range of downstream tasks. Dens3R adopts a two-stage training framework to progressively build a pointmap representation that is both generalizable and intrinsically invariant. Specifically, we design a lightweight shared encoder-decoder backbone and introduce position-interpolated rotary positional encoding to maintain expressive power while enhancing robustness to high-resolution inputs. By integrating image-pair matching features with intrinsic invariance modeling, Dens3R accurately regresses multiple geometric quantities such as surface normals and depth, achieving consistent geometry perception from single-view to multi-view inputs. Additionally, we propose a post-processing pipeline that supports geometrically consistent multi-view inference. Extensive experiments demonstrate the superior performance of Dens3R across various tasks and highlight its potential for broader applications.",
+      "discovery_method": "official_openreview_api",
+      "official_confirmation_url": "https://openreview.net/forum?id=kxVjQhkAWz",
+      "scope_match_rationale": "Official OpenReview record with ICLR.cc/2026/Conference submission invitation and accepted ICLR 2026 venue label."
+    },
+    {
+      "source_id": "iclr2026-18gC6pZVVc",
+      "title": "Geometry-aware 4D Video Generation for Robot Manipulation",
+      "authors_or_org": [
+        "Zeyi Liu",
+        "Shuang Li",
+        "Eric Cousineau",
+        "Siyuan Feng",
+        "Benjamin Burchfiel",
+        "Shuran Song"
+      ],
+      "date": "2026-04",
+      "url_or_path": "https://openreview.net/forum?id=18gC6pZVVc",
+      "pdf_url": "https://openreview.net/pdf?id=18gC6pZVVc",
+      "source_type": "paper",
+      "venue_or_publisher": "ICLR 2026 Poster",
+      "abstract_or_snippet": "Understanding and predicting dynamics of the physical world can enhance a robot's ability to plan and interact effectively in complex environments. While recent video generation models have shown strong potential in modeling dynamic scenes, generating videos that are both temporally coherent and geometrically consistent across camera views remains a significant challenge. To address this, we propose a 4D video generation model that enforces multi-view 3D consistency of generated videos by supervising the model with cross-view pointmap alignment during training. Through this geometric supervision, the model learns a shared 3D scene representation, enabling it to generate spatio-temporally aligned future video sequences from novel viewpoints given a single RGB-D image per view, and without relying on camera poses as input. Compared to existing baselines, our method produces more visually stable and spatially aligned predictions across multiple simulated and real-world robotic datasets. We further show that the predicted 4D videos can be used to recover robot end-effector trajectories using an off-the-shelf 6DoF pose tracker, yielding robot manipulation policies that generalize well to novel camera viewpoints.",
+      "discovery_method": "official_openreview_api",
+      "official_confirmation_url": "https://openreview.net/forum?id=18gC6pZVVc",
+      "scope_match_rationale": "Official OpenReview record with ICLR.cc/2026/Conference submission invitation and accepted ICLR 2026 venue label."
+    },
+    {
+      "source_id": "iclr2026-tIVCfVnIHo",
+      "title": "Lyra: Generative 3D Scene Reconstruction via Video Diffusion Model Self-Distillation",
+      "authors_or_org": [
+        "Sherwin Bahmani",
+        "Tianchang Shen",
+        "Jiawei Ren",
+        "Jiahui Huang",
+        "Yifeng Jiang",
+        "Haithem Turki",
+        "Andrea Tagliasacchi",
+        "David B. Lindell",
+        "Zan Gojcic",
+        "Sanja Fidler",
+        "Huan Ling",
+        "Jun Gao",
+        "Xuanchi Ren"
+      ],
+      "date": "2026-04",
+      "url_or_path": "https://openreview.net/forum?id=tIVCfVnIHo",
+      "pdf_url": "https://openreview.net/pdf?id=tIVCfVnIHo",
+      "source_type": "paper",
+      "venue_or_publisher": "ICLR 2026 Poster",
+      "abstract_or_snippet": "The ability to generate virtual environments is crucial for applications ranging from gaming to physical AI domains such as robotics, autonomous driving, and industrial AI.\nCurrent learning-based 3D reconstruction methods rely on the availability of captured real-world multi-view data, which is not always readily available. \nRecent advancements in video diffusion models have shown remarkable imagination capabilities, yet their 2D nature prevents their use in simulations where a robot needs to navigate and interact with the environment.\nIn this paper, we propose a self-distillation framework that aims to distill the implicit 3D knowledge in the video diffusion models into an explicit 3D Gaussian Splatting (3DGS) representation, eliminating the need for multi-view training data.\nSpecifically, we augment the typical RGB decoder with a 3DGS decoder, which is supervised by the output of the RGB decoder.\nIn this approach, the 3DGS decoder can be purely trained with synthetic data generated by video diffusion models.\nAt inference time, our model can synthesize 3D scenes from either a text prompt or a single image for real-time rendering.\nOur framework further extends to dynamic 3D scene generation from a monocular input video.\nExperimental results show that our framework achieves state-of-the-art performance in static and dynamic 3D scene generation. Video\nresults: https://research.nvidia.com/labs/toronto-ai/lyra",
+      "discovery_method": "official_openreview_api",
+      "official_confirmation_url": "https://openreview.net/forum?id=tIVCfVnIHo",
+      "scope_match_rationale": "Official OpenReview record with ICLR.cc/2026/Conference submission invitation and accepted ICLR 2026 venue label."
+    }
+  ],
+  "rejected_out_of_scope": [
+    {
+      "title": "SLAM3R: Real-Time Dense Scene Reconstruction from Monocular RGB Videos",
+      "url": "https://openaccess.thecvf.com/content/CVPR2025/papers/Liu_SLAM3R_Real-Time_Dense_Scene_Reconstruction_from_Monocular_RGB_Videos_CVPR_2025_paper.pdf",
+      "reason": "CVPR 2025, not CVPR/ICLR/ICML 2026."
+    },
+    {
+      "title": "Continuous 3D Perception Model with Persistent State",
+      "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Wang_Continuous_3D_Perception_Model_with_Persistent_State_CVPR_2025_paper.html",
+      "reason": "CVPR 2025, not CVPR/ICLR/ICML 2026."
+    },
+    {
+      "title": "ODHSR: Online Dense 3D Reconstruction of Humans and Scenes from Monocular Videos",
+      "url": "https://cvpr.thecvf.com/virtual/2025/poster/33521",
+      "reason": "CVPR 2025, not CVPR/ICLR/ICML 2026."
+    },
+    {
+      "title": "PointSt3R: Point Tracking through 3D Ground Correspondence",
+      "url": "https://openaccess.thecvf.com/content/WACV2026/html/Guerrier_PointSt3R_Point_Tracking_through_3D_Ground_Correspondence_WACV_2026_paper.html",
+      "reason": "WACV 2026 is outside the allowed venue scope."
+    },
+    {
+      "title": "Transformer-Based Inpainting for Real-Time 3D Streaming in Sparse Multi-Camera Setups",
+      "url": "https://openaccess.thecvf.com/content/WACV2026/html/Van_Holland_Transformer-Based_Inpainting_for_Real-Time_3D_Streaming_in_Sparse_Multi-Camera_Setups_WACV_2026_paper.html",
+      "reason": "WACV 2026 is outside the allowed venue scope."
+    },
+    {
+      "title": "VisFusion: Visibility-Aware Online 3D Scene Reconstruction From Videos",
+      "url": "https://openaccess.thecvf.com/content/CVPR2023/papers/Gao_VisFusion_Visibility-Aware_Online_3D_Scene_Reconstruction_From_Videos_CVPR_2023_paper.pdf",
+      "reason": "CVPR 2023, not CVPR/ICLR/ICML 2026."
+    },
+    {
+      "title": "Text-to-3D by Stitching a Multi-view Reconstruction Network to a Video Generator",
+      "url": "https://openreview.net/forum?id=kI27Niy4xY",
+      "reason": "In-scope ICLR 2026 record, but rejected from candidate results because it is text-to-3D generation rather than online/streaming video 3D point-map reconstruction."
+    },
+    {
+      "title": "InstantViR: Real-Time Video Inverse Problem Solver with Distilled Diffusion Prior",
+      "url": "https://cvpr.thecvf.com/virtual/2026/poster/37756",
+      "reason": "In-scope CVPR 2026 record, but video restoration/inverse problems rather than 3D point-map scene reconstruction."
+    }
+  ],
+  "coverage_gaps": [
+    "ICML 2026: the official OpenReview group exists, but its group metadata marks public_submissions=false. API queries for accepted venue labels ICML 2026 spotlight and ICML 2026 regular returned no public notes, and browser rendering found no source-like records. PMLR proceedings appear not yet available for ICML 2026 as of 2026-05-05. Search did not broaden beyond official ICML 2026 sources.",
+    "CVPR 2026: the CVPR virtual-site JSON currently exposes official virtual paper records and abstracts, but many records have paper_pdf_url=null. Direct official PDFs/CVF OpenAccess proceedings were not visible from the allowed official pages at search time."
+  ]
+}

@@ -1,0 +1,17 @@
+Source ID: iclr2026-streamsplat
+Title: StreamSplat: Towards Online Dynamic 3D Reconstruction from Uncalibrated Video Streams
+Original URL: https://openreview.net/forum?id=SaiDRQU7Ez
+PDF URL checked: https://openreview.net/pdf?id=SaiDRQU7Ez
+Extraction method: OpenReview forum metadata extraction. Browser PDF extraction did not return usable text during ingest.
+
+Parsed content:
+StreamSplat is an ICLR 2026 Poster about online dynamic 3D reconstruction from uncalibrated video streams. The OpenReview metadata describes a fully feed-forward framework that transforms arbitrary-length uncalibrated video streams into dynamic 3D Gaussian Splatting representations online. The stated motivation is that dynamic reconstruction methods often rely on per-scene optimization and full-sequence access, which creates latency and memory constraints.
+
+Technical elements reported in the OpenReview abstract:
+- Probabilistic sampling to predict 3D Gaussians from uncalibrated inputs.
+- A bidirectional deformation field for frame associations and lower long-term error accumulation.
+- Adaptive Gaussian fusion that propagates persistent Gaussians while handling emerging and vanishing ones.
+- Experiments on dynamic and static benchmarks, with a reported 1200x speedup over optimization-based methods.
+
+Citation trace:
+- Raw forum capture: runs/run-1777908967/raw/sources/iclr2026-streamsplat.openreview.txt

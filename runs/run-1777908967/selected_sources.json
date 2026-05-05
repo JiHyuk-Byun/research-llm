@@ -1,0 +1,167 @@
+{
+  "run_id": "run-1777908967",
+  "selected_sources": [
+    {
+      "source_id": "iclr2026-stream3r",
+      "title": "STream3R: Scalable Sequential 3D Reconstruction with Causal Transformer",
+      "url_or_path": "https://openreview.net/forum?id=RTTYGeC2Io",
+      "rank": 1,
+      "selection_rationale": "Accepted ICLR 2026 paper in the official OpenReview venue collection and the strongest direct match: streaming/sequential 3D reconstruction, causal online processing, and pointmap prediction.",
+      "expected_use": "Primary evidence for online point-map-based 3D reconstruction from ordered image/video streams."
+    },
+    {
+      "source_id": "iclr2026-streamsplat",
+      "title": "StreamSplat: Towards Online Dynamic 3D Reconstruction from Uncalibrated Video Streams",
+      "url_or_path": "https://openreview.net/forum?id=SaiDRQU7Ez",
+      "rank": 2,
+      "selection_rationale": "Accepted ICLR 2026 paper in the official OpenReview venue collection and a direct match for online dynamic 3D reconstruction from uncalibrated video streams.",
+      "expected_use": "Primary evidence for online feed-forward reconstruction under streaming latency and memory constraints, with Gaussian Splatting as the scene representation."
+    },
+    {
+      "source_id": "iclr2026-pi3",
+      "title": "$\\pi^3$: Permutation-Equivariant Visual Geometry Learning",
+      "url_or_path": "https://openreview.net/forum?id=DTQIjngDta",
+      "rank": 3,
+      "selection_rationale": "Accepted ICLR 2026 paper in the official OpenReview venue collection; highly relevant to dense/local point maps and video geometry, though not framed primarily as online streaming.",
+      "expected_use": "Contextual evidence for point-map prediction, visual geometry model design, and video/dense reconstruction evaluation."
+    },
+    {
+      "source_id": "iclr2026-cognimap3d",
+      "title": "CogniMap3D: Cognitive 3D Mapping and Rapid Retrieval",
+      "url_or_path": "https://openreview.net/forum?id=9agaxh8ClV",
+      "rank": 4,
+      "selection_rationale": "Accepted ICLR 2026 paper in the official OpenReview venue collection; relevant to persistent 3D mapping from image streams and reconstruction-oriented evaluations.",
+      "expected_use": "Secondary evidence for stream-based 3D mapping, memory mechanisms, and retrieval-oriented reconstruction workflows."
+    },
+    {
+      "source_id": "iclr2026-hyden",
+      "title": "Hyden: A Hybrid Dual-Path Encoder for Monocular Geometry of High-resolution Images",
+      "url_or_path": "https://openreview.net/forum?id=2eL6yXLCh8",
+      "rank": 5,
+      "selection_rationale": "Accepted ICLR 2026 paper in the official OpenReview venue collection; relevant to low-latency high-resolution monocular geometry and point-map estimation, but image-focused rather than streaming-video focused.",
+      "expected_use": "Supporting evidence for efficient point-map/depth/normal estimation that may inform streaming reconstruction components."
+    },
+    {
+      "source_id": "iclr2026-fastavatar",
+      "title": "FastAvatar: Towards Unified and Fast 3D Avatar Reconstruction with Large Gaussian Reconstruction Transformers",
+      "url_or_path": "https://openreview.net/forum?id=P7zBSCs4Xt",
+      "rank": 6,
+      "selection_rationale": "Accepted ICLR 2026 paper in the official OpenReview venue collection; relevant to fast/incremental reconstruction from monocular video, but domain-specific to avatars rather than general 3D scene point maps.",
+      "expected_use": "Narrow supporting evidence for incremental video-based reconstruction and fast feed-forward 3D reconstruction design."
+    }
+  ],
+  "not_selected": [
+    {
+      "source_id": "iclr2026-vid-llm",
+      "title": "Vid-LLM: A Compact Video-based 3D Multimodal LLM with Reconstruction-Reasoning Synergy",
+      "url_or_path": "https://openreview.net/forum?id=l1cLdEjESj",
+      "reason": "In scope as an accepted ICLR 2026 oral, but not selected because reconstruction is used mainly to support multimodal reasoning rather than as an online point-map reconstruction method."
+    },
+    {
+      "source_id": "iclr2026-lyra",
+      "title": "Lyra: Generative 3D Scene Reconstruction via Video Diffusion Model Self-Distillation",
+      "url_or_path": "https://openreview.net/forum?id=tIVCfVnIHo",
+      "reason": "In scope as an accepted ICLR 2026 poster, but not selected because it is centered on generative video-diffusion distillation and 3D scene generation rather than online streaming point-map reconstruction."
+    },
+    {
+      "source_id": "iclr2026-vist3a",
+      "title": "Text-to-3D by Stitching a Multi-view Reconstruction Network to a Video Generator",
+      "url_or_path": "https://openreview.net/forum?id=kI27Niy4xY",
+      "reason": "In scope as an accepted ICLR 2026 oral, but not selected because it is text-to-3D/video-generator-based generation rather than reconstruction from an online video stream."
+    },
+    {
+      "title": "3DPhysVideo: 3D Scene Reconstruction and Physical Animation Leveraging a Video Generation Model via Consistency-Guided Flow SDE",
+      "url_or_path": "https://openreview.net/forum?id=8TgzLrWgrk",
+      "reason": "Rejected as out of scope: ICLR 2026 desk-rejected submission, not an accepted official venue paper."
+    },
+    {
+      "title": "Pensieve: Self-supervised Novel View Synthesis via Implicit and Explicit Reconstruction",
+      "url_or_path": "https://openreview.net/forum?id=NnSiKYA1Jk",
+      "reason": "Rejected as out of scope: submitted to ICLR 2026 but not identified as accepted in the official venue collection."
+    },
+    {
+      "title": "T-3DGS: Removing Transient Objects for 3D Scene Reconstruction",
+      "url_or_path": "https://openreview.net/forum?id=SQls2x9DE6",
+      "reason": "Rejected as out of scope: submitted to ICLR 2026 but not identified as accepted in the official venue collection."
+    },
+    {
+      "title": "WorldMirror: Universal 3D World Reconstruction with Any-Prior Prompting",
+      "url_or_path": "https://openreview.net/forum?id=BbVSpL9ACG",
+      "reason": "Rejected as out of scope: submitted to ICLR 2026 but not identified as accepted in the official venue collection."
+    },
+    {
+      "title": "CARVE: Dissecting Core Components for Accurate and Resolution-Enhanced Visual Geometry Estimation",
+      "url_or_path": "https://openreview.net/forum?id=WFpZjEogVH",
+      "reason": "Rejected as out of scope: ICLR 2026 withdrawn submission, not an accepted official venue paper."
+    },
+    {
+      "title": "MVGE: Scale-invariant and Temporal-consistent Monocular Video Geometry Estimation",
+      "url_or_path": "https://openreview.net/forum?id=k49lMF1ckB",
+      "reason": "Rejected as out of scope: ICLR 2026 withdrawn submission, not an accepted official venue paper."
+    },
+    {
+      "title": "VLM-3R: Vision-Language Models Augmented with Instruction-Aligned 3D Reconstruction",
+      "url_or_path": "https://github.com/VITA-Group/VLM-3R",
+      "reason": "Rejected as out of scope: GitHub repository is not an official conference proceedings page or official paper page; official CVPR 2026 confirmation would be needed before use."
+    },
+    {
+      "title": "VLM-3R: Vision-Language Models Augmented with Instruction-Aligned 3D Reconstruction",
+      "url_or_path": "https://vlm-3r.github.io/",
+      "reason": "Rejected as out of scope: author/project page claims CVPR 2026 but is not an official venue page; official CVPR 2026 confirmation would be needed before use."
+    },
+    {
+      "title": "Stepper: Stepwise Immersive Scene Generation with Multiview Panoramas",
+      "url_or_path": "https://fwmb.github.io/stepper/",
+      "reason": "Rejected as out of scope: author/project page claims CVPR 2026 Findings but is not an official venue page, and the topic is only tangential to online streaming video point-map reconstruction."
+    },
+    {
+      "title": "Elastic3D: Controllable Stereo Video Conversion",
+      "url_or_path": "https://elastic3d.github.io/",
+      "reason": "Rejected as out of scope: author/project page claims CVPR 2026 but is not an official venue page, and stereo video conversion is not 3D point-map reconstruction."
+    },
+    {
+      "title": "WorldStereo: Bridging Camera-Guided Video Generation and Scene Reconstruction via 3D Geometric Memories",
+      "url_or_path": "https://github.com/FuchengSu/WorldStereo",
+      "reason": "Rejected as out of scope: GitHub repository is not an official conference proceedings page or official paper page; official CVPR 2026 confirmation would be needed before use."
+    },
+    {
+      "title": "GHOST: Fast Category-agnostic Hand-Object Interaction Reconstruction from RGB Videos using Gaussian Splatting",
+      "url_or_path": "https://www.dfki.de/web/forschung/projekte-publikationen/publikation/17153",
+      "reason": "Rejected as out of scope: institutional publication page, not an official CVPR 2026 paper/proceedings page."
+    },
+    {
+      "title": "SLAM3R: Real-Time Dense Scene Reconstruction from Monocular RGB Videos",
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2025/poster/34485",
+      "reason": "Rejected as out of scope: CVPR 2025, outside the allowed 2026 venue collections."
+    },
+    {
+      "title": "MASt3R-SLAM: Real-Time Dense SLAM with 3D Reconstruction Priors",
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2025/poster/34871",
+      "reason": "Rejected as out of scope: CVPR 2025, outside the allowed 2026 venue collections."
+    },
+    {
+      "title": "ODHSR: Online Dense 3D Reconstruction of Humans and Scenes from Monocular Videos",
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2025/poster/33521",
+      "reason": "Rejected as out of scope: CVPR 2025, outside the allowed 2026 venue collections."
+    },
+    {
+      "title": "K-Track: Kalman-Enhanced Tracking for Accelerating Deep Point Trackers on Edge Devices",
+      "url_or_path": "https://openaccess.thecvf.com/content/WACV2026W/RWS/papers/Galoaa_K-Track_Kalman-Enhanced_Tracking_for_Accelerating_Deep_Point_Trackers_on_Edge_WACVW_2026_paper.pdf",
+      "reason": "Rejected as out of scope: WACV 2026 workshop paper, outside CVPR 2026, ICLR 2026, and ICML 2026."
+    }
+  ],
+  "coverage_gaps": [
+    {
+      "venue": "CVPR 2026",
+      "gap": "The official CVPR 2026 papers page was reachable but its paper list requires JavaScript and did not expose searchable paper records in the retrieved text. CVF Open Access searches for CVPR 2026 did not return in-scope official proceedings matches for the query."
+    },
+    {
+      "venue": "ICML 2026",
+      "gap": "Scoped OpenReview searches for ICML 2026 with online/streaming/video/3D reconstruction/point-map terms returned no candidate results."
+    },
+    {
+      "venue": "General",
+      "gap": "Several plausible CVPR 2026 candidates appeared only on author, project, institutional, or GitHub pages. They were not used as in-scope evidence because the plan allows author-hosted PDFs only after matching papers to accepted venue collections."
+    }
+  ]
+}

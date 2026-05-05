@@ -1,0 +1,18 @@
+Source ID: cvpr2026-37041
+Title: MotionCrafter: Repurposing Video Generators for Dense Geometry and Motion Reconstruction
+Venue: CVPR 2026 Accept (Highlight)
+Official URL: https://cvpr.thecvf.com/virtual/2026/poster/37041
+Official confirmation URL: https://cvpr.thecvf.com/static/virtual/data/cvpr-2026-orals-posters.json
+CVPR virtualsite URL: /virtual/2026/poster/37041
+Decision: Accept (Highlight)
+Event type: Poster
+Authors: Ruijie Zhu (Nanyang Technological University); Jiahao Lu (The Hong Kong University of Science and Technology); Wenbo Hu (Tencent ARC Lab); Xiaoguang Han (The Chinese University of Hong Kong, Shenzhen); Jianfei Cai (Monash University); Ying Shan (Tencent); Chuanxia Zheng (University of Oxford)
+Keywords: 
+
+Abstract:
+We introduce MotionCrafter, the first video diffusion-based framework that jointly reconstructs 4D geometry and estimates dense motion from a monocular video. To represent them effectively in latent space, we propose a 4D VAE that encodes point maps and scene flows as a unified latent compatible with pretrained video generators. Unlike prior work that forces the 3D value and latents to align strictly with RGB VAE latents—despite their fundamentally different distributions—we show that such alignment is unnecessary and leads to suboptimal performance. Instead, we introduce a new data normalization and VAE training strategy that better transfers diffusion priors and greatly improves reconstruction quality. Extensive experiments across multiple datasets demonstrate that MotionCrafter achieves state-of-the-art performance in joint 4D geometry reconstruction and dense scene flow estimation, delivering 38.64\% and 25.0\% improvements in geometry and motion reconstruction, respectively, all without any post-optimization.
+
+Raw provenance:
+Extracted from run-local official CVPR 2026 virtual-site JSON artifact cvpr-2026-orals-posters.json.
+paper_pdf_url: null
+paper_url: 

@@ -1,0 +1,18 @@
+Source ID: cvpr2026-39496
+Title: MoVieS: Motion-Aware 4D Dynamic View Synthesis in One Second
+Venue: CVPR 2026 Accept (Poster)
+Official URL: https://cvpr.thecvf.com/virtual/2026/poster/39496
+Official confirmation URL: https://cvpr.thecvf.com/static/virtual/data/cvpr-2026-orals-posters.json
+CVPR virtualsite URL: /virtual/2026/poster/39496
+Decision: Accept (Poster)
+Event type: Poster
+Authors: Chenguo Lin (Peking University); Yuchen Lin (Peking University); Panwang Pan (ByteDance); Yifan Yu (PICO, ByteDance); Tao Hu (National University of Singapore); Honglei Yan (ByteDance Ltd); Katerina Fragkiadaki (CMU); Yadong Mu (Peking University)
+Keywords: 
+
+Abstract:
+We present MoVieS, a motion-aware view synthesis model that reconstruct 4D dynamic scenes from monocular videos in one second. It represents dynamic 3D scenes with pixel-aligned Gaussian primitives and explicitly supervises their time-varying motions. This allows, for the first time, the unified modeling of appearance, geometry and motion from monocular videos, and enables reconstruction, view synthesis and 3D point tracking within a single learning-based framework. By bridging view synthesis with geometry reconstruction, MoVieS enables large-scale training on diverse datasets with minimal dependence on task-specific supervision. As a result, it also naturally supports a wide range of zero-shot applications, such as scene flow estimation and moving object segmentation. Extensive experiments validate the effectiveness and efficiency of MoVieS across multiple tasks, achieving competitive performance while offering several orders of magnitude speedups.
+
+Raw provenance:
+Extracted from run-local official CVPR 2026 virtual-site JSON artifact cvpr-2026-orals-posters.json.
+paper_pdf_url: null
+paper_url: 

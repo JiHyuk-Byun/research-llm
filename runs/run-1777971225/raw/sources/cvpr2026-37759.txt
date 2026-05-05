@@ -1,0 +1,18 @@
+Source ID: cvpr2026-37759
+Title: Ov3R: Open-Vocabulary Semantic 3D Reconstruction from RGB Videos
+Venue: CVPR 2026 Accept (Highlight)
+Official URL: https://cvpr.thecvf.com/virtual/2026/poster/37759
+Official confirmation URL: https://cvpr.thecvf.com/static/virtual/data/cvpr-2026-orals-posters.json
+CVPR virtualsite URL: /virtual/2026/poster/37759
+Decision: Accept (Highlight)
+Event type: Poster
+Authors: ZIREN GONG (University of Bologna); Xiaohan Li; Fabio Tosi (University of Bologna); Jiawei Han (Beijing Institute of Technology); Stefano Mattoccia (University of Bologna); Jianfei Cai (Monash University); Matteo Poggi (Università di Bologna)
+Keywords: 
+
+Abstract:
+We present Ov3R, a novel framework for open-vocabulary semantic 3D reconstruction from RGB video streams, designed to advance Spatial AI. The system features two key components: CLIP3R, a CLIP-informed 3D reconstruction module that predicts dense point maps from overlapping clips alongside object-level semantics; and 2D–3D OVS, a 2D-3D open-vocabulary semantic module that lifts 2D features into 3D by learning fused descriptors integrating spatial, geometric, and semantic cues. Unlike prior methods, Ov3R incorporates CLIP semantics directly into the reconstruction process, enabling globally consistent geometry and fine-grained semantic alignment. Our framework achieves state-of-the-art performance in both dense 3D reconstruction and open-vocabulary 3D segmentation — marking a step forward toward real-time, semantics-aware Spatial AI.
+
+Raw provenance:
+Extracted from run-local official CVPR 2026 virtual-site JSON artifact cvpr-2026-orals-posters.json.
+paper_pdf_url: null
+paper_url: 

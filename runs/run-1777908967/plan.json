@@ -1,0 +1,149 @@
+{
+  "run_id": "run-1777908967",
+  "user_instruction": "please search for \"online streaming video 3d point map reconstruction\" in CVPR 2026, ICLR2026, ICML2026.",
+  "task_type": "knowledge_building",
+  "source_scope": {
+    "mode": "venue_scope",
+    "allowed_sources": [
+      "CVPR 2026",
+      "ICLR 2026",
+      "ICML 2026"
+    ],
+    "disallowed_sources": [
+      "Sources outside CVPR 2026, ICLR 2026, or ICML 2026 unless the user explicitly approves expansion"
+    ],
+    "allowed_source_types": [
+      "official conference proceedings pages",
+      "official conference paper pages",
+      "OpenReview entries for ICLR 2026 and ICML 2026 when part of the official venue collection",
+      "publisher-hosted PDFs linked from the allowed venue collections",
+      "author-hosted PDFs only when they match papers accepted to the allowed venue collections"
+    ],
+    "recency": "2026 venue collections only",
+    "query": "online streaming video 3d point map reconstruction",
+    "expansion_policy": "ask_user_before_expanding"
+  },
+  "stages": [
+    {
+      "name": "search",
+      "agent_skill": "research-os-search",
+      "inputs": [
+        "runs/run-1777908967/plan.json"
+      ],
+      "outputs": [
+        "runs/run-1777908967/search_results.json"
+      ],
+      "may_mutate_wiki": false,
+      "wiki_mutation_permission": "none"
+    },
+    {
+      "name": "source_triage",
+      "agent_skill": "research-os-source-triage",
+      "inputs": [
+        "runs/run-1777908967/plan.json",
+        "runs/run-1777908967/search_results.json"
+      ],
+      "outputs": [
+        "runs/run-1777908967/selected_sources.json"
+      ],
+      "may_mutate_wiki": false,
+      "wiki_mutation_permission": "none"
+    },
+    {
+      "name": "ingest",
+      "agent_skill": "research-os-ingest",
+      "inputs": [
+        "runs/run-1777908967/plan.json",
+        "runs/run-1777908967/selected_sources.json"
+      ],
+      "outputs": [
+        "runs/run-1777908967/raw/sources/",
+        "runs/run-1777908967/parsed/sources/",
+        "runs/run-1777908967/ingest_manifest.json"
+      ],
+      "may_mutate_wiki": false,
+      "wiki_mutation_permission": "none"
+    },
+    {
+      "name": "reader",
+      "agent_skill": "research-os-reader",
+      "inputs": [
+        "runs/run-1777908967/plan.json",
+        "runs/run-1777908967/selected_sources.json",
+        "runs/run-1777908967/ingest_manifest.json",
+        "runs/run-1777908967/parsed/sources/"
+      ],
+      "outputs": [
+        "runs/run-1777908967/wiki/sources/"
+      ],
+      "may_mutate_wiki": true,
+      "wiki_mutation_permission": "may create or update run-local source notes only under runs/run-1777908967/wiki/sources/"
+    },
+    {
+      "name": "wiki_update_sources",
+      "agent_skill": "research-os-wiki-update",
+      "inputs": [
+        "runs/run-1777908967/plan.json",
+        "runs/run-1777908967/wiki/sources/"
+      ],
+      "outputs": [
+        "runs/run-1777908967/wiki/index.md",
+        "runs/run-1777908967/wiki/log.md",
+        "runs/run-1777908967/wiki/followups.md",
+        "runs/run-1777908967/wiki/topics/"
+      ],
+      "may_mutate_wiki": true,
+      "wiki_mutation_permission": "may update run-local wiki index, log, followups, topics, and source-note cross-references"
+    },
+    {
+      "name": "synthesis",
+      "agent_skill": "research-os-synthesis",
+      "inputs": [
+        "runs/run-1777908967/plan.json",
+        "runs/run-1777908967/wiki/index.md",
+        "runs/run-1777908967/wiki/sources/",
+        "runs/run-1777908967/wiki/topics/"
+      ],
+      "outputs": [
+        "runs/run-1777908967/wiki/synthesis/online_streaming_video_3d_point_map_reconstruction.md",
+        "runs/run-1777908967/wiki/outputs/final_answer.md"
+      ],
+      "may_mutate_wiki": true,
+      "wiki_mutation_permission": "may create planned run-local synthesis and final output pages with claims cited to runs/run-1777908967/wiki/sources/"
+    },
+    {
+      "name": "wiki_update_synthesis",
+      "agent_skill": "research-os-wiki-update",
+      "inputs": [
+        "runs/run-1777908967/plan.json",
+        "runs/run-1777908967/wiki/synthesis/online_streaming_video_3d_point_map_reconstruction.md",
+        "runs/run-1777908967/wiki/outputs/final_answer.md"
+      ],
+      "outputs": [
+        "runs/run-1777908967/wiki/index.md",
+        "runs/run-1777908967/wiki/log.md",
+        "runs/run-1777908967/wiki/followups.md"
+      ],
+      "may_mutate_wiki": true,
+      "wiki_mutation_permission": "may update run-local wiki index, log, and followups to catalog synthesis and final output"
+    },
+    {
+      "name": "lint_critic",
+      "agent_skill": "research-os-lint-critic",
+      "inputs": [
+        "runs/run-1777908967/plan.json",
+        "runs/run-1777908967/wiki/index.md",
+        "runs/run-1777908967/wiki/sources/",
+        "runs/run-1777908967/wiki/topics/",
+        "runs/run-1777908967/wiki/synthesis/",
+        "runs/run-1777908967/wiki/outputs/final_answer.md"
+      ],
+      "outputs": [
+        "runs/run-1777908967/lint_report.md"
+      ],
+      "may_mutate_wiki": false,
+      "wiki_mutation_permission": "none"
+    }
+  ],
+  "final_expected_artifact": "runs/run-1777908967/wiki/outputs/final_answer.md"
+}

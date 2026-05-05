@@ -1,0 +1,22 @@
+Source ID: iclr2026-pi3
+Title: pi^3: Permutation-Equivariant Visual Geometry Learning
+Original URL: https://openreview.net/forum?id=DTQIjngDta
+PDF URL checked: https://openreview.net/pdf?id=DTQIjngDta
+Extraction method: Browser PDF text extraction plus OpenReview forum metadata.
+
+Published as a conference paper at ICLR 2026.
+
+Abstract:
+pi^3 is a feed-forward visual geometry model that removes the need for a fixed reference view. It predicts affine-invariant camera poses and scale-invariant local point maps using a fully permutation-equivariant architecture. The paper reports improvements across camera pose estimation, monocular/video depth estimation, and dense point map reconstruction.
+
+Relevant extracted technical details:
+- The method accepts varied inputs, including single images, video sequences, and unordered image sets from static or dynamic scenes.
+- It predicts each point map in the corresponding frame's own camera coordinate system.
+- The model is designed so permuting the input sequence produces a correspondingly permuted output sequence.
+- The implementation omits order-dependent components such as frame positional embeddings and special reference-view tokens.
+- The model uses alternating view-wise and global self-attention before a decoder outputs camera pose, point map, and confidence map.
+- Reported benchmark examples include Sintel camera-pose ATE reduction relative to VGGT and 57.4 FPS inference speed in the paper text extraction.
+
+Citation trace:
+- Raw forum capture: runs/run-1777908967/raw/sources/iclr2026-pi3.openreview.txt
+- Browser PDF text extraction from official OpenReview PDF endpoint.

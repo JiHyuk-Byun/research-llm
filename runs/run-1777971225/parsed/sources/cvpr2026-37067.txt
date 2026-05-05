@@ -1,0 +1,18 @@
+Source ID: cvpr2026-37067
+Title: Point4Cast: Streaming Dynamic Scene Reconstruction and Forecasting
+Venue: CVPR 2026 Accept (Highlight)
+Official URL: https://cvpr.thecvf.com/virtual/2026/poster/37067
+Official confirmation URL: https://cvpr.thecvf.com/static/virtual/data/cvpr-2026-orals-posters.json
+CVPR virtualsite URL: /virtual/2026/poster/37067
+Decision: Accept (Highlight)
+Event type: Poster
+Authors: Xinhang Liu (HKUST); Pedro Miraldo (Mitsubishi Electric Research Laboratories); Suhas Lohit (Mitsubishi Electric Research Labs); Huaizu Jiang (Northeastern University); Naoko Sawada (Mitsubishi Electric Corporation); Yu-Wing Tai (Dartmouth College); Chi-Keung Tang (The Hong Kong University of Science and Technology); Moitreya Chatterjee (Mitsubishi Electric Research Labs)
+Keywords: 
+
+Abstract:
+Understanding how the 3D world evolves over time is a fundamental task in computer vision, essential for embodied settings, autonomous driving, etc. It requires not only the reconstruction of the observed scene but also the anticipation of how the scene dynamics will unfold in the future. While the area of 3D reconstruction has progressed rapidly with the advent of recent feed-forward neural networks, forecasting future dynamics in 3D, given the 2D frames of a video remains unexplored. We present Point4Cast, a unified framework that processes streaming 2D frame sequences of a video to estimate the past, present, and future of the underlying dynamic scene, in 3D. At the core of our approach lies a persistently evolving latent \emph{spacetime representation} that models the environment’s evolution across time. Upon receiving a new 2D frame, an update operation integrates the incoming evidence to refine the latent spacetime representation. When queried for any time instant, whether before, at, or beyond the timestamp of the last update.  A readout procedure predicts temporally conditioned point maps and camera parameters describing the scene geometry at the queried time. Unlike prior approaches for online dynamic scene reconstruction that estimate each frame’s point map solely at the timestamp of the last observed frame, Point4Cast achieves coherent reconstruction across any queried time. Empirical evaluations show that \emph{Point4Cast} achieves state-of-the-art performance on streaming dynamic scene reconstruction and forecasting benchmarks, across multiple challenging datasets, while providing scene flow estimation and forecasting for free. The code will be released publicly.
+
+Raw provenance:
+Extracted from run-local official CVPR 2026 virtual-site JSON artifact cvpr-2026-orals-posters.json.
+paper_pdf_url: null
+paper_url: 

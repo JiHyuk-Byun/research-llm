@@ -1,0 +1,18 @@
+Source ID: cvpr2026-39409
+Title: MoRe: Motion-aware Feed-forward 4D Reconstruction Transrformer
+Venue: CVPR 2026 Accept (Highlight)
+Official URL: https://cvpr.thecvf.com/virtual/2026/poster/39409
+Official confirmation URL: https://cvpr.thecvf.com/static/virtual/data/cvpr-2026-orals-posters.json
+CVPR virtualsite URL: /virtual/2026/poster/39409
+Decision: Accept (Highlight)
+Event type: Poster
+Authors: Juntong Fang (Tsinghua University, Tsinghua University); Zequn Chen (Li Auto Inc.); Weiqi Zhang (Tsinghua University); Donglin Di (Harbin Institute of Technology); Xuancheng Zhang (Li Auto Inc.); Chengmin Yang (Li Auto Inc.); Yu-Shen Liu (Tsinghua University)
+Keywords: 
+
+Abstract:
+Reconstructing dynamic 4D scenes remains challenging due to the presence of moving objects that corrupt camera pose estimation. Existing optimization methods alleviate this issue with additional supervision, but they are mostly computationally expensive and impractical in real-time applications. To address these limitations, we propose MoRe, a feedforward 4D reconstruction network that efficiently recovers dynamic 3D scenes from monocular videos. Built upon a strong static reconstruction backbone, MoRe employs an attention-forcing strategy to disentangle dynamic motion from static structure. To further enhance robustness, we fine-tune the model on large-scale, diverse datasets encompassing both dynamic and static scenes. Moreover, our grouped causal attention captures temporal dependencies and adapts to varying token lengths across frames, ensuring temporally coherent geometry reconstruction. Extensive experiments on multiple benchmarks demonstrate that MoRe achieves high-quality dynamic reconstructions with exceptional efficiency.
+
+Raw provenance:
+Extracted from run-local official CVPR 2026 virtual-site JSON artifact cvpr-2026-orals-posters.json.
+paper_pdf_url: null
+paper_url: 

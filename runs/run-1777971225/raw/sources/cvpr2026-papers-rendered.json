@@ -1,0 +1,3472 @@
+{
+  "url": "https://cvpr.thecvf.com/virtual/2026/papers.html",
+  "status": "success",
+  "method": "playwright",
+  "http_status": 200,
+  "page_title": "CVPR 2026 Papers",
+  "body_text_length": 634885,
+  "records_found": 200,
+  "records": [
+    {
+      "title": "Aligning Multi-Character Narrative Image Generation with Multi-Aspect Human Preferences",
+      "authors_or_org": [
+        "Ziyi Gao",
+        "Zhipeng Wei",
+        "Jingjing Chen",
+        "Stewart Tan",
+        "Hao li",
+        "Yi-Ping Phoebe Chen"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39993",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Ziyi Gao, Zhipeng Wei, Jingjing Chen, Stewart Tan, Hao li, Yi-Ping Phoebe Chen --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39993",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "BridgeEQA: Virtual Embodied Agents for Real Bridge Inspections",
+      "authors_or_org": [
+        "Subin Varghese",
+        "Joshua Gao",
+        "Asad Ur Rahman",
+        "Vedhus Hoskere"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37239",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Subin Varghese, Joshua Gao, Asad Ur Rahman, Vedhus Hoskere --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37239",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Stand-In: A Lightweight and Plug-and-Play Identity Control for Video Generation",
+      "authors_or_org": [
+        "Bowen Xue",
+        "Zheng-Peng Duan",
+        "Qixin Yan",
+        "Wenjing Wang",
+        "Hao Liu",
+        "Chun-Le Guo",
+        "Chongyi Li",
+        "Chen Li",
+        "Jing LYU"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39942",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Bowen Xue, Zheng-Peng Duan, Qixin Yan, Wenjing Wang, Hao Liu, Chun-Le Guo, Chongyi Li, Chen Li, Jing LYU --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39942",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "DuetMerging: Synergizing Dynamic and Static Strategies for Mitigating Task Interference in Model Merging",
+      "authors_or_org": [
+        "Yan Li",
+        "Guiping Cao",
+        "Yaguang Song",
+        "Ming Tao",
+        "Haoran Gong",
+        "Jun-Hui Liu",
+        "Yaowei Wang",
+        "Dongmei Jiang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39650",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yan Li, Guiping Cao, Yaguang Song, Ming Tao, Haoran Gong, Jun-Hui Liu, Yaowei Wang, Dongmei Jiang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39650",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Iterative Closed-Loop Motion Synthesis for Scaling the Capabilities of Humanoid Control",
+      "authors_or_org": [
+        "Weisheng Xu",
+        "Qiwei Wu",
+        "Jiaxi Zhang",
+        "Jing Tan",
+        "Yangfan Li",
+        "Yuetong Fang",
+        "Jiaqi Xiong",
+        "Kai Wu",
+        "Rong OU",
+        "Renjing Xu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38388",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Weisheng Xu, Qiwei Wu, Jiaxi Zhang, Jing Tan, Yangfan Li, Yuetong Fang, Jiaqi Xiong, Kai Wu, Rong OU, Renjing Xu --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38388",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Learning Latent Proxies for Controllable Single-Image Relighting",
+      "authors_or_org": [
+        "Haoze Zheng",
+        "Zihao Wang",
+        "Xianfeng Wu",
+        "Yajing Bai",
+        "Yexin Liu",
+        "Yun LI",
+        "Xiaogang Xu",
+        "Harry Yang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38906",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Haoze Zheng, Zihao Wang, Xianfeng Wu, Yajing Bai, Yexin Liu, Yun LI, Xiaogang Xu, Harry Yang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38906",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "GeoBridge: A Semantic-Anchored Multi-View Foundation Model Bridging Images and Text for Geo-Localization",
+      "authors_or_org": [
+        "Zixuan Song",
+        "Jing Zhang",
+        "Di Wang",
+        "Zidie Zhou",
+        "Wenbin Liu",
+        "Haonan Guo",
+        "En Wang",
+        "Bo Du"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37422",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Zixuan Song, Jing Zhang, Di Wang, Zidie Zhou, Wenbin Liu, Haonan Guo, En Wang, Bo Du --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37422",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "PvP: Data-Efficient Humanoid Robot Learning with Proprioceptive-Privileged Contrastive Representations",
+      "authors_or_org": [
+        "Mingqi Yuan",
+        "Tao Yu",
+        "Haolin Song",
+        "Bo Li",
+        "Xin Jin",
+        "Hua Chen",
+        "Wenjun Zeng"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37212",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Mingqi Yuan, Tao Yu, Haolin Song, Bo Li, Xin Jin, Hua Chen, Wenjun Zeng --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37212",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "AntiStyler: Defending Object Detection Models Against Adversarial Patch Attacks Using Style Removal",
+      "authors_or_org": [
+        "Idan Yankelev",
+        "Edita Grolman",
+        "Yarin Levi",
+        "Amit Giloni",
+        "Omer Hofman",
+        "Toshiya Shimizu",
+        "Yuval Elovici",
+        "Asaf Shabtai"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/40065",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Idan Yankelev, Edita Grolman, Yarin Levi, Amit Giloni, Omer Hofman, Toshiya Shimizu, Yuval Elovici, Asaf Shabtai --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/40065",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Revisiting Learning with Noisy Labels: Active Forgetting and Noise Suppression",
+      "authors_or_org": [
+        "Mengmeng Sheng",
+        "Zeren Sun",
+        "Tao Chen",
+        "Jinshan Pan",
+        "Yazhou Yao",
+        "Fumin Shen"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36408",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Mengmeng Sheng, Zeren Sun, Tao Chen, Jinshan Pan, Yazhou Yao, Fumin Shen --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36408",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "TriDF: Evaluating Perception, Detection, and Hallucination for Interpretable DeepFake Detection",
+      "authors_or_org": [
+        "Jian-Yu Jiang-Lin",
+        "Kang-Yang Huang",
+        "Ling Zou",
+        "Ling Lo",
+        "Sheng-Ping Yang",
+        "Yu-Wen Tseng",
+        "Kun-Hsiang Lin",
+        "Chia-Ling Chen",
+        "Yu-Ting Ta",
+        "Yan-Tsung Wang",
+        "Po-Ching Chen",
+        "Hongxia Xie",
+        "Hong-Han Shuai",
+        "Wen-Huang Cheng"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39193",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Jian-Yu Jiang-Lin, Kang-Yang Huang, Ling Zou, Ling Lo, Sheng-Ping Yang, Yu-Wen Tseng, Kun-Hsiang Lin, Chia-Ling Chen, Yu-Ting Ta, Yan-Tsung Wang, Po-Ching Chen, Hongxia Xie, Hong-Han Shuai, Wen-Huang Cheng --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39193",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Decompose and Transfer: CoT-Prompting Enhanced Alignment for Open-Vocabulary Temporal Action Detection",
+      "authors_or_org": [
+        "SA ZHU",
+        "Wanqian Zhang",
+        "Lin Wang",
+        "Xiaohua Chen",
+        "Chenxu Cui",
+        "Jinchao Zhang",
+        "Bo Li"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/40033",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper SA ZHU, Wanqian Zhang, Lin Wang, Xiaohua Chen, Chenxu Cui, Jinchao Zhang, Bo Li --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/40033",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Guiding a Diffusion Transformer with the Internal Dynamics of Itself",
+      "authors_or_org": [
+        "Xingyu Zhou",
+        "Qifan Li",
+        "Xiaobin Hu",
+        "Hai Chen",
+        "Shuhang Gu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39077",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Xingyu Zhou, Qifan Li, Xiaobin Hu, Hai Chen, Shuhang Gu --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39077",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "PEARL: Geometry Aligns Semantics for Training-Free Open-Vocabulary Semantic Segmentation",
+      "authors_or_org": [
+        "Gensheng Pei",
+        "Xiruo Jiang",
+        "Xinhao Cai",
+        "Tao Chen",
+        "Yazhou Yao",
+        "Byeungwoo Jeon"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37849",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Gensheng Pei, Xiruo Jiang, Xinhao Cai, Tao Chen, Yazhou Yao, Byeungwoo Jeon --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37849",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Generative Video Compression with One-Dimensional Latent Representation",
+      "authors_or_org": [
+        "Zihan Zheng",
+        "Zhaoyang Jia",
+        "Naifu Xue",
+        "Jiahao Li",
+        "Bin Li",
+        "Zongyu Guo",
+        "Xiaoyi Zhang",
+        "Zhenghao Chen",
+        "Houqiang Li",
+        "Yan Lu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38329",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Zihan Zheng, Zhaoyang Jia, Naifu Xue, Jiahao Li, Bin Li, Zongyu Guo, Xiaoyi Zhang, Zhenghao Chen, Houqiang Li, Yan Lu --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38329",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "SAGE: Training Smart Any-Horizon Agents for Long Video Reasoning with Reinforcement Learning",
+      "authors_or_org": [
+        "Jitesh Jain",
+        "Jialuo Li",
+        "Zixian Ma",
+        "Jieyu Zhang",
+        "Chris Dongjoo Kim",
+        "Sangho Lee",
+        "Rohun Tripathi",
+        "Tanmay Gupta",
+        "Christopher Clark",
+        "Humphrey Shi"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39053",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Jitesh Jain, Jialuo Li, Zixian Ma, Jieyu Zhang, Chris Dongjoo Kim, Sangho Lee, Rohun Tripathi, Tanmay Gupta, Christopher Clark, Humphrey Shi --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39053",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "CineSRD: Leveraging Visual, Acoustic, and Linguistic Cues for Open-World Visual Media Speaker Diarization",
+      "authors_or_org": [
+        "Liangbin Huang",
+        "Xiaohua Liao",
+        "Chaoqun Cui",
+        "Shijing Wang",
+        "Zhaolong Huang",
+        "Yanlong Du",
+        "Wenji Mao"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38404",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Liangbin Huang, Xiaohua Liao, Chaoqun Cui, Shijing Wang, Zhaolong Huang, Yanlong Du, Wenji Mao --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38404",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Spectrally Distilled Representations Aligned with Instruction-Augmented LLMs for Satellite Imagery",
+      "authors_or_org": [
+        "Minh Kha Do",
+        "Wei Xiang",
+        "Kang Han",
+        "Di Wu",
+        "Khoa T. Phan",
+        "Yi-Ping Phoebe Chen",
+        "Gaowen Liu",
+        "Ramana Kompella"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36812",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Minh Kha Do, Wei Xiang, Kang Han, Di Wu, Khoa T. Phan, Yi-Ping Phoebe Chen, Gaowen Liu, Ramana Kompella --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36812",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Real-Time Dynamic Scene Rendering with Controlled Compressibility and Contact Awareness",
+      "authors_or_org": [
+        "Boya Shi",
+        "Naiyang Guan",
+        "Yi Xiaodong"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37997",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Boya Shi, Naiyang Guan, Yi Xiaodong --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37997",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "H$^{2}$A$^{2}$: Homogeneity-Aware and Heterogeneity-Aware Feature Perception for Unified Indoor 3D Object Detection",
+      "authors_or_org": [
+        "Tao Xie",
+        "Tao An",
+        "Feng Liu",
+        "Jin Wensheng",
+        "Zhengyu Li",
+        "lijun zhao",
+        "Ruifeng Li"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/40146",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Tao Xie, Tao An, Feng Liu, Jin Wensheng, Zhengyu Li, lijun zhao, Ruifeng Li --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/40146",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Is Parameter Isolation Better for Prompt-Based Continual Learning?",
+      "authors_or_org": [
+        "Jiangyang Li",
+        "Chenhao Ding",
+        "SongLin Dong",
+        "Qiang Wang",
+        "Jianchao Zhao",
+        "Yuhang He",
+        "Yihong Gong"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38564",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Jiangyang Li, Chenhao Ding, SongLin Dong, Qiang Wang, Jianchao Zhao, Yuhang He, Yihong Gong --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38564",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "V-DPM: Video Reconstruction with Dynamic Point Maps",
+      "authors_or_org": [
+        "Edgar Sucar",
+        "Eldar Insafutdinov",
+        "Zihang Lai",
+        "Andrea Vedaldi"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39439",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Edgar Sucar, Eldar Insafutdinov, Zihang Lai, Andrea Vedaldi --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39439",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Text-guided Feature Disentanglement for Cross-modal Gait Recognition",
+      "authors_or_org": [
+        "Zhiyang Lu",
+        "Ming Cheng"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39171",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Zhiyang Lu, Ming Cheng --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39171",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Generalizable Radio-Frequency Radiance Fields for Spatial Spectrum Synthesis",
+      "authors_or_org": [
+        "Kang Yang",
+        "Yuning Chen",
+        "Wan Du"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37339",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Kang Yang, Yuning Chen, Wan Du --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37339",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "From Events to Clarity: The Event-Guided Diffusion Framework for Dehazing",
+      "authors_or_org": [
+        "Ling Wang",
+        "Yunfan Lu",
+        "Wenzong Ma",
+        "Huizai Yao",
+        "Pengteng Li",
+        "Hui Xiong"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37331",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Ling Wang, Yunfan Lu, Wenzong Ma, Huizai Yao, Pengteng Li, Hui Xiong --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37331",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "LumiX: Structured and Coherent Text-to-Intrinsic Generation",
+      "authors_or_org": [
+        "Xu Han",
+        "Biao Zhang",
+        "Xiangjun Tang",
+        "Xianzhi Li",
+        "Peter Wonka"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38123",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Xu Han, Biao Zhang, Xiangjun Tang, Xianzhi Li, Peter Wonka --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38123",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "ReaGEN: Adaptive Generation of Structured Chains-of-Thought for Efficient Multimodal Reasoning",
+      "authors_or_org": [
+        "Ruiqing Tian",
+        "Mohan Sai Singamsetti",
+        "Di Niu",
+        "Bahador Rashidi"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36583",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Ruiqing Tian, Mohan Sai Singamsetti, Di Niu, Bahador Rashidi --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36583",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "ConsisVLA-4D: Advancing Spatiotemporal Consistency in Efficient 3D-Perception and 4D-Reasoning for Robotic Manipulation",
+      "authors_or_org": [
+        "Wei Li",
+        "Jizhihui Liu",
+        "Li Yixing",
+        "Junwen Tong",
+        "Rui Shao",
+        "Liqiang Nie"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38371",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Wei Li, Jizhihui Liu, Li Yixing, Junwen Tong, Rui Shao, Liqiang Nie --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38371",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "GDPO-SR: Group Direct Preference Optimization for One-Step Generative Image Super-Resolution",
+      "authors_or_org": [
+        "Qiaosi Yi",
+        "Shuai Li",
+        "Rongyuan Wu",
+        "Lingchen Sun",
+        "Zhengqiang ZHANG",
+        "Lei Zhang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39624",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Qiaosi Yi, Shuai Li, Rongyuan Wu, Lingchen Sun, Zhengqiang ZHANG, Lei Zhang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39624",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Render-to-Adapt: Unsupervised Personal Adaptation for Gaze Estimation",
+      "authors_or_org": [
+        "Yangshi Ge",
+        "Zheng Liu",
+        "Feng Lu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38904",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yangshi Ge, Zheng Liu, Feng Lu --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38904",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "GR-Gauge: Cost-efficient Training Configuration By Gauging the Gradient Redundancy",
+      "authors_or_org": [
+        "Guanjie Wang",
+        "Chen Chen"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37307",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Guanjie Wang, Chen Chen --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37307",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "AffordMatcher: Affordance Learning in 3D Scenes from Visual Signifiers",
+      "authors_or_org": [
+        "Nghia Huu Vu",
+        "Tuong Do",
+        "Khang Nguyen",
+        "Baoru Huang",
+        "Nhat Le",
+        "Binh Xuan Nguyen",
+        "Erman Tjiputra",
+        "Quang D. Tran",
+        "Ravi Prakash",
+        "Te-Chuan Chiu",
+        "Anh Nguyen"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36348",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Nghia Huu Vu, Tuong Do, Khang Nguyen, Baoru Huang, Nhat Le, Binh Xuan Nguyen, Erman Tjiputra, Quang D. Tran, Ravi Prakash, Te-Chuan Chiu, Anh Nguyen --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36348",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Text-Printed Image: Bridging the Image-Text Modality Gap for Text-centric Training of Large Vision-Language Models",
+      "authors_or_org": [
+        "Shojiro Yamabe",
+        "Futa Kai Waseda",
+        "Daiki Shiono",
+        "Tsubasa Takahashi"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38263",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Shojiro Yamabe, Futa Kai Waseda, Daiki Shiono, Tsubasa Takahashi --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38263",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Rethinking Visual Rearrangement from A Diffusion Perspective",
+      "authors_or_org": [
+        "Tianliang Qi",
+        "Xinhang Song",
+        "Yuyi Liu",
+        "Shuqiang Jiang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39871",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Tianliang Qi, Xinhang Song, Yuyi Liu, Shuqiang Jiang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39871",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Gradient Knows Best: Mixed-Precision Quantization via Gradient-Guided Bit Allocation for Super-Resolution",
+      "authors_or_org": [
+        "Jun Young Kim",
+        "Joo Jeon",
+        "Sangyeon Ahn",
+        "Yoonseo Park",
+        "Yong Oh",
+        "Bogyeong Kim",
+        "Sung In Cho"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39134",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Jun Young Kim, Joo Jeon, Sangyeon Ahn, Yoonseo Park, Yong Oh, Bogyeong Kim, Sung In Cho --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39134",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "TGSFormer: Scalable Temporal Gaussian Splatting for Embodied Semantic Scene Completion",
+      "authors_or_org": [
+        "Rui Qian",
+        "Haozhi Cao",
+        "Tianchen Deng",
+        "TIANXIN HU",
+        "Weixiang Guo",
+        "Shenghai Yuan",
+        "Lihua Xie"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37598",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Rui Qian, Haozhi Cao, Tianchen Deng, TIANXIN HU, Weixiang Guo, Shenghai Yuan, Lihua Xie --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37598",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Easy3E: Feed-Forward 3D Asset Editing via Rectified Voxel Flow",
+      "authors_or_org": [
+        "Shimin Hu",
+        "Yuanyi Wei",
+        "Fei Zha",
+        "Yudong Guo",
+        "Juyong Zhang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37819",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Shimin Hu, Yuanyi Wei, Fei Zha, Yudong Guo, Juyong Zhang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37819",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "DC-Merge: Improving Model Merging with Directional Consistency",
+      "authors_or_org": [
+        "Han-Chen Zhang",
+        "Zi-Hao Zhou",
+        "Mao-Lin Luo",
+        "Shimin Di",
+        "Min-Ling Zhang",
+        "Tong Wei"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38804",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Han-Chen Zhang, Zi-Hao Zhou, Mao-Lin Luo, Shimin Di, Min-Ling Zhang, Tong Wei --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38804",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Online3R: Online Learning for Consistent Sequential Reconstruction Based on Geometry Foundation Model",
+      "authors_or_org": [
+        "Shunkai Zhou",
+        "Zike Yan",
+        "fei xue",
+        "Dong Wu",
+        "Yuchen Deng",
+        "Hongbin Zha"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36909",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Shunkai Zhou, Zike Yan, fei xue, Dong Wu, Yuchen Deng, Hongbin Zha --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36909",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Synthetic Curriculum Reinforces Compositional Text-to-Image Generation",
+      "authors_or_org": [
+        "Shijian Wang",
+        "Runhao Fu",
+        "Siyi Zhao",
+        "Qingqin Zhan",
+        "Xingjian Wang",
+        "Jiarui Jin",
+        "Yuan Lu",
+        "Hanqian Wu",
+        "Cunjian Chen"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38336",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Shijian Wang, Runhao Fu, Siyi Zhao, Qingqin Zhan, Xingjian Wang, Jiarui Jin, Yuan Lu, Hanqian Wu, Cunjian Chen --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38336",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "A Mixed Diet Makes DINO an Omnivorous Vision Encoder",
+      "authors_or_org": [
+        "Rishabh Kabra",
+        "Maks Ovsjanikov",
+        "Drew Hudson",
+        "Ye Xia",
+        "Skanda Koppula",
+        "André Araujo",
+        "Joao Carreira",
+        "Niloy J. Mitra"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36816",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Rishabh Kabra, Maks Ovsjanikov, Drew Hudson, Ye Xia, Skanda Koppula, André Araujo, Joao Carreira, Niloy J. Mitra --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36816",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "HyCal: A Training-Free Prototype Calibration Method for Cross-Discipline Few-Shot Class-Incremental Learning",
+      "authors_or_org": [
+        "Eunju Lee",
+        "MiHyeon Kim",
+        "Junehyoung Kwon",
+        "Yoonji Lee",
+        "JiHyun Kim",
+        "Soojin Jang",
+        "YoungBin Kim"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39806",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Eunju Lee, MiHyeon Kim, Junehyoung Kwon, Yoonji Lee, JiHyun Kim, Soojin Jang, YoungBin Kim --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39806",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Pixel Motion Diffusion is What We Need for Robot Control",
+      "authors_or_org": [
+        "E-Ro Nguyen",
+        "Yichi Zhang",
+        "Kanchana Ranasinghe",
+        "Xiang Li",
+        "Michael Ryoo"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/40194",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper E-Ro Nguyen, Yichi Zhang, Kanchana Ranasinghe, Xiang Li, Michael Ryoo --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/40194",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "SIR: Structured Image Representations for Explainable Robot Learning",
+      "authors_or_org": [
+        "Paul Mattes",
+        "Jan Schwab",
+        "Jens Bosch",
+        "Maximilian Li",
+        "Nils Blank",
+        "Minh-Trung Tang",
+        "Moritz Haberland",
+        "Rudolf Lioutikov"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38952",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Paul Mattes, Jan Schwab, Jens Bosch, Maximilian Li, Nils Blank, Minh-Trung Tang, Moritz Haberland, Rudolf Lioutikov --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38952",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "BD-Merging: Bias-Aware Dynamic Model Merging with Evidence-Guided Contrastive Learning",
+      "authors_or_org": [
+        "Yuhan Xie",
+        "Chen Lyu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37280",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yuhan Xie, Chen Lyu --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37280",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Widget2Code: From Visual Widgets to UI Code via Multimodal LLMs",
+      "authors_or_org": [
+        "Houston Zhang",
+        "TAO ZHANG",
+        "Baoze Lin",
+        "Yuanqi Xue",
+        "Yincheng Zhu",
+        "Huan Liu",
+        "Li Gu",
+        "Linfeng Ye",
+        "Ziqiang Wang",
+        "Xinxin Zuo",
+        "Yang Wang",
+        "YUANHAO YU",
+        "Zhixiang Chi"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/40124",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Houston Zhang, TAO ZHANG, Baoze Lin, Yuanqi Xue, Yincheng Zhu, Huan Liu, Li Gu, Linfeng Ye, Ziqiang Wang, Xinxin Zuo, Yang Wang, YUANHAO YU, Zhixiang Chi --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/40124",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "SenseSearch: Empowering Vision-Language Models with High-Resolution Agentic Search-Reasoning via Reinforcement Learning",
+      "authors_or_org": [
+        "Yong Xien Chng",
+        "Tao Hu",
+        "Wenwen Tong",
+        "Xueheng Li",
+        "Jiandong Chen",
+        "Haojia Yu",
+        "Jiefan Lu",
+        "Hewei Guo",
+        "Hanming Deng",
+        "Chengjun Xie",
+        "Gao Huang",
+        "Lewei Lu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37405",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yong Xien Chng, Tao Hu, Wenwen Tong, Xueheng Li, Jiandong Chen, Haojia Yu, Jiefan Lu, Hewei Guo, Hanming Deng, Chengjun Xie, Gao Huang, Lewei Lu --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37405",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "SafeLogo: Turning Your Logos into Jailbreak Shields via Micro-Regional Adversarial Training",
+      "authors_or_org": [
+        "Zhiyi Duan",
+        "Xiaoyue Zhang",
+        "Tianxing Man"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37943",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Zhiyi Duan, Xiaoyue Zhang, Tianxing Man --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37943",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "UniMMAD: Unified Multi-Modal and Multi-Class Anomaly Detection via MoE-Driven Feature Decompression",
+      "authors_or_org": [
+        "Yuan Zhao",
+        "Youwei Pang",
+        "Lihe Zhang",
+        "Hanqi Liu",
+        "Jiaming Zuo",
+        "Huchuan Lu",
+        "Xiaoqi Zhao"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36531",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yuan Zhao, Youwei Pang, Lihe Zhang, Hanqi Liu, Jiaming Zuo, Huchuan Lu, Xiaoqi Zhao --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36531",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "INSID3: Training-Free In-Context Segmentation with DINOv3",
+      "authors_or_org": [
+        "Claudia Cuttano",
+        "Gabriele Trivigno",
+        "Christoph Reich",
+        "Daniel Cremers",
+        "Carlo Masone",
+        "Stefan Roth"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36465",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Claudia Cuttano, Gabriele Trivigno, Christoph Reich, Daniel Cremers, Carlo Masone, Stefan Roth -- --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36465",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "DriveCTR: Benchmarking Compositional Traffic Rule Reasoning in Autonomous Driving",
+      "authors_or_org": [
+        "Enhui Ma",
+        "Jiahuan Zhang",
+        "Guantian Zheng",
+        "Tao Tang",
+        "Shengbo Eben Li",
+        "Yuhang Lu",
+        "xia zhou",
+        "Xueyang Zhang",
+        "Yifei Zhan",
+        "Kun Zhan",
+        "Zhihui Hao",
+        "XianPeng Lang",
+        "Kaicheng Yu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39213",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Enhui Ma, Jiahuan Zhang, Guantian Zheng, Tao Tang, Shengbo Eben Li, Yuhang Lu, xia zhou, Xueyang Zhang, Yifei Zhan, Kun Zhan, Zhihui Hao, XianPeng Lang, Kaicheng Yu --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39213",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "NimbusGS: Unified 3D Scene Reconstruction under Hybrid Weather",
+      "authors_or_org": [
+        "Yanying Li",
+        "Jinyang Li",
+        "Shengfeng He",
+        "Yangyang Xu",
+        "Junyu Dong",
+        "Yong Du"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37965",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yanying Li, Jinyang Li, Shengfeng He, Yangyang Xu, Junyu Dong, Yong Du --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37965",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Discriminative Perception via Anchored Description for Reasoning Segmentation",
+      "authors_or_org": [
+        "Tao Yang",
+        "Qing Zhou",
+        "Yanliang Li",
+        "Qi Wang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38384",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Tao Yang, Qing Zhou, Yanliang Li, Qi Wang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38384",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Attention Surgery: An Efficient Recipe to Linearize Your Video Diffusion Transformer",
+      "authors_or_org": [
+        "Mohsen Ghafoorian",
+        "Denis Korzhenkov",
+        "Amirhossein Habibian"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36615",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Mohsen Ghafoorian, Denis Korzhenkov, Amirhossein Habibian --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36615",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Extending One-Step Image Generation from Class Labels to Text via Discriminative Text Representation",
+      "authors_or_org": [
+        "Chenxi Zhao",
+        "Chen Zhu",
+        "Xiaokun Feng",
+        "Aiming Hao",
+        "Jiashu Zhu",
+        "Jiachen Lei",
+        "Jiahong Wu",
+        "Xiangxiang Chu",
+        "Jufeng Yang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36947",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Chenxi Zhao, Chen Zhu, Xiaokun Feng, Aiming Hao, Jiashu Zhu, Jiachen Lei, Jiahong Wu, Xiangxiang Chu, Jufeng Yang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36947",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Scalable Multi-View Subspace Clustering with Tensorized Anchor Guidance",
+      "authors_or_org": [
+        "Miao Jia",
+        "Xingchen Hu",
+        "Jiyuan Liu",
+        "Siwei Wang",
+        "Min Wang",
+        "Zijian Chen"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37166",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Miao Jia, Xingchen Hu, Jiyuan Liu, Siwei Wang, Min Wang, Zijian Chen -- --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37166",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "PFGNet: A Fully Convolutional Frequency-Guided Peripheral Gating Network for Efficient Spatiotemporal Predictive Learning",
+      "authors_or_org": [
+        "Xinyong Cai",
+        "Changbin Sun",
+        "Yong Wang",
+        "Hongyu Yang",
+        "Yuankai Wu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39501",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Xinyong Cai, Changbin Sun, Yong Wang, Hongyu Yang, Yuankai Wu --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39501",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Learning Eigenstructures of Unstructured Data Manifolds",
+      "authors_or_org": [
+        "Roy Velich",
+        "Arkadi Piven",
+        "David Bensaid",
+        "Daniel Cremers",
+        "Thomas Dagès",
+        "Ron Kimmel"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36774",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Roy Velich, Arkadi Piven, David Bensaid, Daniel Cremers, Thomas Dagès, Ron Kimmel -- --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36774",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "MAD: Motion Appearance Decoupling for efficient Driving World Models",
+      "authors_or_org": [
+        "Ahmad Rahimi",
+        "Valentin Gerard",
+        "Éloi Zablocki",
+        "Matthieu Cord",
+        "Alex Alahi"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39147",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Ahmad Rahimi, Valentin Gerard, Éloi Zablocki, Matthieu Cord, Alex Alahi --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39147",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Muses: Designing, Composing, Generating Nonexistent Fantasy 3D Creatures without Training",
+      "authors_or_org": [
+        "Hexiao Lu",
+        "Xiaokun Sun",
+        "Zeyu Cai",
+        "Hao Guo",
+        "Ying Tai",
+        "Jian Yang",
+        "Zhenyu Zhang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38088",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Hexiao Lu, Xiaokun Sun, Zeyu Cai, Hao Guo, Ying Tai, Jian Yang, Zhenyu Zhang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38088",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "OralGPT-Plus: Learning to Use Visual Tools via Reinforcement Learning for Panoramic X-ray Analysis",
+      "authors_or_org": [
+        "Yuxuan Fan",
+        "JING HAO",
+        "Hong Chen",
+        "Jiahao Bao",
+        "Yihua Shao",
+        "Yuci Liang",
+        "Kuo Hung",
+        "Hao Tang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/40162",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yuxuan Fan, JING HAO, Hong Chen, Jiahao Bao, Yihua Shao, Yuci Liang, Kuo Hung, Hao Tang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/40162",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "LacTokGen: Latent Consistency Tokenizer for 1024-pixel Image Generation by 256 Tokens",
+      "authors_or_org": [
+        "Qingsong Xie",
+        "Luyuan Zhang",
+        "Zhao Zhang",
+        "Siyuan Li",
+        "Zhe Huang",
+        "Zhenyu Yang",
+        "Haonan Lu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38171",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Qingsong Xie, Luyuan Zhang, Zhao Zhang, Siyuan Li, Zhe Huang, Zhenyu Yang, Haonan Lu --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38171",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Unlocking Token Rewards via Training-Free Reward Attribution",
+      "authors_or_org": [
+        "WU Sitong",
+        "Haoru Tan",
+        "Bin Xia",
+        "Xichen Zhang",
+        "Jingyao Li",
+        "Shaofeng Zhang",
+        "Xiaojuan Qi",
+        "Bei Yu",
+        "Jiaya Jia"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39555",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper WU Sitong, Haoru Tan, Bin Xia, Xichen Zhang, Jingyao Li, Shaofeng Zhang, Xiaojuan Qi, Bei Yu, Jiaya Jia --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39555",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "DSCA: Dynamic Subspace Concept Alignment for Lifelong VLM Editing",
+      "authors_or_org": [
+        "Gyanendra Das",
+        "Sai Jena"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38089",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Gyanendra Das, Sai Jena --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38089",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "UniSER: A Foundation Model for Unified Soft Effects Removal",
+      "authors_or_org": [
+        "Jingdong Zhang",
+        "Lingzhi Zhang",
+        "Qing Liu",
+        "Mang Tik Chiu",
+        "Connelly Barnes",
+        "Yizhou Wang",
+        "Haoran You",
+        "Xiaoyang Liu",
+        "Yuqian Zhou",
+        "Zhe Lin",
+        "Eli Shechtman",
+        "Sohrab Amirghodsi",
+        "Xin Li",
+        "Wenping Wang",
+        "Xiaohang Zhan"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36419",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Jingdong Zhang, Lingzhi Zhang, Qing Liu, Mang Tik Chiu, Connelly Barnes, Yizhou Wang, Haoran You, Xiaoyang Liu, Yuqian Zhou, Zhe Lin, Eli Shechtman, Sohrab Amirghodsi, Xin Li, Wenping Wang, Xiaohang Zhan --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36419",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Bayesian Decomposition and Semantic Completion for Few-shot Semantic Segmentation",
+      "authors_or_org": [
+        "Guangchen Shi",
+        "Yirui Wu",
+        "Zhu Wei",
+        "Tao Wang",
+        "Hao Zhang",
+        "Bo Li",
+        "Tong Lu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37674",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Guangchen Shi, Yirui Wu, Zhu Wei, Tao Wang, Hao Zhang, Bo Li, Tong Lu --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37674",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "TerraScope: Pixel-Grounded Visual Reasoning for Earth Observation",
+      "authors_or_org": [
+        "Yan Shu",
+        "Bin Ren",
+        "Zhitong Xiong",
+        "Xiao Xiang Zhu",
+        "Begüm Demir",
+        "Nicu Sebe",
+        "Paolo Rota"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36960",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yan Shu, Bin Ren, Zhitong Xiong, Xiao Xiang Zhu, Begüm Demir, Nicu Sebe, Paolo Rota --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36960",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "LiREC-Net: A Target-Free and Learning-Based Network for LiDAR, RGB, and Event Calibration",
+      "authors_or_org": [
+        "Aditya Ranjan Dash",
+        "Ramy Battrawy",
+        "René Schuster",
+        "Didier Stricker"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37527",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Aditya Ranjan Dash, Ramy Battrawy, René Schuster, Didier Stricker --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37527",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "B$^3$-Seg: Camera-Free, Training-Free 3DGS Segmentation via Analytic EIG and Beta–Bernoulli Bayesian Updates",
+      "authors_or_org": [
+        "Hiromichi Kamata",
+        "Samuel Munro",
+        "Fuminori Homma"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38552",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Hiromichi Kamata, Samuel Munro, Fuminori Homma --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38552",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "SineProject: Machine Unlearning for Stable Vision–Language Alignment",
+      "authors_or_org": [
+        "Arpit Garg",
+        "Hemanth Saratchandran",
+        "Simon Lucey"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/40190",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Arpit Garg, Hemanth Saratchandran, Simon Lucey --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/40190",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Adapting a Pre-trained Single-Cell Foundation Model to Spatial Gene Expression Generation from Histology Images",
+      "authors_or_org": [
+        "Donghai Fang",
+        "Yongheng Li",
+        "Zhen WANG",
+        "Yuansong Zeng",
+        "Wenwen Min"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38182",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Donghai Fang, Yongheng Li, Zhen WANG, Yuansong Zeng, Wenwen Min --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38182",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Seeing through boxes: Non-Line-of-Sight 3D Reconstruction from Radar Signals",
+      "authors_or_org": [
+        "Jiachen Lu",
+        "Hailan Shanbhag",
+        "Haitham Al Hassanieh"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/40233",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Jiachen Lu, Hailan Shanbhag, Haitham Al Hassanieh --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/40233",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "AdvFM: Lookahead Flow-Matching Velocity-Field Attacks for Imperceptible and Transferable Adversarial Examples",
+      "authors_or_org": [
+        "Runze Liu",
+        "Zeyue Wang",
+        "Fanghui Sun",
+        "Rui Liu",
+        "Yihan Yan",
+        "Shen Wang",
+        "Zhaoyang Zhang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/40010",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Runze Liu, Zeyue Wang, Fanghui Sun, Rui Liu, Yihan Yan, Shen Wang, Zhaoyang Zhang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/40010",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "No Way To Steal My Face: Proactive Defense Against Identity-Preserving Personalized Generation",
+      "authors_or_org": [
+        "Lizhi Xiong",
+        "Jun Li",
+        "Ziqiang Li",
+        "Weiwei Jiang",
+        "Zhangjie Fu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38095",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Lizhi Xiong, Jun Li, Ziqiang Li, Weiwei Jiang, Zhangjie Fu --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38095",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "FlowComposer: Composable Flows for Compositional Zero-Shot Learning",
+      "authors_or_org": [
+        "Zhenqi He",
+        "Lin Li",
+        "Long Chen"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38814",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Zhenqi He, Lin Li, Long Chen --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38814",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Merge3D: Efficient 3D Multimodal LLMs via Joint 2D-3D Token Merging",
+      "authors_or_org": [
+        "Tianbo Pan",
+        "Xingyi Yang",
+        "Xinchao Wang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38939",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Tianbo Pan, Xingyi Yang, Xinchao Wang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38939",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Object-WIPER: Training-Free Object and Associated Effect Removal in Videos",
+      "authors_or_org": [
+        "Saksham Singh Kushwaha",
+        "Sayan Nag",
+        "Yapeng Tian",
+        "Kuldeep Kulkarni"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37642",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Saksham Singh Kushwaha, Sayan Nag, Yapeng Tian, Kuldeep Kulkarni --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37642",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "AdaSVD: Singular Value Decomposition with Adaptive Mechanisms for Large Multimodal Models",
+      "authors_or_org": [
+        "Zhiteng Li",
+        "Mingyuan Xia",
+        "JINGYUAN ZHANG",
+        "Zheng Hui",
+        "Haotong Qin",
+        "Linghe Kong",
+        "Yulun Zhang",
+        "Xiaokang Yang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37629",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Zhiteng Li, Mingyuan Xia, JINGYUAN ZHANG, Zheng Hui, Haotong Qin, Linghe Kong, Yulun Zhang, Xiaokang Yang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37629",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "UniRefiner: Teaching Pre-trained ViTs to Self-Dispose Dross via Contrastive Register",
+      "authors_or_org": [
+        "Congpei Qiu",
+        "Zhaoyu Hu",
+        "Wei Ke",
+        "Zhuotao Tian",
+        "Yanhao Wu",
+        "Tong Zhang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39216",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Congpei Qiu, Zhaoyu Hu, Wei Ke, Zhuotao Tian, Yanhao Wu, Tong Zhang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39216",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "HDW-SR: High-Frequency Guided Diffusion Model based on Wavelet Decomposition for Image Super-Resolution",
+      "authors_or_org": [
+        "Chao Yang",
+        "Boqian Zhang",
+        "Jinghao Xu",
+        "Guang Jiang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39527",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Chao Yang, Boqian Zhang, Jinghao Xu, Guang Jiang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39527",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "From 2D Alignment to 3D Plausibility: Unifying Heterogeneous 2D Priors and Penetration-Free Diffusion for Occlusion-Robust Two-Hand Reconstruction",
+      "authors_or_org": [
+        "Gaoge Han",
+        "Yongkang Cheng",
+        "Zhe Chen",
+        "Shaoli Huang",
+        "Tongliang Liu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37746",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Gaoge Han, Yongkang Cheng, Zhe Chen, Shaoli Huang, Tongliang Liu --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37746",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Hg-I2P: Bridging Modalities for Generalizable Image-to-Point-Cloud Registration via Heterogeneous Graphs",
+      "authors_or_org": [
+        "Pei An",
+        "Junfeng Ding",
+        "Jiaqi Yang",
+        "Yulong Wang",
+        "Jie Ma",
+        "Liangliang Nan"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39176",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Pei An, Junfeng Ding, Jiaqi Yang, Yulong Wang, Jie Ma, Liangliang Nan --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39176",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "M⁴-SAM: Multi-modal Mixture-of-Experts with Memory-Augmented SAM for RGB-D Video Salient Object Detection",
+      "authors_or_org": [
+        "Jiyuan Liu",
+        "jia lin",
+        "Xiaofei Zhou",
+        "Runmin Cong",
+        "Deyang Liu",
+        "Zhi Liu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38511",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Jiyuan Liu, jia lin, Xiaofei Zhou, Runmin Cong, Deyang Liu, Zhi Liu --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38511",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Mesh-Pro: Asynchronous Advantage-guided Ranking Preference Optimization for Artist-style Quadrilateral Mesh Generation",
+      "authors_or_org": [
+        "Zhen Zhou",
+        "Jian Liu",
+        "Biwen Lei",
+        "Jing Xu",
+        "Haohan Weng",
+        "Yiling Zhu",
+        "Zhuo Chen",
+        "Junfeng Fan",
+        "Yunkai Ma",
+        "Dazhao Du",
+        "Song Guo",
+        "Fengshui Jing",
+        "Chunchao Guo"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39044",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Zhen Zhou, Jian Liu, Biwen Lei, Jing Xu, Haohan Weng, Yiling Zhu, Zhuo Chen, Junfeng Fan, Yunkai Ma, Dazhao Du, Song Guo, Fengshui Jing, Chunchao Guo --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39044",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "From Detection to Association: Learning Discriminative Object Embeddings for Multi-Object Tracking",
+      "authors_or_org": [
+        "Yuqing Shao",
+        "Yuchen Yang",
+        "Rui Yu",
+        "Weilong Li",
+        "Xu Guo",
+        "Huaicheng Yan",
+        "Wei Wang",
+        "Xiao Sun"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39321",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yuqing Shao, Yuchen Yang, Rui Yu, Weilong Li, Xu Guo, Huaicheng Yan, Wei Wang, Xiao Sun --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39321",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Learning What Helps: Task-Aligned Context Selection for Vision Tasks",
+      "authors_or_org": [
+        "Jingyu Guo",
+        "Emir Konuk",
+        "Fredrik Strand",
+        "Christos Matsoukas",
+        "Kevin Smith"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37124",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Jingyu Guo, Emir Konuk, Fredrik Strand, Christos Matsoukas, Kevin Smith --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37124",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Generalized and Personalized Federated Learning with Black-Box Foundation Models via Orthogonal Transformations",
+      "authors_or_org": [
+        "EunGyung Kong",
+        "Jewon Yeom",
+        "Yonghoon Jeon",
+        "Taesup Kim"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39546",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper EunGyung Kong, Jewon Yeom, Yonghoon Jeon, Taesup Kim --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39546",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "HumanBA: Human-Aware Bundle Adjustment via Global Human-Camera Decoupling",
+      "authors_or_org": [
+        "Fengyuan Yang",
+        "Tanuj Sur",
+        "Tze Ho Elden Tse",
+        "Angela Yao"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38122",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Fengyuan Yang, Tanuj Sur, Tze Ho Elden Tse, Angela Yao --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38122",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "StoryTailor:A Zero-Shot Pipeline for Action-Rich Multi-Subject Visual Narratives",
+      "authors_or_org": [
+        "Jinghao Hu",
+        "Yuhe Zhang",
+        "GuoHua Geng",
+        "Kang Li",
+        "Han Zhang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37004",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Jinghao Hu, Yuhe Zhang, GuoHua Geng, Kang Li, Han Zhang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37004",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "ResDiT: Evoking the Intrinsic Resolution Scalability in Diffusion Transformers",
+      "authors_or_org": [
+        "Yiyang Ma",
+        "Feng Zhou",
+        "Xuedan Yin",
+        "Pu Cao",
+        "Yonghao Dang",
+        "Jianqin Yin"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38002",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yiyang Ma, Feng Zhou, Xuedan Yin, Pu Cao, Yonghao Dang, Jianqin Yin --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38002",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Test-Time 3D Occupancy Prediction",
+      "authors_or_org": [
+        "Fengyi Zhang",
+        "Xiangyu Sun",
+        "Huitong Yang",
+        "Zheng Zhang",
+        "Zi Huang",
+        "Yadan Luo"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38612",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Fengyi Zhang, Xiangyu Sun, Huitong Yang, Zheng Zhang, Zi Huang, Yadan Luo --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38612",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "DrivePI: Spatial-aware 4D MLLM for Unified Autonomous Driving Understanding, Perception, Prediction and Planning",
+      "authors_or_org": [
+        "Zhe Liu",
+        "Runhui Huang",
+        "Rui Yang",
+        "Siming Yan",
+        "Zining Wang",
+        "Lu Hou",
+        "Di Lin",
+        "Xiang Bai",
+        "Hengshuang Zhao"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38561",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Zhe Liu, Runhui Huang, Rui Yang, Siming Yan, Zining Wang, Lu Hou, Di Lin, Xiang Bai, Hengshuang Zhao --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38561",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Robustness Under Data Scarcity: Few-Shot Continual Adversarial Training for Evolving Threats",
+      "authors_or_org": [
+        "Wenxuan Wang",
+        "Chenglei Wang",
+        "Chengzhi Yan",
+        "Xuelin Qian",
+        "Yanning Zhang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36533",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Wenxuan Wang, Chenglei Wang, Chengzhi Yan, Xuelin Qian, Yanning Zhang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36533",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Visual Prototype Conditioned Focal Region Generation for UAV-Based Object Detection",
+      "authors_or_org": [
+        "Wenhao Li",
+        "Zimeng Wu",
+        "Yu Wu",
+        "Zehua Fu",
+        "Jiaxin Chen"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36383",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Wenhao Li, Zimeng Wu, Yu Wu, Zehua Fu, Jiaxin Chen --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36383",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "GeoWorld: Geometric World Models",
+      "authors_or_org": [
+        "Zeyu Zhang",
+        "Danning Li",
+        "Ian Reid",
+        "Richard Hartley"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39242",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Zeyu Zhang, Danning Li, Ian Reid, Richard Hartley --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39242",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "HulluEdit: Single-Pass Evidence-Consistent Subspace Editing for Mitigating Hallucinations in Large Vision-Language Models",
+      "authors_or_org": [
+        "Yangguang Lin",
+        "Quan Fang",
+        "Yufei Li",
+        "Jiachen Sun",
+        "Junyu Gao",
+        "Jitao Sang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37738",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yangguang Lin, Quan Fang, Yufei Li, Jiachen Sun, Junyu Gao, Jitao Sang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37738",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "PACT: Phase-Like Transition Constraints in Adapter-Based Continual Learning of Vision-Language Models",
+      "authors_or_org": [
+        "Xuan Wang",
+        "Guiguang Ding",
+        "Jungong Han"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37161",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Xuan Wang, Guiguang Ding, Jungong Han --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37161",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Neural Gabor Splatting: Enhanced Gaussian Splatting with Neural Gabor for High-frequency Surface Reconstruction",
+      "authors_or_org": [
+        "Haato Watanabe",
+        "Nobuyuki Umetani"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36251",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Haato Watanabe, Nobuyuki Umetani --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36251",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Leveraging Multispectral Sensors for Color Correction in Mobile Cameras",
+      "authors_or_org": [
+        "Luca Cogo",
+        "Marco Buzzelli",
+        "Simone Bianco",
+        "Javier Vazquez-Corral",
+        "Raimondo Schettini"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37341",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Luca Cogo, Marco Buzzelli, Simone Bianco, Javier Vazquez-Corral, Raimondo Schettini --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37341",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "iSHIFT: Lightweight Slow-Fast GUI Agent with Adaptive Perception",
+      "authors_or_org": [
+        "Sarthak Mehrotra",
+        "Sairam Rebbapragada",
+        "Mani Bonthu",
+        "Vineeth Balasubramanian"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39397",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Sarthak Mehrotra, Sairam Rebbapragada, Mani Bonthu, Vineeth Balasubramanian --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39397",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "KLIP: Localized Distribution Shift Detection via KL-Divergence with Diffusion Priors in Inverse Problems",
+      "authors_or_org": [
+        "Alireza Kheirandish",
+        "Jihoon Hong",
+        "Sara Fridovich-Keil"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37660",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Alireza Kheirandish, Jihoon Hong, Sara Fridovich-Keil --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37660",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Rewis3d: Reconstruction for Weakly-Supervised Semantic Segmentation",
+      "authors_or_org": [
+        "Jonas Ernst",
+        "Wolfgang Boettcher",
+        "Lukas Hoyer",
+        "Jan Lenssen",
+        "Bernt Schiele"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38160",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Jonas Ernst, Wolfgang Boettcher, Lukas Hoyer, Jan Lenssen, Bernt Schiele --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38160",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "LESA: Learnable Stage-Aware Predictors for Diffusion Model Acceleration",
+      "authors_or_org": [
+        "Peiliang Cai",
+        "Jiacheng Liu",
+        "Haowen Xu",
+        "Xinyu Wang",
+        "Chang Zou",
+        "Linfeng Zhang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37272",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Peiliang Cai, Jiacheng Liu, Haowen Xu, Xinyu Wang, Chang Zou, Linfeng Zhang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37272",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "VSRELL: A Simple Baseline for Video Super-Resolution and Enhancement in Low-Light environment",
+      "authors_or_org": [
+        "Yanming hui",
+        "Fanhua Shang",
+        "Hongying Liu",
+        "Ben Wang",
+        "Zhenwei Zhang",
+        "Liang Wan",
+        "Wei Feng",
+        "Tong Xue",
+        "Bingqin Lv"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36914",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yanming hui, Fanhua Shang, Hongying Liu, Ben Wang, Zhenwei Zhang, Liang Wan, Wei Feng, Tong Xue, Bingqin Lv --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36914",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "WeaveTime: Streaming from Earlier Frames into Emergent Memory in VideoLLMs",
+      "authors_or_org": [
+        "Yulin Zhang",
+        "Cheng Shi",
+        "Sibei Yang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36401",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yulin Zhang, Cheng Shi, Sibei Yang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36401",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "CUE: Concept-Aware Multi-Label Expansion to Mitigate Concept Confusion in Long-Tailed Learning",
+      "authors_or_org": [
+        "Ruichi Zhang",
+        "Chikai Shang",
+        "jiacheng yang",
+        "Mengke Li",
+        "Yang Zhou",
+        "Junlong Gao",
+        "Yang Lu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37457",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Ruichi Zhang, Chikai Shang, jiacheng yang, Mengke Li, Yang Zhou, Junlong Gao, Yang Lu --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37457",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Time-Aware One Step Diffusion Network for Real-World Image Super-Resolution",
+      "authors_or_org": [
+        "Tianyi Zhang",
+        "Zheng-Peng Duan",
+        "Chun-Le Guo",
+        "Peng-Tao Jiang",
+        "Bo Li",
+        "Ming-Ming Cheng",
+        "Chongyi Li"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36237",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Tianyi Zhang, Zheng-Peng Duan, Chun-Le Guo, Peng-Tao Jiang, Bo Li, Ming-Ming Cheng, Chongyi Li --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36237",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "PET-DINO: Unifying Visual Cues into Grounding DINO with Prompt-Enriched Training",
+      "authors_or_org": [
+        "Weifu Fu",
+        "Jinyang Li",
+        "Bin-Bin Gao",
+        "Jialin Li",
+        "Yuhuan Lin",
+        "Hanqiu Deng",
+        "Wenbing Tao",
+        "Yong Liu",
+        "Chengjie Wang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37473",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Weifu Fu, Jinyang Li, Bin-Bin Gao, Jialin Li, Yuhuan Lin, Hanqiu Deng, Wenbing Tao, Yong Liu, Chengjie Wang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37473",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Structure-to-Intensity Diffusion for Adverse-Weather LiDAR Generation",
+      "authors_or_org": [
+        "Peiyang Ni",
+        "Longyu Yang",
+        "Lu Zhang",
+        "Kuniaki Saito",
+        "Yap-Peng Tan",
+        "Fumin Shen",
+        "Heng Tao Shen",
+        "Xiaofeng Zhu",
+        "Ping Hu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38660",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Peiyang Ni, Longyu Yang, Lu Zhang, Kuniaki Saito, Yap-Peng Tan, Fumin Shen, Heng Tao Shen, Xiaofeng Zhu, Ping Hu --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38660",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "TeamHOI: Learning a Unified Policy for Cooperative Human-Object Interactions with Any Team Size",
+      "authors_or_org": [
+        "Stefan Lionar",
+        "Gim Hee Lee"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37622",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Stefan Lionar, Gim Hee Lee --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37622",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Spectral-Geometric Neural Fields for Pose-Free LiDAR View Synthesis",
+      "authors_or_org": [
+        "Yinuo Jiang",
+        "Jun Cheng",
+        "Yiran Wang",
+        "Cheng Cheng"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36676",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yinuo Jiang, Jun Cheng, Yiran Wang, Cheng Cheng --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36676",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "How to Take a Memorable Picture? Empowering Users with Actionable Feedback",
+      "authors_or_org": [
+        "Francesco Laiti",
+        "Davide Talon",
+        "Jacopo Staiano",
+        "Elisa Ricci"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37971",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Francesco Laiti, Davide Talon, Jacopo Staiano, Elisa Ricci --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37971",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Stay in your Lane: Role Specific Queries with Overlap Suppression Loss for Dense Video Captioning",
+      "authors_or_org": [
+        "Seung Hyup Baek",
+        "Jimin Lee",
+        "Hyeongkeun Lee",
+        "Jae Won Cho"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39914",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Seung Hyup Baek, Jimin Lee, Hyeongkeun Lee, Jae Won Cho --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39914",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Gyro-based Deep Video Deblurring",
+      "authors_or_org": [
+        "Jaesung Rim",
+        "Woohyeok Kim",
+        "Haeyun Lee",
+        "Heemin Yang",
+        "Ke Wang",
+        "Sunghyun Cho"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37516",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Jaesung Rim, Woohyeok Kim, Haeyun Lee, Heemin Yang, Ke Wang, Sunghyun Cho --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37516",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Your Dissimilarities Define You: Complementary Learning Exploiting Class Diversities",
+      "authors_or_org": [
+        "Dimitrios Katsikas",
+        "Nikolaos Passalis",
+        "Anastasios Tefas"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36476",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Dimitrios Katsikas, Nikolaos Passalis, Anastasios Tefas --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36476",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Consensus vs. Controversy: Mapping the Decision Space Where Architectures Diverge",
+      "authors_or_org": [
+        "Minhyeok Lee"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37126",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Minhyeok Lee --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37126",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Scale Space Diffusion",
+      "authors_or_org": [
+        "Soumik Mukhopadhyay",
+        "Prateksha Udhayanan",
+        "Abhinav Shrivastava"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39373",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Soumik Mukhopadhyay, Prateksha Udhayanan, Abhinav Shrivastava --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39373",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "I2I-Bench: A Comprehensive Benchmark Suite for Image-to-Image Editing Models",
+      "authors_or_org": [
+        "Juntong Wang",
+        "Wang Jiarui",
+        "Huiyu Duan",
+        "Jiaxiang Kang",
+        "Guangtao Zhai",
+        "Xiongkuo Min"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39664",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Juntong Wang, Wang Jiarui, Huiyu Duan, Jiaxiang Kang, Guangtao Zhai, Xiongkuo Min --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39664",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "SRGCD: Stability-Driven Region Growth Framework for 3D Change Detection",
+      "authors_or_org": [
+        "Yue Wu",
+        "Tao Peng",
+        "Yongzhe Yuan",
+        "Kaiyuan Feng",
+        "Hao Li",
+        "Maoguo Gong",
+        "Qiguang Miao",
+        "Wenping Ma"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38270",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yue Wu, Tao Peng, Yongzhe Yuan, Kaiyuan Feng, Hao Li, Maoguo Gong, Qiguang Miao, Wenping Ma --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38270",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Joint Spectral Image Reconstruction and Semantic Segmentation with Cooperative Unfolding",
+      "authors_or_org": [
+        "Zijun He",
+        "Ping Wang",
+        "Xiaodong Wang",
+        "ChangChen ChangChen",
+        "Xin Yuan"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36891",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Zijun He, Ping Wang, Xiaodong Wang, ChangChen ChangChen, Xin Yuan --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36891",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Consensus Entropy: Harnessing Multi-VLM Agreement for Self-Verifying and Self-Improving OCR",
+      "authors_or_org": [
+        "Yulong Zhang",
+        "Tianyi Liang",
+        "Erfei Cui",
+        "Guoqing Wang",
+        "Xu Guo",
+        "Chenhui Li",
+        "Gongshen Liu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37103",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yulong Zhang, Tianyi Liang, Erfei Cui, Guoqing Wang, Xu Guo, Chenhui Li, Gongshen Liu --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37103",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "HyperGait: Unleashing the Power of Parsing for Gait Recognition in the Wild via Hypergraph",
+      "authors_or_org": [
+        "Jinkai Zheng",
+        "jiaqing wei",
+        "Xinxiang Jin",
+        "Yaoqi Sun",
+        "Xichun Sheng",
+        "Ming Li",
+        "Liangqiong Qu",
+        "Xinchen Liu",
+        "Wu Liu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39407",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Jinkai Zheng, jiaqing wei, Xinxiang Jin, Yaoqi Sun, Xichun Sheng, Ming Li, Liangqiong Qu, Xinchen Liu, Wu Liu --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39407",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Scaling Spatial and Temporal Context for Robotic Imitation Learning Policies With Scene Graphs",
+      "authors_or_org": [
+        "Jianing Qian",
+        "Qinhe Peng",
+        "Emmanuel Panov",
+        "Leonor Fermoselle",
+        "Dinesh Jayaraman",
+        "Bernadette Bucher",
+        "Tarik Kelestemur"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38076",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Jianing Qian, Qinhe Peng, Emmanuel Panov, Leonor Fermoselle, Dinesh Jayaraman, Bernadette Bucher, Tarik Kelestemur --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38076",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "FedRE: A Representation Entanglement Framework for Model-Heterogeneous Federated Learning",
+      "authors_or_org": [
+        "Yuan Yao",
+        "Lixu Wang",
+        "Jiaqi Wu",
+        "Jin Song",
+        "Simin Chen",
+        "Zehua Wang",
+        "Zijian Tian",
+        "Wei Chen",
+        "Huixia Li",
+        "Xiaoxiao Li"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/40164",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yuan Yao, Lixu Wang, Jiaqi Wu, Jin Song, Simin Chen, Zehua Wang, Zijian Tian, Wei Chen, Huixia Li, Xiaoxiao Li --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/40164",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "OrthoFuse: Training-free Riemannian Fusion of Orthogonal Style-Concept Adapters for Diffusion Models",
+      "authors_or_org": [
+        "Ali Aliev",
+        "Kamil Garifullin",
+        "Nikolay Yudin",
+        "Vera Soboleva",
+        "Alexander Molozhavenko",
+        "Ivan Oseledets",
+        "Aibek Alanov",
+        "Maxim Rakhuba"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38447",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Ali Aliev, Kamil Garifullin, Nikolay Yudin, Vera Soboleva, Alexander Molozhavenko, Ivan Oseledets, Aibek Alanov, Maxim Rakhuba --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38447",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "MatchMask: Mask-Centric Generative Data Augmentation for Label-Scarce Semantic Segmentation",
+      "authors_or_org": [
+        "Yuqi Lin",
+        "Hao Zhang",
+        "Wenqi Shao",
+        "Shiqu Liu",
+        "Zhihong Gu",
+        "Wenxiao Wang",
+        "Xiaofei He",
+        "Kaipeng Zhang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38156",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yuqi Lin, Hao Zhang, Wenqi Shao, Shiqu Liu, Zhihong Gu, Wenxiao Wang, Xiaofei He, Kaipeng Zhang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38156",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "HDR-VLM: HDR-Domain Adaptation of VLMs and Preference-Aligned Quality Assessment for HDR Video Color Grading",
+      "authors_or_org": [
+        "Hao Yuan",
+        "Jiabin Zhang",
+        "Yajing Wu",
+        "Ruixuan Pang",
+        "Jing Li"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37059",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Hao Yuan, Jiabin Zhang, Yajing Wu, Ruixuan Pang, Jing Li --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37059",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "STAR-R1: Multi-View Spatial TrAnsformation Reasoning by Reinforcing Multimodal LLMs",
+      "authors_or_org": [
+        "Zongzhao Li",
+        "Zongyang Ma",
+        "Mingze Li",
+        "Songyou Li",
+        "Yu Rong",
+        "Tingyang Xu",
+        "Ziqi Zhang",
+        "Deli Zhao",
+        "Wenbing Huang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36705",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Zongzhao Li, Zongyang Ma, Mingze Li, Songyou Li, Yu Rong, Tingyang Xu, Ziqi Zhang, Deli Zhao, Wenbing Huang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36705",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Rejection Mixing: Fast Semantic Propagation of Mask Tokens for Efficient DLLM Inference",
+      "authors_or_org": [
+        "Yushi Ye",
+        "Feng Hong",
+        "Huangjie Zheng",
+        "Xu Chen",
+        "Zhiyong Chen",
+        "Yanfeng Wang",
+        "Jiangchao Yao"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38923",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yushi Ye, Feng Hong, Huangjie Zheng, Xu Chen, Zhiyong Chen, Yanfeng Wang, Jiangchao Yao --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38923",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "TRivia: Self-supervised Fine-tuning of Vision-Language Models for Table Recognition",
+      "authors_or_org": [
+        "JUNYUAN ZHANG",
+        "Bin Wang",
+        "Qintong Zhang",
+        "Fan Wu",
+        "Zichen Wen",
+        "Jialin Lu",
+        "Junjie Shan",
+        "Ziqi Zhao",
+        "Shuya Yang",
+        "Ziling Wang",
+        "Ziyang Miao",
+        "Huaping Zhong",
+        "Yuhang Zang",
+        "Xiaoyi Dong",
+        "Ka-Ho Chow",
+        "Conghui He"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37351",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper JUNYUAN ZHANG, Bin Wang, Qintong Zhang, Fan Wu, Zichen Wen, Jialin Lu, Junjie Shan, Ziqi Zhao, Shuya Yang, Ziling Wang, Ziyang Miao, Huaping Zhong, Yuhang Zang, Xiaoyi Dong, Ka-Ho Chow, Conghui He --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37351",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Mistake Attribution: Fine-Grained Mistake Understanding in Egocentric Videos",
+      "authors_or_org": [
+        "Yayuan Li",
+        "Aadit Jain",
+        "Filippos Bellos",
+        "Jason Corso"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39777",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yayuan Li, Aadit Jain, Filippos Bellos, Jason Corso --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39777",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Learning 3D Reconstruction with Priors in Test Time",
+      "authors_or_org": [
+        "Lei Zhou",
+        "Haoyu Wu",
+        "Akshat Dave",
+        "Dimitris Samaras"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38580",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Lei Zhou, Haoyu Wu, Akshat Dave, Dimitris Samaras --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38580",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Act Like a Pathologist: Tissue-Aware Whole Slide Image Reasoning",
+      "authors_or_org": [
+        "Wentao Huang",
+        "Weimin Lyu",
+        "Peiliang Lou",
+        "Qingqiao Hu",
+        "Xiaoling Hu",
+        "Shahira Abousamra",
+        "Wenchao Han",
+        "Ruifeng Guo",
+        "Jiawei Zhou",
+        "Chao Chen",
+        "Chen Wang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36280",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Wentao Huang, Weimin Lyu, Peiliang Lou, Qingqiao Hu, Xiaoling Hu, Shahira Abousamra, Wenchao Han, Ruifeng Guo, Jiawei Zhou, Chao Chen, Chen Wang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36280",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "SparseVAR: Exploring Sparsity in Visual AutoRegressive Modeling for Training-Free Acceleration",
+      "authors_or_org": [
+        "Zekun Li",
+        "wang ning",
+        "Tongxin Bai",
+        "Changwang Mei",
+        "Peisong Wang",
+        "Shuang Qiu",
+        "Jian Cheng"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37901",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Zekun Li, wang ning, Tongxin Bai, Changwang Mei, Peisong Wang, Shuang Qiu, Jian Cheng --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37901",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "CARD: Correlation Aware Restoration with Diffusion",
+      "authors_or_org": [
+        "Niki Nezakati",
+        "Arnab Ghosh",
+        "Amit Roy-Chowdhury",
+        "Vishwanath Saragadam"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36313",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Niki Nezakati, Arnab Ghosh, Amit Roy-Chowdhury, Vishwanath Saragadam --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36313",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "ShowTable: Unlocking Creative Table Visualization with Collaborative Reflection and Refinement",
+      "authors_or_org": [
+        "Zhihang Liu",
+        "Xiaoyi Bao",
+        "Pandeng Li",
+        "Junjie Zhou",
+        "Zhaohe Liao",
+        "Yefei He",
+        "Kaixun Jiang",
+        "Chen-Wei Xie",
+        "Yun Zheng",
+        "Hongtao Xie"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37684",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Zhihang Liu, Xiaoyi Bao, Pandeng Li, Junjie Zhou, Zhaohe Liao, Yefei He, Kaixun Jiang, Chen-Wei Xie, Yun Zheng, Hongtao Xie --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37684",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "MTA: Multimodal Task Alignment for BEV Perception and Captioning",
+      "authors_or_org": [
+        "Yunsheng Ma",
+        "Burhan Yaman",
+        "Xin Ye",
+        "Jingru Luo",
+        "Feng Tao",
+        "Abhirup Mallik",
+        "Ziran Wang",
+        "Liu Ren"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37299",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yunsheng Ma, Burhan Yaman, Xin Ye, Jingru Luo, Feng Tao, Abhirup Mallik, Ziran Wang, Liu Ren --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37299",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "First Frame Is the Place to Go for Video Content Customization",
+      "authors_or_org": [
+        "Jingxi Chen",
+        "Zongxia Li",
+        "Zhichao Liu",
+        "Guangyao Shi",
+        "Xiyang Wu",
+        "Fuxiao Liu",
+        "Cornelia Fermuller",
+        "Brandon Y. Feng",
+        "Yiannis Aloimonos"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36651",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Jingxi Chen, Zongxia Li, Zhichao Liu, Guangyao Shi, Xiyang Wu, Fuxiao Liu, Cornelia Fermuller, Brandon Y. Feng, Yiannis Aloimonos --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36651",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "ORIC: Benchmarking Object Recognition under Contextual Incongruity in Large Vision-Language Models",
+      "authors_or_org": [
+        "Zhaoyang Li",
+        "Zhan Ling",
+        "Yuchen Zhou",
+        "Litian Gong",
+        "Erdem Biyik",
+        "Hao Su"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38341",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Zhaoyang Li, Zhan Ling, Yuchen Zhou, Litian Gong, Erdem Biyik, Hao Su --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38341",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Beyond Static Frames: Temporal Aggregate-and-Restore Vision Transformer for Human Pose Estimation",
+      "authors_or_org": [
+        "Hongwei Fang",
+        "Jiahang Cai",
+        "Xun Wang",
+        "Wenwu Yang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36309",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Hongwei Fang, Jiahang Cai, Xun Wang, Wenwu Yang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36309",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "LiteVGGT: Boosting Vanilla VGGT via Geometry-aware Cached Token Merging",
+      "authors_or_org": [
+        "Zhijian Shu",
+        "Cheng Lin",
+        "Tao Xie",
+        "Wei Yin",
+        "Ben Li",
+        "Zhiyuan Pu",
+        "Weize Li",
+        "Yao Yao",
+        "Xun Cao",
+        "Xiaoyang Guo",
+        "Xiao-Xiao Long"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36888",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Zhijian Shu, Cheng Lin, Tao Xie, Wei Yin, Ben Li, Zhiyuan Pu, Weize Li, Yao Yao, Xun Cao, Xiaoyang Guo, Xiao-Xiao Long --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36888",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "RISE: Single Static Radar-based Indoor Scene Understanding",
+      "authors_or_org": [
+        "Kaichen Zhou",
+        "Laura Dodds",
+        "Sayed Afzal",
+        "Fadel Adib"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38784",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Kaichen Zhou, Laura Dodds, Sayed Afzal, Fadel Adib --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38784",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Uncertainty-driven 3D Gaussian Splatting Active Mapping via Anisotropic Visibility Field",
+      "authors_or_org": [
+        "Shangjie Xue",
+        "Jesse Dill",
+        "Dhruv Ahuja",
+        "Frank Dellaert",
+        "Panagiotis Tsiotras",
+        "Danfei Xu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36191",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Shangjie Xue, Jesse Dill, Dhruv Ahuja, Frank Dellaert, Panagiotis Tsiotras, Danfei Xu --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36191",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Mirror Illusion Art",
+      "authors_or_org": [
+        "Xiaopei Zhu",
+        "Zeyuan Li",
+        "Jun Zhu",
+        "Xiaolin Hu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36434",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Xiaopei Zhu, Zeyuan Li, Jun Zhu, Xiaolin Hu --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36434",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "EditCtrl: Disentangled Local and Global Control for Real-Time Generative Video Editing",
+      "authors_or_org": [
+        "Yehonathan Litman",
+        "Shikun Liu",
+        "Dario Seyb",
+        "Nicholas Milef",
+        "Yang Zhou",
+        "Carl Marshall",
+        "Shubham Tulsiani",
+        "Caleb Leak"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39671",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yehonathan Litman, Shikun Liu, Dario Seyb, Nicholas Milef, Yang Zhou, Carl Marshall, Shubham Tulsiani, Caleb Leak --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39671",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Is the Modality Gap a Bug or a Feature? A Robustness Perspective",
+      "authors_or_org": [
+        "Rhea Chowers",
+        "Oshri Naparstek",
+        "Udi Barzelay",
+        "Yair Weiss"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37667",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Rhea Chowers, Oshri Naparstek, Udi Barzelay, Yair Weiss --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37667",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Reevaluating the Intra-modal Misalignment Hypothesis in CLIP",
+      "authors_or_org": [
+        "Jonas Herzog",
+        "Yue Wang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36324",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Jonas Herzog, Yue Wang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36324",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Plant Taxonomy Meets Plant Counting: A Fine-Grained, Taxonomic Dataset for Counting Hundreds of Plant Species",
+      "authors_or_org": [
+        "Jinyu Xu",
+        "Tianqi Hu",
+        "Xiaonan Hu",
+        "Letian Zhou",
+        "Songliang Cao",
+        "Meng Zhang",
+        "Hao Lu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38249",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Jinyu Xu, Tianqi Hu, Xiaonan Hu, Letian Zhou, Songliang Cao, Meng Zhang, Hao Lu -- --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38249",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Interpretable and Steerable Concept Bottleneck Sparse Autoencoders",
+      "authors_or_org": [
+        "Akshay R. Kulkarni",
+        "Tsui-Wei Weng",
+        "Vivek Narayanaswamy",
+        "Shusen Liu",
+        "Wesam A. Sakla",
+        "Kowshik Thopalli"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37080",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Akshay R. Kulkarni, Tsui-Wei Weng, Vivek Narayanaswamy, Shusen Liu, Wesam A. Sakla, Kowshik Thopalli --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37080",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Incremental Object Detection via Future-Aware Decoupled Cross-Head Distillation",
+      "authors_or_org": [
+        "Chenfeng Yin",
+        "De Cheng",
+        "Wenlong Luo",
+        "Mingyue Zeng",
+        "Shizhou Zhang",
+        "Nannan Wang",
+        "Xinbo Gao"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/40097",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Chenfeng Yin, De Cheng, Wenlong Luo, Mingyue Zeng, Shizhou Zhang, Nannan Wang, Xinbo Gao --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/40097",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Omni2Sound: A Fundamental Study on Dataset, Base Model, and Benchmark for Unified Video-Text-to-Audio Generation",
+      "authors_or_org": [
+        "yusheng dai",
+        "Zehua Chen",
+        "Yuxuan Jiang",
+        "Qiuhong Ke",
+        "Jianfei Cai",
+        "Jun Zhu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37962",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper yusheng dai, Zehua Chen, Yuxuan Jiang, Qiuhong Ke, Jianfei Cai, Jun Zhu --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37962",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Resolving the Identity Crisis in Text-to-Image Generation",
+      "authors_or_org": [
+        "Shubhankar Borse",
+        "Farzad Farhadzadeh",
+        "Munawar Hayat",
+        "Fatih Porikli"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38166",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Shubhankar Borse, Farzad Farhadzadeh, Munawar Hayat, Fatih Porikli --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38166",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "A Multi-Agent Perception-Action Alliance for Efficient Long Video Reasoning",
+      "authors_or_org": [
+        "Yichang Xu",
+        "Gaowen Liu",
+        "Ramana Kompella",
+        "Tiansheng Huang",
+        "Sihao Hu",
+        "Fatih Ilhan",
+        "Selim Tekin",
+        "Zachary Yahn",
+        "Ling Liu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38707",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yichang Xu, Gaowen Liu, Ramana Kompella, Tiansheng Huang, Sihao Hu, Fatih Ilhan, Selim Tekin, Zachary Yahn, Ling Liu --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38707",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Towards Robust Multimodal Large Language Models Against Jailbreak Attacks",
+      "authors_or_org": [
+        "ZIYI YIN",
+        "Yuanpu Cao",
+        "Han Liu",
+        "Ting Wang",
+        "Jinghui Chen",
+        "Fenglong Ma"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36913",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper ZIYI YIN, Yuanpu Cao, Han Liu, Ting Wang, Jinghui Chen, Fenglong Ma --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36913",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "RaUF: Learning the Spatial Uncertainty Field of Radar",
+      "authors_or_org": [
+        "Shengpeng Wang",
+        "Kuangyu Wang",
+        "Wei Wang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38102",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Shengpeng Wang, Kuangyu Wang, Wei Wang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38102",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "A Geometric Algebra-Informed 3DGS Framework for Wireless Channel Prediction",
+      "authors_or_org": [
+        "Jingzhou Shen",
+        "Tianya Zhao",
+        "Xuyu Wang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37468",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Jingzhou Shen, Tianya Zhao, Xuyu Wang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37468",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "A Frame is Worth One Token: Efficient Generative World Modeling with Delta Tokens",
+      "authors_or_org": [
+        "Tommie Kerssies",
+        "Gabriele Berton",
+        "Ju He",
+        "Qihang Yu",
+        "Wufei Ma",
+        "Daan de Geus",
+        "Gijs Dubbelman",
+        "Liang-Chieh Chen"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38021",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Tommie Kerssies, Gabriele Berton, Ju He, Qihang Yu, Wufei Ma, Daan de Geus, Gijs Dubbelman, Liang-Chieh Chen --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38021",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "ReAttnCLIP: Training-Free Open-Vocabulary Remote Sensing Image Segmentation via Re-defined Attention in CLIP",
+      "authors_or_org": [
+        "Xin Niu",
+        "Manqi Zhao",
+        "Dongsheng Jiang",
+        "Yingying Wu",
+        "Bing Su"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/40079",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Xin Niu, Manqi Zhao, Dongsheng Jiang, Yingying Wu, Bing Su --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/40079",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Landscape-Awareness for Geometric View Diffusion Model",
+      "authors_or_org": [
+        "Yan-Ting Chen",
+        "Hao-Wei Chen",
+        "Tsu-Ching Hsiao",
+        "Chun-Yi Lee"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38334",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yan-Ting Chen, Hao-Wei Chen, Tsu-Ching Hsiao, Chun-Yi Lee --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38334",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "LeapAlign: Post-training Flow Matching Models at Any Generation Step by Building Two-Step Trajectories",
+      "authors_or_org": [
+        "Zhanhao Liang",
+        "Tao Yang",
+        "Jie Wu",
+        "Chengjian Feng",
+        "Liang Zheng"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37658",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Zhanhao Liang, Tao Yang, Jie Wu, Chengjian Feng, Liang Zheng --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37658",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Helios: Stable Latent Image Modeling for Multimodal Earth Observation",
+      "authors_or_org": [
+        "Henry Herzog",
+        "Favyen Bastani",
+        "Yawen Zhang",
+        "Gabriel Tseng",
+        "Joseph Redmon",
+        "Hadrien Sablon",
+        "Ryan Park",
+        "Jacob Morrison",
+        "Alexandra Buraczynski",
+        "Karen Farley",
+        "Josh Hansen",
+        "Andrew Howe",
+        "Patrick Johnson",
+        "Mark Otterlee",
+        "Ted Schmitt",
+        "Hunter Pitelka",
+        "Stephen Daspit",
+        "Rachel Ratner",
+        "Christopher Wilhelm",
+        "Sebastian Wood",
+        "Mike Jacobi",
+        "Hannah Kerner",
+        "Evan Shelhamer",
+        "Ali Farhadi",
+        "Ranjay Krishna",
+        "Patrick Beukema"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39864",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Henry Herzog, Favyen Bastani, Yawen Zhang, Gabriel Tseng, Joseph Redmon, Hadrien Sablon, Ryan Park, Jacob Morrison, Alexandra Buraczynski, Karen Farley, Josh Hansen, Andrew Howe, Patrick Johnson, Mark Otterlee, Ted Schmitt, Hunter Pitelka, Stephen Daspit, Rachel Ratner, Christopher Wilhelm, Sebastian Wood, Mike Jacobi, Hannah Kerner, Evan Shelhamer, Ali Farhadi, Ranjay Krishna, Patrick Beukema --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39864",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "When to Think and When to Look: Uncertainty-Guided Lookback",
+      "authors_or_org": [
+        "Jing Bi",
+        "Filippos Bellos",
+        "JunJia Guo",
+        "Yayuan Li",
+        "Chao Huang",
+        "Yunlong Tang",
+        "Luchuan Song",
+        "Susan Liang",
+        "Zhongfei Zhang",
+        "Jason Corso",
+        "Chenliang Xu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38783",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Jing Bi, Filippos Bellos, JunJia Guo, Yayuan Li, Chao Huang, Yunlong Tang, Luchuan Song, Susan Liang, Zhongfei Zhang, Jason Corso, Chenliang Xu --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38783",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "LaDy: Lagrangian-Dynamic Informed Network for Skeleton-based Action Segmentation via Spatial-Temporal Modulation",
+      "authors_or_org": [
+        "Haoyu Ji",
+        "Xueting Liu",
+        "Yu Gao",
+        "Wenze Huang",
+        "Zhihao Yang",
+        "Weihong Ren",
+        "Zhiyong Wang",
+        "Honghai LIU"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38526",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Haoyu Ji, Xueting Liu, Yu Gao, Wenze Huang, Zhihao Yang, Weihong Ren, Zhiyong Wang, Honghai LIU --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38526",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Calibri: Enhancing Diffusion Transformers via Parameter-Efficient Calibration",
+      "authors_or_org": [
+        "Danil Tokhchukov",
+        "Aysel Mirzoeva",
+        "Andrey Kuznetsov",
+        "Konstantin Sobolev"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39523",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Danil Tokhchukov, Aysel Mirzoeva, Andrey Kuznetsov, Konstantin Sobolev --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39523",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "RoadGIE: Towards A Global-Scale Aerial Benchmark for Generalizable Interactive Road Extraction",
+      "authors_or_org": [
+        "Chenxu Peng",
+        "Chenxu Wang",
+        "Yimian Dai",
+        "Yongxiang Liu",
+        "Ming-Ming Cheng",
+        "Xiang Li"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36304",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Chenxu Peng, Chenxu Wang, Yimian Dai, Yongxiang Liu, Ming-Ming Cheng, Xiang Li --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36304",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Adaptive 3D Perception Under Sparse Sampling via Reinforcement Learning",
+      "authors_or_org": [
+        "Shenghai Yuan",
+        "Wei Yihan",
+        "Jason Yee",
+        "Zhuoran Qiao",
+        "boyang lou",
+        "Enwen Hu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36712",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Shenghai Yuan, Wei Yihan, Jason Yee, Zhuoran Qiao, boyang lou, Enwen Hu --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36712",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "UAST: Unified Active Search and Tracking for Arbitrary Targets with UAVs",
+      "authors_or_org": [
+        "Liang Qin",
+        "Min Wang",
+        "Xingyu Lu",
+        "Aowen Qiu",
+        "Wengang Zhou",
+        "Houqiang Li"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38664",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Liang Qin, Min Wang, Xingyu Lu, Aowen Qiu, Wengang Zhou, Houqiang Li --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38664",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "HiFi-Inpaint: Towards High-Fidelity Reference-Based Inpainting for Generating Detail-Preserving Human-Product Images",
+      "authors_or_org": [
+        "Yi Chen Liu",
+        "Donghao Zhou",
+        "Jie Wang",
+        "Xin Gao",
+        "Guisheng Liu",
+        "Jiatong Li",
+        "Quanwei Zhang",
+        "Qiang Lyu",
+        "Lanqing Guo",
+        "Shilei Wen",
+        "Weiqiang Wang",
+        "Pheng-Ann Heng"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38130",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yi Chen Liu, Donghao Zhou, Jie Wang, Xin Gao, Guisheng Liu, Jiatong Li, Quanwei Zhang, Qiang Lyu, Lanqing Guo, Shilei Wen, Weiqiang Wang, Pheng-Ann Heng --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38130",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "DABO: Difficulty-Aware Bayesian Optimization with Diffusion-Learned Priors",
+      "authors_or_org": [
+        "Mengyang Li",
+        "Pinlong Zhao"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37855",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Mengyang Li, Pinlong Zhao --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37855",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "EmoStyle: Emotion-Driven Image Stylization",
+      "authors_or_org": [
+        "Jingyuan Yang",
+        "Zihuan Bai",
+        "Hui Huang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38594",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Jingyuan Yang, Zihuan Bai, Hui Huang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38594",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Beyond Caption-Based Queries in Video Moment Retrieval",
+      "authors_or_org": [
+        "David Pujol-Perich",
+        "Albert Clapés",
+        "Dima Damen",
+        "Sergio Escalera",
+        "Michael Wray"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36772",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper David Pujol-Perich, Albert Clapés, Dima Damen, Sergio Escalera, Michael Wray --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36772",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "ProOOD: Prototype-Guided Out-of-Distribution 3D Occupancy Prediction",
+      "authors_or_org": [
+        "Yuheng Zhang",
+        "Mengfei Duan",
+        "Kunyu Peng",
+        "Yuhang Wang",
+        "Di Wen",
+        "Danda Paudel",
+        "Luc Van Gool",
+        "Kailun Yang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39166",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yuheng Zhang, Mengfei Duan, Kunyu Peng, Yuhang Wang, Di Wen, Danda Paudel, Luc Van Gool, Kailun Yang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39166",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Cell-Type Prototype-Informed Neural Network for Gene Expression Estimation from Pathology Images",
+      "authors_or_org": [
+        "Kazuya Nishimura",
+        "Ryoma Bise",
+        "Shinnosuke Matsuo",
+        "Haruka Hirose",
+        "Yasuhiro Kojima"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37175",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Kazuya Nishimura, Ryoma Bise, Shinnosuke Matsuo, Haruka Hirose, Yasuhiro Kojima --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37175",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Beyond Matching to Tiles: Bridging Unaligned Aerial and Satellite Views for Vision-Only UAV Navigation",
+      "authors_or_org": [
+        "Liu Kejia",
+        "Haoyang Zhou",
+        "Ruoyu Xu",
+        "Peicheng Wang",
+        "Mingli Song",
+        "Haofei Zhang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37918",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Liu Kejia, Haoyang Zhou, Ruoyu Xu, Peicheng Wang, Mingli Song, Haofei Zhang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37918",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "GRPO-Guard: Mitigating Implicit Over-Optimization in Flow Matching via Regulated Clipping",
+      "authors_or_org": [
+        "Jing Wang",
+        "Jiajun Liang",
+        "Jie Liu",
+        "Henglin Liu",
+        "Gongye Liu",
+        "Jun Zheng",
+        "Wanyuan Pang",
+        "Ao Ma",
+        "Zhenyu Xie",
+        "Xintao Wang",
+        "Meng Wang",
+        "Pengfei Wan",
+        "Xiaodan Liang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37147",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Jing Wang, Jiajun Liang, Jie Liu, Henglin Liu, Gongye Liu, Jun Zheng, Wanyuan Pang, Ao Ma, Zhenyu Xie, Xintao Wang, Meng Wang, Pengfei Wan, Xiaodan Liang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37147",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Fresco: Frequency–Spatial Consistent Optimization for Fine-Grained Head Avatar Modeling",
+      "authors_or_org": [
+        "shikun zhang",
+        "Yong Li",
+        "Yiqun Wang",
+        "Qiuhong Ke",
+        "Cunjian Chen"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38331",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper shikun zhang, Yong Li, Yiqun Wang, Qiuhong Ke, Cunjian Chen --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38331",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "TR2M: Transferring Monocular Relative Depth to Metric Depth with Language Descriptions and Dual-Level Scale-Oriented Contrast",
+      "authors_or_org": [
+        "Beilei Cui",
+        "Yiming Huang",
+        "Long Bai",
+        "Hongliang Ren"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36559",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Beilei Cui, Yiming Huang, Long Bai, Hongliang Ren --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36559",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Batch Loss Score for Dynamic Data Pruning",
+      "authors_or_org": [
+        "Qing Zhou",
+        "Bingxuan Zhao",
+        "Tao Yang",
+        "Hongyuan Zhang",
+        "Junyu Gao",
+        "Qi Wang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38460",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Qing Zhou, Bingxuan Zhao, Tao Yang, Hongyuan Zhang, Junyu Gao, Qi Wang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38460",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "LiDAR-to-4DRadar Diffusion Bridge via Cross-Modal Alignment and Translation in Latent Space",
+      "authors_or_org": [
+        "Dazhong Shen",
+        "Jingjing Gu",
+        "Qiang Zhou",
+        "Meng Zhao",
+        "Ying Sun"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39723",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Dazhong Shen, Jingjing Gu, Qiang Zhou, Meng Zhao, Ying Sun --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39723",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Rethinking Prompt Design for Inference-time Scaling in Text-to-Visual Generation",
+      "authors_or_org": [
+        "Subin Kim",
+        "Sangwoo Mo",
+        "Mamshad Nayeem Rizve",
+        "Yiran Xu",
+        "Difan Liu",
+        "Jinwoo Shin",
+        "Tobias Hinz"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39778",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Subin Kim, Sangwoo Mo, Mamshad Nayeem Rizve, Yiran Xu, Difan Liu, Jinwoo Shin, Tobias Hinz --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39778",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Improving Calibration in Test-Time Prompt Tuning for Vision-Language Models via Data-Free Flatness-Aware Prompt Pretraining",
+      "authors_or_org": [
+        "Hyeonseo Jang",
+        "Jaebyeong Jeon",
+        "Joong-won Hwang",
+        "Kibok Lee"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39061",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Hyeonseo Jang, Jaebyeong Jeon, Joong-won Hwang, Kibok Lee --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39061",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "CodeDance: A Dynamic Tool-integrated MLLM for Executable Visual Reasoning",
+      "authors_or_org": [
+        "Qi Song",
+        "Honglin Li",
+        "Yingchen Yu",
+        "Haoyi Zhou",
+        "Lin Yang",
+        "Song Bai",
+        "Qi She",
+        "Zilong Huang",
+        "Yunqing Zhao"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36659",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Qi Song, Honglin Li, Yingchen Yu, Haoyi Zhou, Lin Yang, Song Bai, Qi She, Zilong Huang, Yunqing Zhao --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36659",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "3D-Object Perception Transformer (3PT)",
+      "authors_or_org": [
+        "Agastya Kalra",
+        "Tim Salzmann",
+        "Guy Stoppi",
+        "Dmitrii Marin",
+        "Rishav Agarwal",
+        "Vage Taamazyan",
+        "Martin Bokeloh",
+        "Stefan Hinterstoisser",
+        "Anton Boykov",
+        "Alberto Dall&#x27;Olio",
+        "Pravin Dangol",
+        "Kartik Venkataraman",
+        "Huaijin Chen"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38997",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Agastya Kalra, Tim Salzmann, Guy Stoppi, Dmitrii Marin, Rishav Agarwal, Vage Taamazyan, Martin Bokeloh, Stefan Hinterstoisser, Anton Boykov, Alberto Dall&#x27;Olio, Pravin Dangol, Kartik Venkataraman, Huaijin Chen --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38997",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "FlashMesh: Faster and Better Autoregressive Mesh Synthesis via Structured Speculation",
+      "authors_or_org": [
+        "Tingrui Shen",
+        "Yiheng Zhang",
+        "Chen Tang",
+        "Chuan Ping",
+        "Zixing Zhao",
+        "Le Wan",
+        "Yuwang Wang",
+        "Ronggang Wang",
+        "Shengfeng He"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39696",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Tingrui Shen, Yiheng Zhang, Chen Tang, Chuan Ping, Zixing Zhao, Le Wan, Yuwang Wang, Ronggang Wang, Shengfeng He --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39696",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Planning in 8 Tokens: A Compact Discrete Tokenizer for Latent World Model",
+      "authors_or_org": [
+        "Dongwon Kim",
+        "Gawon Seo",
+        "Jinsung Lee",
+        "Minsu Cho",
+        "Suha Kwak"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38105",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Dongwon Kim, Gawon Seo, Jinsung Lee, Minsu Cho, Suha Kwak --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38105",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Bidirectional Normalizing Flow: From Data to Noise and Back",
+      "authors_or_org": [
+        "Yiyang Lu",
+        "Qiao Sun",
+        "Xianbang Wang",
+        "Zhicheng Jiang",
+        "Hanhong Zhao",
+        "Kaiming He"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36593",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yiyang Lu, Qiao Sun, Xianbang Wang, Zhicheng Jiang, Hanhong Zhao, Kaiming He --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36593",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "From Softmax to Dirichlet: Evidential Learning for Semi-supervised Semantic Segmentation",
+      "authors_or_org": [
+        "Huayu Mai",
+        "Rui Sun",
+        "Yujia Chen",
+        "Wangkai Li",
+        "Bingzhou Wang",
+        "Aibing Li",
+        "Zhangyu He",
+        "Yuan Wang"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37450",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Huayu Mai, Rui Sun, Yujia Chen, Wangkai Li, Bingzhou Wang, Aibing Li, Zhangyu He, Yuan Wang --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37450",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "SelfHVD: Self-Supervised Handheld Video Deblurring",
+      "authors_or_org": [
+        "Honglei Xu",
+        "Zhilu Zhang",
+        "Junjie Fan",
+        "Xiaohe Wu",
+        "Wangmeng Zuo"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37324",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Honglei Xu, Zhilu Zhang, Junjie Fan, Xiaohe Wu, Wangmeng Zuo --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37324",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Revisiting Visual Corruptions in LVLMs: A Shape–Texture Perspective on Model Failures",
+      "authors_or_org": [
+        "Xinkuan Qiu",
+        "Meina Kan",
+        "Zhenliang He",
+        "Yongbin Zhou",
+        "Shiguang Shan"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39284",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Xinkuan Qiu, Meina Kan, Zhenliang He, Yongbin Zhou, Shiguang Shan --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39284",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "See What We Cannot See: A Geo-guided Reasoning Benchmark for Object Counting under Adverse Earth Observation Conditions",
+      "authors_or_org": [
+        "Jiayi Wang",
+        "Zhihong Tan",
+        "Hongchen Wei",
+        "Daiqin Yang",
+        "Zhenzhong Chen"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36269",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Jiayi Wang, Zhihong Tan, Hongchen Wei, Daiqin Yang, Zhenzhong Chen --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36269",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "From Few-way to Many-way: Rethinking Few-shot Fine-grained Image Classification",
+      "authors_or_org": [
+        "Li-Jun Zhao",
+        "Zhen-Duo Chen",
+        "Xin Luo",
+        "Xin-Shun Xu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38448",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Li-Jun Zhao, Zhen-Duo Chen, Xin Luo, Xin-Shun Xu --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38448",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "See Through the Noise: Improving Domain Generalization in Gaze Estimation",
+      "authors_or_org": [
+        "Yanming Peng",
+        "Shijing Wang",
+        "Yaping Huang",
+        "Yi Tian"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37490",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yanming Peng, Shijing Wang, Yaping Huang, Yi Tian --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37490",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "CoIn: Coverage and Informativeness-Guided Token Reduction for Efficient Large Multimodal Models",
+      "authors_or_org": [
+        "Chenxi Du",
+        "Yongheng Deng",
+        "Jiani Liu",
+        "Yujia Zhang",
+        "Xi Chen",
+        "Ju Ren"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39497",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Chenxi Du, Yongheng Deng, Jiani Liu, Yujia Zhang, Xi Chen, Ju Ren --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/39497",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "2D-LFM: Lifting Foundation Model without 3D supervision",
+      "authors_or_org": [
+        "Mosam Dabhi",
+        "Irhas Gill",
+        "Laszlo Jeni",
+        "Simon Lucey"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36425",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Mosam Dabhi, Irhas Gill, Laszlo Jeni, Simon Lucey --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36425",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Synthesizing Visual Concepts as Vision-Language Programs",
+      "authors_or_org": [
+        "Antonia Wüst",
+        "Wolfgang Stammer",
+        "Hikaru Shindo",
+        "Lukas Helff",
+        "Devendra Singh Dhami",
+        "Kristian Kersting"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37259",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Antonia Wüst, Wolfgang Stammer, Hikaru Shindo, Lukas Helff, Devendra Singh Dhami, Kristian Kersting --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37259",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Where Culture Fades: Revealing the Cultural Gap in Text-to-Image Generation",
+      "authors_or_org": [
+        "Chuancheng Shi",
+        "Shangze Li",
+        "Shiming Guo",
+        "Simiao Xie",
+        "Wenhua Wu",
+        "Jingtong Dou",
+        "Chao Wu",
+        "Canran Xiao",
+        "Cong Wang",
+        "Zifeng Cheng",
+        "Fei Shen",
+        "Tat-seng Chua"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36797",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Chuancheng Shi, Shangze Li, Shiming Guo, Simiao Xie, Wenhua Wu, Jingtong Dou, Chao Wu, Canran Xiao, Cong Wang, Zifeng Cheng, Fei Shen, Tat-seng Chua --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/36797",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Latent Visual Reasoning",
+      "authors_or_org": [
+        "Kelvin Li",
+        "Chuyi Shang",
+        "Leonid Karlinsky",
+        "Rogerio Feris",
+        "Trevor Darrell",
+        "Roei Herzig"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37616",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Kelvin Li, Chuyi Shang, Leonid Karlinsky, Rogerio Feris, Trevor Darrell, Roei Herzig --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37616",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "PhysHead: Simulation-Ready Gaussian Head Avatars",
+      "authors_or_org": [
+        "Berna Kabadayi",
+        "Vanessa Sklyarova",
+        "Wojciech Zielonka",
+        "Justus Thies",
+        "Gerard Pons-Moll"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37517",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Berna Kabadayi, Vanessa Sklyarova, Wojciech Zielonka, Justus Thies, Gerard Pons-Moll --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/37517",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Computer Vision with a Superpixelation Camera",
+      "authors_or_org": [
+        "Sasidharan Mahalingam",
+        "Rachel Brown",
+        "Atul Ingle"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/40024",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Sasidharan Mahalingam, Rachel Brown, Atul Ingle --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/40024",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    },
+    {
+      "title": "Active Perceptual Inference: A Corticothalamic-Inspired Dynamic Nested Recurrent Network for Multimodal Sentiment Analysis with Incomplete Data",
+      "authors_or_org": [
+        "Yujuan Zhang",
+        "Qing Li",
+        "Ziyu Li",
+        "Xiuxing Li",
+        "Zhuo Wang",
+        "Mengrui Xu",
+        "Xia Wu"
+      ],
+      "url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38497",
+      "source_type": "paper",
+      "abstract_or_snippet": "Add/Remove Bookmark to my calendar for this paper Yujuan Zhang, Qing Li, Ziyu Li, Xiuxing Li, Zhuo Wang, Mengrui Xu, Xia Wu --",
+      "discovery_method": "browser_rendered_dom",
+      "official_confirmation_url": "https://cvpr.thecvf.com/virtual/2026/poster/38497",
+      "scope_match_rationale": "Extracted from the rendered DOM of an allowed source page."
+    }
+  ],
+  "notes": "Rendered DOM extraction completed."
+}

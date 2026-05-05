@@ -1,0 +1,90 @@
+{
+  "run_id": "run-1777880110",
+  "source_scope_obeyed": true,
+  "rejected_out_of_scope": [
+    {
+      "title": "WorldMirror: Universal 3D World Reconstruction with Any-Prior Prompting",
+      "url_or_path": "https://openreview.net/forum?id=BbVSpL9ACG",
+      "discovered_by_query": "site:openreview.net/group?id=ICLR.cc/2026/Conference real-time streaming point map reconstruction",
+      "reason": "OpenReview search result says submitted to ICLR 2026, not accepted/poster; plan disallows non-accepted preprints unless acceptance at an allowed venue is confirmed."
+    },
+    {
+      "title": "Visual Geometry Transformer in the Wild: Distractor-Free 3D Reconstruction",
+      "url_or_path": "https://openreview.net/submissions?page=693&venue=ICLR.cc%2F2026%2FConference",
+      "discovered_by_query": "site:openreview.net/group?id=ICLR.cc/2026/Conference online 3D reconstruction point map",
+      "reason": "OpenReview search result says submitted to ICLR 2026, not accepted/poster; plan disallows non-accepted preprints unless acceptance at an allowed venue is confirmed."
+    },
+    {
+      "title": "Surf3R: Rapid Surface Reconstruction from Sparse RGB Views in Seconds",
+      "url_or_path": "https://openreview.net/forum?id=91GG9IUOCh",
+      "discovered_by_query": "site:openreview.net/group?id=ICLR.cc/2026/Conference real-time streaming point map reconstruction",
+      "reason": "OpenReview search result says submitted to ICLR 2026, not accepted/poster; plan disallows non-accepted preprints unless acceptance at an allowed venue is confirmed."
+    },
+    {
+      "title": "iLRM: An Iterative Large 3D Reconstruction Model",
+      "url_or_path": "https://openreview.net/forum?id=AzbqTZAfvW",
+      "discovered_by_query": "site:openreview.net/group?id=ICLR.cc/2026/Conference real-time streaming point map reconstruction",
+      "reason": "OpenReview search result says ICLR 2026 Conference Withdrawn Submission; withdrawn papers are outside the allowed main-conference accepted-paper scope."
+    },
+    {
+      "title": "Point3R: Streaming 3D Reconstruction with Explicit Spatial Pointer Memory",
+      "url_or_path": "https://openreview.net/forum?id=yk1iqV9Etr",
+      "discovered_by_query": "site:openreview.net/forum?id= ICLR 2026 Poster \"point maps\" \"3D reconstruction\"",
+      "reason": "Search result confirms NeurIPS 2025 poster, not CVPR 2026, ICLR 2026, or ICML 2026."
+    },
+    {
+      "title": "ViSTA-SLAM: Visual SLAM with Symmetric Two-view Association",
+      "url_or_path": "https://openreview.net/forum?id=W6Y10yeedA",
+      "discovered_by_query": "site:openreview.net/forum?id= ICLR 2026 Poster \"real-time\" \"3D reconstruction\"",
+      "reason": "Search result confirms 3DV 2026 poster, not CVPR 2026, ICLR 2026, or ICML 2026."
+    },
+    {
+      "title": "SCIGaussian-D: Dynamic Scene Reconstruction from a Single Snapshot Compressive Image",
+      "url_or_path": "https://openreview.net/forum?id=PH9ViPbyB5",
+      "discovered_by_query": "site:openreview.net/forum?id= ICLR 2026 Poster \"real-time\" \"3D reconstruction\"",
+      "reason": "Search result confirms 3DV 2026 poster, not CVPR 2026, ICLR 2026, or ICML 2026."
+    },
+    {
+      "title": "Seeing Down the Line: Endoscopic Reconstruction with Centerline Constraints",
+      "url_or_path": "https://openreview.net/forum?id=qFr9oMgEWQ",
+      "discovered_by_query": "site:openreview.net/forum?id= ICLR 2026 Poster \"real-time\" \"3D reconstruction\"",
+      "reason": "Search result confirms MIDL 2026 poster, not CVPR 2026, ICLR 2026, or ICML 2026."
+    },
+    {
+      "title": "Streaming Real-Time Trajectory Prediction Using Endpoint-Aware Modeling",
+      "url_or_path": "https://openaccess.thecvf.com/content/WACV2026/html/Prutsch_Streaming_Real-Time_Trajectory_Prediction_Using_Endpoint-Aware_Modeling_WACV_2026_paper.html",
+      "discovered_by_query": "site:openaccess.thecvf.com/content/CVPR2026 real-time streaming point map reconstruction CVPR 2026",
+      "reason": "Search result is WACV 2026, not CVPR 2026; also trajectory prediction rather than point-map reconstruction."
+    },
+    {
+      "title": "Transformer-Based Inpainting for Real-Time 3D Streaming in Sparse Multi-Camera Setups",
+      "url_or_path": "https://openaccess.thecvf.com/content/WACV2026/html/Van_Holland_Transformer-Based_Inpainting_for_Real-Time_3D_Streaming_in_Sparse_Multi-Camera_Setups_WACV_2026_paper.html",
+      "discovered_by_query": "site:openaccess.thecvf.com/content/CVPR2026 real-time streaming point map reconstruction CVPR 2026",
+      "reason": "Search result is WACV 2026, not CVPR 2026."
+    },
+    {
+      "title": "PointSt3R: Point Tracking through 3D Ground Correspondence",
+      "url_or_path": "https://openaccess.thecvf.com/content/WACV2026/html/Guerrier_PointSt3R_Point_Tracking_through_3D_Ground_Correspondence_WACV_2026_paper.html",
+      "discovered_by_query": "site:openaccess.thecvf.com/content/CVPR2026 real-time streaming point map reconstruction CVPR 2026",
+      "reason": "Search result is WACV 2026, not CVPR 2026."
+    },
+    {
+      "title": "CRISP: Cylindrical Rendering for In-Stream Point Clouds",
+      "url_or_path": "https://openaccess.thecvf.com/content/WACV2026/html/Kang_CRISP_Cylindrical_Rendering_for_In-Stream_Point_Clouds_WACV_2026_paper.html",
+      "discovered_by_query": "site:openaccess.thecvf.com/content/CVPR2026 real-time streaming point map reconstruction CVPR 2026",
+      "reason": "Search result is WACV 2026, not CVPR 2026."
+    },
+    {
+      "title": "MapAnything: Universal Feed-Forward Metric 3D Reconstruction",
+      "url_or_path": "https://openreview.net/forum?id=h9J2UUVWat",
+      "discovered_by_query": "site:openreview.net/group?id=ICLR.cc/2026/Conference real-time streaming point map reconstruction",
+      "reason": "Search result indicates ICCV 2025 Wild3D, outside the allowed venues and years."
+    },
+    {
+      "title": "Flex3D: Feed-Forward 3D Generation with Flexible Reconstruction Model and Input View Curation",
+      "url_or_path": "https://proceedings.mlr.press/v267/han25i.html",
+      "discovered_by_query": "site:proceedings.mlr.press ICML 2026 point map reconstruction",
+      "reason": "Search result is ICML 2025, not ICML 2026."
+    }
+  ]
+}

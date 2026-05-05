@@ -1,0 +1,18 @@
+Source ID: cvpr2026-36695
+Title: MoRGS: Efficient Per-Gaussian Motion Reasoning for Streamable Dynamic 3D Scenes
+Venue: CVPR 2026 Accept (Poster)
+Official URL: https://cvpr.thecvf.com/virtual/2026/poster/36695
+Official confirmation URL: https://cvpr.thecvf.com/static/virtual/data/cvpr-2026-orals-posters.json
+CVPR virtualsite URL: /virtual/2026/poster/36695
+Decision: Accept (Poster)
+Event type: Poster
+Authors: Wonjoon Lee (Yonsei University); Sungmin Woo; Donghyeong Kim (Yonsei University); Jungho Lee (Yonsei University); Sangheon Park (Electronics and Telecommunications Research Institute; Yonsei University); Sangyoun Lee (Yonsei University)
+Keywords: 
+
+Abstract:
+Online reconstruction of dynamic scenes aims to learn from streaming multi-view inputs under low-latency constraints. The fast training and real-time rendering capabilities of 3D Gaussian Splatting have made on-the-fly reconstruction practically feasible, enabling online 4D reconstruction. However, existing online approaches, despite their efficiency and visual quality, fail to learn per-Gaussian motion that reflects true scene dynamics. Without explicit motion cues, appearance and motion are optimized solely under photometric loss, causing per-Gaussian motion to chase pixel residuals rather than true 3D motion. To address this, we propose MoRGS, an efficient online per-Gaussian motion reasoning framework that treats Gaussian movement as a core modeling object. Specifically, we efficiently leverage optical flow on a sparse  set of key views as a lightweight motion cue to guide per-Gaussian motion toward the scene’s true dynamics. To compensate for the sparsity and view-dependence of flow, we learn a per-Gaussian motion offset field that reconciles discrepancies between projected 3D motion and observed flow across views and time. In addition, we introduce a per-Gaussian motion confidence that separates dynamic from static Gaussians and weights Gaussian attribute residual updates, thereby suppressing redundant motion in static regions for better temporal consistency and accelerating the modeling of large motions. Extensive experiments demonstrate that MoRGS achieves state-of-the-art reconstruction quality and motion fidelity among online methods, while maintaining streamable performance.
+
+Raw provenance:
+Extracted from run-local official CVPR 2026 virtual-site JSON artifact cvpr-2026-orals-posters.json.
+paper_pdf_url: null
+paper_url: 

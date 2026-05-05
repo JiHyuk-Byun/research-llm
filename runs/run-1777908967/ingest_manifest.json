@@ -1,0 +1,74 @@
+{
+  "run_id": "run-1777908967",
+  "items": [
+    {
+      "source_id": "iclr2026-stream3r",
+      "original_url_or_path": "https://openreview.net/forum?id=RTTYGeC2Io",
+      "access_date": "2026-05-05",
+      "raw_path": "runs/run-1777908967/raw/sources/iclr2026-stream3r.openreview.txt",
+      "parsed_path": "runs/run-1777908967/parsed/sources/iclr2026-stream3r.txt",
+      "extraction_method": "Browser-rendered OpenReview forum capture for raw text; browser PDF text extraction from https://openreview.net/pdf?id=RTTYGeC2Io for parsed text.",
+      "known_failures": [
+        "Shell network access failed with DNS resolution error for openreview.net, so byte-for-byte HTML/PDF download was not possible from the local shell."
+      ]
+    },
+    {
+      "source_id": "iclr2026-streamsplat",
+      "original_url_or_path": "https://openreview.net/forum?id=SaiDRQU7Ez",
+      "access_date": "2026-05-05",
+      "raw_path": "runs/run-1777908967/raw/sources/iclr2026-streamsplat.openreview.txt",
+      "parsed_path": "runs/run-1777908967/parsed/sources/iclr2026-streamsplat.txt",
+      "extraction_method": "Browser-rendered OpenReview forum capture for raw text; parsed from OpenReview forum metadata.",
+      "known_failures": [
+        "Shell network access failed with DNS resolution error for openreview.net, so byte-for-byte HTML/PDF download was not possible from the local shell.",
+        "Browser PDF extraction from https://openreview.net/pdf?id=SaiDRQU7Ez did not return usable text during ingest."
+      ]
+    },
+    {
+      "source_id": "iclr2026-pi3",
+      "original_url_or_path": "https://openreview.net/forum?id=DTQIjngDta",
+      "access_date": "2026-05-05",
+      "raw_path": "runs/run-1777908967/raw/sources/iclr2026-pi3.openreview.txt",
+      "parsed_path": "runs/run-1777908967/parsed/sources/iclr2026-pi3.txt",
+      "extraction_method": "Browser-rendered OpenReview forum capture for raw text; browser PDF text extraction from https://openreview.net/pdf?id=DTQIjngDta for parsed text.",
+      "known_failures": [
+        "Shell network access failed with DNS resolution error for openreview.net, so byte-for-byte HTML/PDF download was not possible from the local shell."
+      ]
+    },
+    {
+      "source_id": "iclr2026-cognimap3d",
+      "original_url_or_path": "https://openreview.net/forum?id=9agaxh8ClV",
+      "access_date": "2026-05-05",
+      "raw_path": "runs/run-1777908967/raw/sources/iclr2026-cognimap3d.openreview.txt",
+      "parsed_path": "runs/run-1777908967/parsed/sources/iclr2026-cognimap3d.txt",
+      "extraction_method": "Browser-rendered OpenReview forum capture for raw text; parsed from OpenReview forum metadata.",
+      "known_failures": [
+        "Shell network access failed with DNS resolution error for openreview.net, so byte-for-byte HTML/PDF download was not possible from the local shell.",
+        "Browser PDF extraction from https://openreview.net/pdf?id=9agaxh8ClV did not return usable text during ingest."
+      ]
+    },
+    {
+      "source_id": "iclr2026-hyden",
+      "original_url_or_path": "https://openreview.net/forum?id=2eL6yXLCh8",
+      "access_date": "2026-05-05",
+      "raw_path": "runs/run-1777908967/raw/sources/iclr2026-hyden.openreview.txt",
+      "parsed_path": "runs/run-1777908967/parsed/sources/iclr2026-hyden.txt",
+      "extraction_method": "Browser-rendered OpenReview forum capture for raw text; parsed from OpenReview forum metadata.",
+      "known_failures": [
+        "Shell network access failed with DNS resolution error for openreview.net, so byte-for-byte HTML/PDF download was not possible from the local shell.",
+        "Browser PDF extraction from https://openreview.net/pdf?id=2eL6yXLCh8 did not return usable text during ingest."
+      ]
+    },
+    {
+      "source_id": "iclr2026-fastavatar",
+      "original_url_or_path": "https://openreview.net/forum?id=P7zBSCs4Xt",
+      "access_date": "2026-05-05",
+      "raw_path": "runs/run-1777908967/raw/sources/iclr2026-fastavatar.openreview.txt",
+      "parsed_path": "runs/run-1777908967/parsed/sources/iclr2026-fastavatar.txt",
+      "extraction_method": "Browser-rendered OpenReview forum capture for raw text; browser PDF text extraction from https://openreview.net/pdf?id=P7zBSCs4Xt for parsed text.",
+      "known_failures": [
+        "Shell network access failed with DNS resolution error for openreview.net, so byte-for-byte HTML/PDF download was not possible from the local shell."
+      ]
+    }
+  ]
+}

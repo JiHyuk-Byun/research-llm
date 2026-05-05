@@ -1,0 +1,23 @@
+Source ID: iclr2026-SaiDRQU7Ez
+Title: StreamSplat: Towards Online Dynamic 3D Reconstruction from Uncalibrated Video Streams
+Venue: ICLR 2026 Poster
+Official URL: https://openreview.net/forum?id=SaiDRQU7Ez
+PDF URL: https://openreview.net/pdf?id=SaiDRQU7Ez
+Published: 26 Jan 2026
+Last Modified: 11 Apr 2026
+Authors: Zike Wu; Qi Yan; Xuanyu Yi; Lele Wang; Renjie Liao
+Keywords: 3D Gaussian Splatting; Monocular Video Reconstruction
+TL;DR: We proposed an efficient, scalable, and feed-forward framework for online dynamic 3D reconstruction.
+Submission Number: 1083
+
+Abstract:
+Real-time reconstruction of dynamic 3D scenes from uncalibrated video streams demands robust online methods that recover scene dynamics from sparse observations under strict latency and memory constraints. Yet most dynamic reconstruction methods rely on hours of per-scene optimization under full-sequence access, limiting practical deployment.
+
+In this work, we introduce StreamSplat, a fully feed-forward framework that instantly transforms uncalibrated video streams of arbitrary length into dynamic 3D Gaussian Splatting (3DGS) representations in an online manner.
+
+It is achieved via three key technical innovations: 1) a probabilistic sampling mechanism that robustly predicts 3D Gaussians from uncalibrated inputs; 2) a bidirectional deformation field that yields reliable associations across frames and mitigates long-term error accumulation; 3) an adaptive Gaussian fusion operation that propagates persistent Gaussians while handling emerging and vanishing ones.
+
+Extensive experiments on standard dynamic and static benchmarks demonstrate that StreamSplat achieves state-of-the-art reconstruction quality and dynamic scene modeling. Uniquely, our method supports the online reconstruction of arbitrarily long video streams with a 1200x speedup over optimization-based methods. Our code and models are available at https://streamsplat3d.github.io/.
+
+Raw provenance:
+Official OpenReview forum visible text captured through browser-accessible page.

@@ -1,0 +1,11 @@
+{
+  "url": "https://openreview.net/group?id=ICML.cc/2026/Conference",
+  "status": "success",
+  "method": "playwright",
+  "http_status": 200,
+  "page_title": "ICML 2026 Conference | OpenReview",
+  "body_text_length": 38344,
+  "records_found": 0,
+  "records": [],
+  "notes": "Rendered DOM loaded, but no source-like records were detected by the generic extractor."
+}

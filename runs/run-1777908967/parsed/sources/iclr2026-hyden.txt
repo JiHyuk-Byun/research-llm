@@ -1,0 +1,17 @@
+Source ID: iclr2026-hyden
+Title: Hyden: A Hybrid Dual-Path Encoder for Monocular Geometry of High-resolution Images
+Original URL: https://openreview.net/forum?id=2eL6yXLCh8
+PDF URL checked: https://openreview.net/pdf?id=2eL6yXLCh8
+Extraction method: OpenReview forum metadata extraction. Browser PDF extraction did not return usable text during ingest.
+
+Parsed content:
+Hyden is an ICLR 2026 Poster about high-resolution monocular geometry estimation. The OpenReview abstract describes a hybrid dual-path encoder for monocular depth, point-map, and surface-normal estimation. The architecture combines a low-resolution Vision Transformer branch for global context with a full-resolution CNN branch for fine detail, and fuses features with a lightweight MLP before decoding.
+
+Technical elements reported in the OpenReview abstract:
+- The design constrains transformer computation to fixed resolution while using CNN scaling for high-resolution inputs.
+- The paper introduces a self-distillation framework using pseudo-labels from existing models at both lower-resolution full-image and high-resolution crop levels.
+- The approach is integrated into DepthAnything-v2 for depth estimation and MoGe2 for surface-normal and metric point-map prediction.
+- The reported relevance to this run is efficient point-map/depth estimation, not online streaming reconstruction.
+
+Citation trace:
+- Raw forum capture: runs/run-1777908967/raw/sources/iclr2026-hyden.openreview.txt

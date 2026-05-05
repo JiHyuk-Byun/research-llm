@@ -1,0 +1,14 @@
+codex:
+  command: codex
+  sandbox: workspace-write
+  web_search: true
+
+wiki:
+  compact: true
+  mutation_owner: research-os-wiki-update
+  require_citations: true
+
+search:
+  default_expansion_policy: ask_user_before_expanding
+  scoped_search_is_binding: true
+

@@ -1,0 +1,14 @@
+Source ID: iclr2026-pi3
+Original URL: https://openreview.net/forum?id=DTQIjngDta
+Access date: 2026-05-05
+Capture method: Browser-rendered OpenReview forum text captured because shell DNS/network access was unavailable.
+
+Title: pi^3: Permutation-Equivariant Visual Geometry Learning
+Authors: Yifan Wang; Jianjun Zhou; Haoyi Zhu; Wenzheng Chang; Yang Zhou; Zizun Li; Junyi Chen; Jiangmiao Pang; Chunhua Shen; Tong He
+Venue status: Published: 26 Jan 2026, Last Modified: 11 Apr 2026. ICLR 2026 Poster.
+License shown: CC BY 4.0
+Keywords: Permutation-Equivariance; 3D reconstruction; Reference-Free; Camera Pose Estimation; Depth Estimation
+TL;DR: pi^3 is a feed-forward model that reconstructs 3D geometry without a fixed reference view, making it more robust and accurate for tasks like camera pose and depth estimation.
+Abstract: We introduce pi^3, a feed-forward neural network that offers a novel approach to visual geometry reconstruction, breaking the reliance on a conventional fixed reference view. Previous methods often anchor their reconstructions to a designated viewpoint, an inductive bias that can lead to instability and failures if the reference is suboptimal. In contrast, pi^3 employs a fully permutation-equivariant architecture to predict affine-invariant camera poses and scale-invariant local point maps without any reference frames. This design not only makes our model inherently robust to input ordering, but also leads to higher accuracy and performance. These advantages enable our simple and bias-free approach to achieve state-of-the-art performance on a wide range of tasks, including camera pose estimation, monocular/video depth estimation, and dense point map reconstruction. Code and models are available at https://github.com/yyfz/Pi3.
+Primary area: applications to computer vision, audio, language, and other modalities.
+Submission number: 7040.

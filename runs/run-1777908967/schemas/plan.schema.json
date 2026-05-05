@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "research-os plan",
+  "type": "object",
+  "required": ["run_id", "user_instruction", "task_type", "source_scope", "stages", "final_expected_artifact"],
+  "properties": {
+    "run_id": { "type": "string" },
+    "user_instruction": { "type": "string" },
+    "task_type": {
+      "type": "string",
+      "enum": ["knowledge_building", "knowledge_using", "hybrid"]
+    },
+    "source_scope": {
+      "type": "object",
+      "required": ["mode", "allowed_sources", "expansion_policy"],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": ["web", "academic", "local_library", "fixed_collection", "venue_scope", "wiki_only"]
+        },
+        "allowed_sources": { "type": "array", "items": { "type": "string" } },
+        "disallowed_sources": { "type": "array", "items": { "type": "string" } },
+        "allowed_source_types": { "type": "array", "items": { "type": "string" } },
+        "recency": { "type": "string" },
+        "expansion_policy": {
+          "type": "string",
+          "enum": ["ask_user_before_expanding", "allowed", "forbidden"]
+        }
+      },
+      "additionalProperties": true
+    },
+    "stages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "agent_skill", "inputs", "outputs", "may_mutate_wiki"],
+        "properties": {
+          "name": { "type": "string" },
+          "agent_skill": { "type": "string" },
+          "inputs": { "type": "array", "items": { "type": "string" } },
+          "outputs": { "type": "array", "items": { "type": "string" } },
+          "may_mutate_wiki": { "type": "boolean" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "final_expected_artifact": { "type": "string" }
+  },
+  "additionalProperties": true
+}
+

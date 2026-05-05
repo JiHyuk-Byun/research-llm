@@ -1,0 +1,22 @@
+Source ID: iclr2026-stream3r
+Title: STream3R: Scalable Sequential 3D Reconstruction with Causal Transformer
+Original URL: https://openreview.net/forum?id=RTTYGeC2Io
+PDF URL checked: https://openreview.net/pdf?id=RTTYGeC2Io
+Extraction method: Browser PDF text extraction plus OpenReview forum metadata.
+
+Published as a conference paper at ICLR 2026.
+
+Abstract:
+STREAM3R reformulates pointmap prediction as a decoder-only Transformer problem. It targets scalable sequential 3D reconstruction from image streams by using causal attention, cached context from prior frames, and LLM-style training/inference infrastructure. The paper states that the model predicts dense 3D geometry for incoming frames, generalizes across static and dynamic scene benchmarks, and supports online 3D perception in streaming environments.
+
+Relevant extracted technical details:
+- The paper frames streaming visual input as a setting where applications continuously process new observations and update reconstruction on the fly.
+- It contrasts STREAM3R with fixed-set multi-view methods that re-run full reconstruction when a new image arrives, and with memory/RNN-style methods that can drift or have limited memory.
+- The method processes incoming frames sequentially with causal attention over accumulated observations and cached features from past frames.
+- Outputs include local-coordinate point maps, global-coordinate point maps, and camera pose/intrinsic information.
+- The problem formulation maps a stream of RGB images to per-frame 3D attributes, including local and global point maps and camera pose.
+- The related-work discussion identifies pointmap-based representations as a feed-forward dense 3D geometry format and argues that prior pairwise or global-attention approaches have scalability issues.
+
+Citation trace:
+- Raw forum capture: runs/run-1777908967/raw/sources/iclr2026-stream3r.openreview.txt
+- Browser PDF text extraction from official OpenReview PDF endpoint.

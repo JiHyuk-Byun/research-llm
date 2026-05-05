@@ -1,0 +1,18 @@
+Source ID: cvpr2026-36688
+Title: LASER: Layer-wise Scale Alignment for Training-Free Streaming 4D Reconstruction
+Venue: CVPR 2026 Accept (Poster)
+Official URL: https://cvpr.thecvf.com/virtual/2026/poster/36688
+Official confirmation URL: https://cvpr.thecvf.com/static/virtual/data/cvpr-2026-orals-posters.json
+CVPR virtualsite URL: /virtual/2026/poster/36688
+Decision: Accept (Poster)
+Event type: Poster
+Authors: Tianye Ding (Northeastern University); Yiming Xie (Northeastern University); Yiqing Liang (Brown University); Moitreya Chatterjee (Mitsubishi Electric Research Labs); Pedro Miraldo (Mitsubishi Electric Research Laboratories); Huaizu Jiang (Northeastern University)
+Keywords: 
+
+Abstract:
+Recent feed-forward reconstruction models like VGGT and $\pi^3$ achieve impressive reconstruction quality but cannot process streaming videos due to quadratic memory complexity, limiting their practical deployment. While existing streaming methods address this through learned memory mechanisms or causal attention, they require extensive retraining and may not fully leverage the strong geometric priors of state-of-the-art offline models. We propose LASER, a training-free framework that converts an offline reconstruction model into a streaming system byaligning predictions across consecutive temporal windows. We observe that simple similarity transformation ($Sim(3)$) alignment fails due to layer depth misalignment: monocular scale ambiguity causes relative depth scales of different scene layers to vary inconsistently between windows. To address this, we introduce layer-wise scale alignment, which segments depth predictions into discrete layers, computes per-layer scale factors, and propagates them across both adjacent windows and timestamps.Extensive experiments show that LASER achieves state-of-the-art performance on camera pose estimation and point map reconstruction while operating at 14 FPS with 6 GB peak memory on a RTX A6000 GPU, enabling practical deployment for kilometer-scale streaming videos.Our code will be released publicly.
+
+Raw provenance:
+Extracted from run-local official CVPR 2026 virtual-site JSON artifact cvpr-2026-orals-posters.json.
+paper_pdf_url: null
+paper_url: 

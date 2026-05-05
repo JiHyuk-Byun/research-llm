@@ -1,0 +1,12 @@
+{
+  "name": "research-os",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "install:browsers": "playwright install chromium",
+    "render-source": "node scripts/render_source_page.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.52.0"
+  }
+}

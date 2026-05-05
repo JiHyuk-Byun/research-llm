@@ -1,0 +1,59 @@
+{
+  "run_id": "run-1777971106",
+  "user_instruction": "hello",
+  "task_type": "knowledge_using",
+  "source_scope": {
+    "mode": "wiki_only",
+    "allowed_sources": [
+      "runs/run-1777971106/wiki/index.md",
+      "runs/run-1777971106/wiki/log.md",
+      "runs/run-1777971106/wiki/followups.md",
+      "runs/run-1777971106/wiki/sources/",
+      "runs/run-1777971106/wiki/topics/",
+      "runs/run-1777971106/wiki/synthesis/",
+      "runs/run-1777971106/wiki/outputs/"
+    ],
+    "disallowed_sources": [
+      "web search",
+      "academic search",
+      "repo-level wiki/",
+      "repo-level raw/",
+      "repo-level parsed/",
+      "repo-level schemas/",
+      "external source ingestion"
+    ],
+    "allowed_source_types": [
+      "run-local wiki pages"
+    ],
+    "recency": "not applicable; no source gathering requested",
+    "expansion_policy": "forbidden"
+  },
+  "stages": [
+    {
+      "name": "discussion_response",
+      "agent_skill": "research-os-discussion",
+      "inputs": [
+        "runs/run-1777971106/plan.json",
+        "runs/run-1777971106/wiki/index.md"
+      ],
+      "outputs": [
+        "runs/run-1777971106/wiki/outputs/final_answer.md"
+      ],
+      "may_mutate_wiki": true,
+      "wiki_mutation_permissions": {
+        "allowed": [
+          "runs/run-1777971106/wiki/outputs/final_answer.md"
+        ],
+        "forbidden": [
+          "runs/run-1777971106/wiki/index.md",
+          "runs/run-1777971106/wiki/log.md",
+          "runs/run-1777971106/wiki/followups.md",
+          "runs/run-1777971106/wiki/sources/",
+          "runs/run-1777971106/wiki/topics/",
+          "runs/run-1777971106/wiki/synthesis/"
+        ]
+      }
+    }
+  ],
+  "final_expected_artifact": "runs/run-1777971106/wiki/outputs/final_answer.md"
+}

@@ -1,0 +1,18 @@
+Source ID: cvpr2026-39439
+Title: V-DPM: Video Reconstruction with Dynamic Point Maps
+Venue: CVPR 2026 Accept (Poster)
+Official URL: https://cvpr.thecvf.com/virtual/2026/poster/39439
+Official confirmation URL: https://cvpr.thecvf.com/static/virtual/data/cvpr-2026-orals-posters.json
+CVPR virtualsite URL: /virtual/2026/poster/39439
+Decision: Accept (Poster)
+Event type: Poster
+Authors: Edgar Sucar (University of Oxford); Eldar Insafutdinov (Amazon); Zihang Lai (University of Oxford); Andrea Vedaldi (University of Oxford)
+Keywords: 
+
+Abstract:
+New, powerful 3D representations such as DUSt3R’s invariant point maps, which encode 3D shape and camera parameters, have significantly advanced feed-forward 3D reconstruction. While point maps assume static scenes, Dynamic Point Maps (DPMs) extend the concept to dynamic 3D content, also representing 3D scene motion.However, DPMs have so far been limited to image pairs and, like DUSt3R, require post-processing via optimization when more than two views are involved. We argue that DPMs are far more meaningful when applied to videos and introduce V-DPM to demonstrate this.First, we show how to set up DPMs for videos to optimize their representational power, ease of neural prediction, and reuse of pre-trained models. Second, we implement these ideas on top of VGGT, a recent state-of-the-art 3D reconstructor. Although VGGT was trained on static scenes, we show that a small amount of synthetic data suffices to adapt it into an effective V-DPM predictor.This yields state-of-the-art 3D and 4D reconstruction in dynamic settings. In particular, unlike recent dynamic extensions of VGGT such as P3, DPMs reconstruct not only dynamic depth but also the full 3D motion of every point in the scene.
+
+Raw provenance:
+Extracted from run-local official CVPR 2026 virtual-site JSON artifact cvpr-2026-orals-posters.json.
+paper_pdf_url: null
+paper_url: 

@@ -1,0 +1,93 @@
+{
+  "run_id": "run-1777880110",
+  "source_scope_obeyed": true,
+  "selected_sources": [
+    {
+      "source_id": "iclr2026-wint3r-pjviszizf1",
+      "title": "WinT3R: Window-Based Streaming Reconstruction with Camera Token Pool",
+      "url_or_path": "https://openreview.net/forum?id=PjviszIZf1",
+      "rank": 1,
+      "selection_rationale": "Official ICLR 2026 Poster OpenReview record. The search metadata directly matches online point-map reconstruction, describing online prediction of camera poses and high-quality point maps with a sliding-window mechanism and global camera token pool.",
+      "expected_use": "Primary source for windowed streaming point-map reconstruction, speed-quality tradeoffs, and online camera/point-map prediction."
+    },
+    {
+      "source_id": "iclr2026-stream3r-rttygec2io",
+      "title": "STream3R: Scalable Sequential 3D Reconstruction with Causal Transformer",
+      "url_or_path": "https://openreview.net/forum?id=RTTYGeC2Io",
+      "rank": 2,
+      "selection_rationale": "Official ICLR 2026 Poster OpenReview record. The metadata explicitly describes pointmap prediction over image sequences with causal attention for streaming 3D reconstruction, making it central to the query.",
+      "expected_use": "Primary source for causal-transformer sequential point-map prediction and streaming 3D reconstruction framing."
+    },
+    {
+      "source_id": "iclr2026-streaming-vgt-5apgtksnx8",
+      "title": "Streaming Visual Geometry Transformer",
+      "url_or_path": "https://openreview.net/forum?id=5APgTKsnx8",
+      "rank": 3,
+      "selection_rationale": "Official ICLR 2026 Poster OpenReview record. The result directly targets online, low-latency, long-term 3D reconstruction using causal temporal attention and cached historical keys/values.",
+      "expected_use": "Primary source for streaming transformer design, implicit memory via cached attention state, and low-latency reconstruction constraints."
+    },
+    {
+      "source_id": "iclr2026-streamsplat-saidrqu7ez",
+      "title": "StreamSplat: Towards Online Dynamic 3D Reconstruction from Uncalibrated Video Streams",
+      "url_or_path": "https://openreview.net/forum?id=SaiDRQU7Ez",
+      "rank": 4,
+      "selection_rationale": "Official ICLR 2026 Poster OpenReview record. The source is highly relevant under the plan's allowed expansion to dynamic or online Gaussian/point-based mapping, with online reconstruction from uncalibrated video streams under latency and memory constraints.",
+      "expected_use": "Source for online dynamic reconstruction from streaming video and comparison against point-map-oriented approaches."
+    },
+    {
+      "source_id": "iclr2026-incvggt-ceza1ela1y",
+      "title": "IncVGGT: Incremental VGGT for Memory-Bounded Long-Range 3D Reconstruction",
+      "url_or_path": "https://openreview.net/forum?id=CezA1eLa1Y",
+      "rank": 5,
+      "selection_rationale": "Official ICLR 2026 Poster OpenReview record. Relevant to incremental and memory-bounded long-sequence reconstruction, with metadata noting cache-growth and latency issues in streaming variants.",
+      "expected_use": "Source for memory-bounded incremental reconstruction, long-range sequence handling, and system constraints for streaming methods."
+    },
+    {
+      "source_id": "iclr2026-ttt3r-ams6ftnay5",
+      "title": "TTT3R: 3D Reconstruction as Test-Time Training",
+      "url_or_path": "https://openreview.net/forum?id=aMs6FtNaY5",
+      "rank": 6,
+      "selection_rationale": "Official ICLR 2026 Poster OpenReview record. Relevant because the metadata frames reconstruction updates as online learning and reports real-time operation at 20 FPS with bounded GPU memory over long image sequences.",
+      "expected_use": "Source for real-time online update mechanisms, throughput claims, and memory-footprint comparisons."
+    },
+    {
+      "source_id": "iclr2026-artdeco-qxvdyjp7g9",
+      "title": "ARTDECO: Toward High-Fidelity On-the-Fly Reconstruction with Hierarchical Gaussian Structure and Feed-Forward Guidance",
+      "url_or_path": "https://openreview.net/forum?id=QxvDyJP7g9",
+      "rank": 7,
+      "selection_rationale": "Official ICLR 2026 Poster OpenReview record. Relevant through on-the-fly monocular-video reconstruction, real-time feed-forward inference, and structured Gaussian scene representations, though less directly point-map-focused than higher-ranked sources.",
+      "expected_use": "Supporting source for on-the-fly Gaussian reconstruction and real-time feed-forward reconstruction design."
+    },
+    {
+      "source_id": "iclr2026-unisplat-ng2vdbkd4r",
+      "title": "UniSplat: Unified Spatio-Temporal Fusion via 3D Latent Scaffolds for Dynamic Driving Scene Reconstruction",
+      "url_or_path": "https://openreview.net/forum?id=Ng2VDbKD4r",
+      "rank": 8,
+      "selection_rationale": "Official ICLR 2026 Poster OpenReview record. Relevant to the allowed online Gaussian/point-based mapping expansion, especially streaming scene completion and persistent static-Gaussian memory, but domain-specific to driving scenes.",
+      "expected_use": "Supporting source for dynamic-scene and driving-scene streaming completion, persistent memory, and point-anchored Gaussian refinement."
+    },
+    {
+      "source_id": "iclr2026-pi3-dtqijngdta",
+      "title": "$\\pi^3$: Permutation-Equivariant Visual Geometry Learning",
+      "url_or_path": "https://openreview.net/forum?id=DTQIjngDta",
+      "rank": 9,
+      "selection_rationale": "Official ICLR 2026 Poster OpenReview record. Relevant for dense point-map reconstruction and feed-forward visual geometry, but the search metadata does not establish a streaming or real-time contribution.",
+      "expected_use": "Background source for point-map prediction foundations and non-streaming comparison context."
+    },
+    {
+      "source_id": "iclr2026-dens3r-kxvjqhkawz",
+      "title": "Dens3R: A Foundation Model for 3D Geometry Prediction",
+      "url_or_path": "https://openreview.net/forum?id=kxVjQhkAWz",
+      "rank": 10,
+      "selection_rationale": "Official ICLR 2026 Poster OpenReview record. Relevant to point maps and 3D geometry prediction, but weakest among selected sources because the search metadata does not indicate streaming, online, or real-time operation.",
+      "expected_use": "Background source for point-map and 3D geometry prediction concepts; useful mainly for comparison with streaming methods."
+    }
+  ],
+  "not_selected": [],
+  "coverage_gaps": [
+    "The in-scope search results contain only ICLR 2026 Poster OpenReview records; no matching accepted CVPR 2026 or ICML 2026 main-conference source was present in search_results.json.",
+    "Several selected sources are relevant via the plan's allowed search expansions, especially online Gaussian/point-based mapping, but are not strictly point-map reconstruction papers.",
+    "Triage is based on search-stage metadata only; later stages must read the selected OpenReview records and linked PDFs before making technical claims.",
+    "If broader coverage is required, a future search stage should explicitly check official CVPR 2026 proceedings/CVF Open Access and official ICML 2026 proceedings or accepted-paper listings again under the same venue-year constraints."
+  ]
+}

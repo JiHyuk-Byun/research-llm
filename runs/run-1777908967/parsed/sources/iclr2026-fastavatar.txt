@@ -1,0 +1,22 @@
+Source ID: iclr2026-fastavatar
+Title: FastAvatar: Towards Unified and Fast 3D Avatar Reconstruction with Large Gaussian Reconstruction Transformers
+Original URL: https://openreview.net/forum?id=P7zBSCs4Xt
+PDF URL checked: https://openreview.net/pdf?id=P7zBSCs4Xt
+Extraction method: Browser PDF text extraction plus OpenReview forum metadata.
+
+Published as a conference paper at ICLR 2026.
+
+Abstract:
+FastAvatar is a feed-forward 3D avatar reconstruction framework that takes inputs such as a single image, multi-view observations, or monocular video and reconstructs a 3D Gaussian Splatting avatar model within seconds. It uses a Large Gaussian Reconstruction Transformer with multi-frame aggregation, camera/expression/head-pose guidance, and incremental Gaussian aggregation.
+
+Relevant extracted technical details:
+- The paper emphasizes variable-length input handling because real-world avatar observations can include arbitrary numbers of frames.
+- FastAvatar can incrementally use additional observations to improve reconstruction quality.
+- Its Large Gaussian Reconstruction Transformer aggregates and registers face tokens, injects 3D positional prompts, and predicts canonical 3DGS attributes.
+- The method includes landmark tracking loss and sliced fusion loss to support alignment and incremental fusion.
+- The method prunes redundant 3D Gaussian primitives because primitive count can grow linearly with input frame count in incremental scenarios.
+- The reported domain is avatar/head reconstruction, so it is supporting rather than primary evidence for general online scene point-map reconstruction.
+
+Citation trace:
+- Raw forum capture: runs/run-1777908967/raw/sources/iclr2026-fastavatar.openreview.txt
+- Browser PDF text extraction from official OpenReview PDF endpoint.

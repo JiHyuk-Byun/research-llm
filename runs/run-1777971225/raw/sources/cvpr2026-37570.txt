@@ -1,0 +1,18 @@
+Source ID: cvpr2026-37570
+Title: ClipGStream: Clip-Stream Gaussian Splatting for Any Length and Any Motion Multi-View Dynamic Scene Reconstruction
+Venue: CVPR 2026 Accept (Poster)
+Official URL: https://cvpr.thecvf.com/virtual/2026/poster/37570
+Official confirmation URL: https://cvpr.thecvf.com/static/virtual/data/cvpr-2026-orals-posters.json
+CVPR virtualsite URL: /virtual/2026/poster/37570
+Decision: Accept (Poster)
+Event type: Poster
+Authors: Jie Liang (Peking University); Jiahao Wu (Peking University); Chao Wang (Saarland Informatics Campus, Max-Planck Institute); Jiayu Yang (Pengcheng Laboratory); Xiaoyun Zheng (Pengcheng Laboratory); Kaiqiang Xiong (Peking University); Zhanke Wang (Peking University); Jinbo Yan (Peking University); Feng Gao (Peking University); Ronggang Wang (Peking University Shenzhen Graduate School)
+Keywords: 
+
+Abstract:
+Dynamic 3D scene reconstruction is essential for immersive media such as VR, MR, and XR, yet remains challenging for long multi-view sequences with large-scale motion. Existing dynamic Gaussian approaches are either Frame-Stream, offering scalability but poor temporal stability, or Clip, achieving local consistency at the cost of high memory and limited sequence length.We propose ClipGStream, a hybrid reconstruction framework that performs stream optimization at the clip level rather than the frame level. The sequence is divided into short clips, where dynamic motion is modeled using clip-independent spatio-temporal fields and residual anchor compensation to capture local variations efficiently, while inter-clip inherited anchors and decoders maintain structural consistency across clips. This Clip-Stream design enables scalable, flicker-free reconstruction of long dynamic videos with high temporal coherence and reduced memory overhead. Extensive experiments demonstrate that ClipGStream achieves state-of-the-art reconstruction quality and efficiency.
+
+Raw provenance:
+Extracted from run-local official CVPR 2026 virtual-site JSON artifact cvpr-2026-orals-posters.json.
+paper_pdf_url: null
+paper_url: 

@@ -1,0 +1,205 @@
+{
+  "run_id": "run-1777908095",
+  "user_instruction": "please reasearch for recent online streaming video point map reconstruction papers in CVPR 2026, ICLR 2026, ICML 2026.",
+  "task_type": "knowledge_building",
+  "source_scope": {
+    "mode": "venue_scope",
+    "allowed_sources": [
+      {
+        "venue": "CVPR",
+        "year": 2026,
+        "acceptable_locations": [
+          "official CVPR 2026 proceedings or accepted papers pages",
+          "CVF Open Access CVPR 2026 paper pages when available",
+          "publisher or conference-hosted paper PDFs linked from official CVPR 2026 records"
+        ]
+      },
+      {
+        "venue": "ICLR",
+        "year": 2026,
+        "acceptable_locations": [
+          "official ICLR 2026 conference accepted papers pages",
+          "OpenReview ICLR 2026 accepted paper records",
+          "paper PDFs linked from official ICLR 2026 or OpenReview records"
+        ]
+      },
+      {
+        "venue": "ICML",
+        "year": 2026,
+        "acceptable_locations": [
+          "official ICML 2026 conference accepted papers pages",
+          "PMLR ICML 2026 proceedings pages when available",
+          "OpenReview ICML 2026 accepted paper records if used by the venue",
+          "paper PDFs linked from official ICML 2026, PMLR, or OpenReview records"
+        ]
+      }
+    ],
+    "disallowed_sources": [
+      "papers outside CVPR 2026, ICLR 2026, or ICML 2026 as evidence for the requested set",
+      "non-accepted submissions, withdrawn submissions, workshop-only papers, posters without paper records, blog posts, social media posts, and project pages unless they are only used to locate an official accepted-paper record",
+      "arXiv-only versions unless the official venue record links to the same paper and the arXiv PDF is needed as an accessible copy"
+    ],
+    "allowed_source_types": [
+      "official accepted-paper metadata",
+      "official proceedings paper pages",
+      "accepted-paper PDFs",
+      "official supplementary material linked from accepted-paper records",
+      "official venue schedules only for confirming acceptance status"
+    ],
+    "topic_query": {
+      "primary_concepts": [
+        "online point map reconstruction",
+        "streaming video reconstruction",
+        "video-based 3D point map estimation",
+        "incremental point map prediction",
+        "dynamic or online 3D reconstruction from video"
+      ],
+      "include_if": [
+        "the paper proposes or evaluates online, streaming, incremental, causal, or frame-by-frame reconstruction from video",
+        "the output includes point maps, 3D point clouds, dense scene coordinates, geometry maps, or closely equivalent per-pixel/per-frame 3D map representations",
+        "the accepted venue is CVPR 2026, ICLR 2026, or ICML 2026"
+      ],
+      "exclude_if": [
+        "the method is only offline batch reconstruction without online or streaming operation",
+        "the paper only performs generic video understanding, SLAM localization without map reconstruction, or depth estimation without point-map-like reconstruction outputs",
+        "the paper is outside the allowed venues or lacks accepted-paper confirmation"
+      ]
+    },
+    "recency": "2026 accepted papers only, scoped to CVPR 2026, ICLR 2026, and ICML 2026",
+    "expansion_policy": "ask_user_before_expanding"
+  },
+  "stages": [
+    {
+      "name": "search",
+      "agent_skill": "research-os-search",
+      "purpose": "Find candidate accepted papers matching the topic within the allowed 2026 venues and record rejected out-of-scope leads separately.",
+      "inputs": [
+        "runs/run-1777908095/plan.json",
+        "wiki/index.md"
+      ],
+      "outputs": [
+        "runs/run-1777908095/search_results.json"
+      ],
+      "may_mutate_wiki": false,
+      "wiki_mutation_permissions": "none"
+    },
+    {
+      "name": "source_triage",
+      "agent_skill": "research-os-source-triage",
+      "purpose": "Verify venue acceptance, year, topic relevance, source type, and whether each candidate satisfies the online/streaming plus point-map reconstruction criteria.",
+      "inputs": [
+        "runs/run-1777908095/plan.json",
+        "runs/run-1777908095/search_results.json"
+      ],
+      "outputs": [
+        "runs/run-1777908095/triage.json"
+      ],
+      "may_mutate_wiki": false,
+      "wiki_mutation_permissions": "none"
+    },
+    {
+      "name": "ingest",
+      "agent_skill": "research-os-ingest",
+      "purpose": "Store immutable source files and parsed text for triaged in-scope papers and official metadata records.",
+      "inputs": [
+        "runs/run-1777908095/plan.json",
+        "runs/run-1777908095/triage.json"
+      ],
+      "outputs": [
+        "raw/sources/",
+        "parsed/sources/",
+        "runs/run-1777908095/ingest_manifest.json"
+      ],
+      "may_mutate_wiki": false,
+      "wiki_mutation_permissions": "none"
+    },
+    {
+      "name": "reader",
+      "agent_skill": "research-os-reader",
+      "purpose": "Extract structured notes from each in-scope paper, emphasizing task setting, online/streaming mechanism, point-map representation, datasets, benchmarks, metrics, limitations, and evidence strength.",
+      "inputs": [
+        "runs/run-1777908095/plan.json",
+        "runs/run-1777908095/ingest_manifest.json",
+        "parsed/sources/"
+      ],
+      "outputs": [
+        "wiki/sources/",
+        "runs/run-1777908095/reader_notes.json"
+      ],
+      "may_mutate_wiki": true,
+      "wiki_mutation_permissions": "may create or update source notes only under wiki/sources/ for ingested in-scope sources"
+    },
+    {
+      "name": "wiki_update_sources_and_topics",
+      "agent_skill": "research-os-wiki-update",
+      "purpose": "Integrate reader notes into compact durable wiki state with cited topic pages and append-only log entries.",
+      "inputs": [
+        "runs/run-1777908095/plan.json",
+        "runs/run-1777908095/reader_notes.json",
+        "wiki/sources/"
+      ],
+      "outputs": [
+        "wiki/index.md",
+        "wiki/log.md",
+        "wiki/followups.md",
+        "wiki/topics/"
+      ],
+      "may_mutate_wiki": true,
+      "wiki_mutation_permissions": "may update wiki/index.md, append wiki/log.md, update wiki/followups.md, and create or update cited topic pages under wiki/topics/"
+    },
+    {
+      "name": "synthesis",
+      "agent_skill": "research-os-synthesis",
+      "purpose": "Build a cross-paper synthesis of the in-scope CVPR 2026, ICLR 2026, and ICML 2026 papers, including trends, method taxonomy, conflicts, gaps, and a compact user-facing research map.",
+      "inputs": [
+        "runs/run-1777908095/plan.json",
+        "wiki/index.md",
+        "wiki/sources/",
+        "wiki/topics/"
+      ],
+      "outputs": [
+        "wiki/synthesis/online-streaming-video-point-map-reconstruction-2026.md",
+        "runs/run-1777908095/synthesis_notes.md"
+      ],
+      "may_mutate_wiki": true,
+      "wiki_mutation_permissions": "may create or update synthesis drafts/pages only under wiki/synthesis/; all technical claims must cite wiki/sources/"
+    },
+    {
+      "name": "wiki_update_synthesis_and_output",
+      "agent_skill": "research-os-wiki-update",
+      "purpose": "Preserve final synthesis state and create a durable answer artifact for the requested venue-scoped paper survey.",
+      "inputs": [
+        "runs/run-1777908095/plan.json",
+        "wiki/synthesis/online-streaming-video-point-map-reconstruction-2026.md",
+        "runs/run-1777908095/synthesis_notes.md"
+      ],
+      "outputs": [
+        "wiki/index.md",
+        "wiki/log.md",
+        "wiki/followups.md",
+        "wiki/outputs/online-streaming-video-point-map-reconstruction-cvpr-iclr-icml-2026.md"
+      ],
+      "may_mutate_wiki": true,
+      "wiki_mutation_permissions": "may update wiki/index.md, append wiki/log.md, update wiki/followups.md, and create one cited durable output under wiki/outputs/"
+    },
+    {
+      "name": "lint_critic",
+      "agent_skill": "research-os-lint-critic",
+      "purpose": "Audit source-scope compliance, citation coverage, wiki invariants, and whether any claims rely on disallowed or weak sources.",
+      "inputs": [
+        "runs/run-1777908095/plan.json",
+        "wiki/index.md",
+        "wiki/sources/",
+        "wiki/topics/",
+        "wiki/synthesis/online-streaming-video-point-map-reconstruction-2026.md",
+        "wiki/outputs/online-streaming-video-point-map-reconstruction-cvpr-iclr-icml-2026.md"
+      ],
+      "outputs": [
+        "runs/run-1777908095/lint_report.md"
+      ],
+      "may_mutate_wiki": false,
+      "wiki_mutation_permissions": "none"
+    }
+  ],
+  "final_expected_artifact": "wiki/outputs/online-streaming-video-point-map-reconstruction-cvpr-iclr-icml-2026.md"
+}

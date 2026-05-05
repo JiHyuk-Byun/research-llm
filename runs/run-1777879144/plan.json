@@ -1,0 +1,44 @@
+{
+  "run_id": "run-1777879144",
+  "user_instruction": "hello",
+  "task_type": "knowledge_using",
+  "source_scope": {
+    "mode": "wiki_only",
+    "allowed_sources": [
+      "wiki/index.md",
+      "wiki/log.md",
+      "wiki/followups.md",
+      "wiki/sources/",
+      "wiki/topics/",
+      "wiki/synthesis/",
+      "wiki/outputs/"
+    ],
+    "disallowed_sources": [
+      "raw/sources/",
+      "parsed/sources/",
+      "web_search",
+      "academic_search",
+      "new_external_sources"
+    ],
+    "allowed_source_types": [
+      "existing_wiki_pages"
+    ],
+    "recency": "existing wiki state as of 2026-05-04",
+    "expansion_policy": "ask_user_before_expanding"
+  },
+  "stages": [
+    {
+      "name": "discussion_response",
+      "agent_skill": "research-os-discussion",
+      "inputs": [
+        "runs/run-1777879144/plan.json",
+        "wiki/index.md"
+      ],
+      "outputs": [
+        "runs/run-1777879144/final_answer.md"
+      ],
+      "may_mutate_wiki": false
+    }
+  ],
+  "final_expected_artifact": "runs/run-1777879144/final_answer.md"
+}

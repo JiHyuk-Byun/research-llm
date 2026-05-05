@@ -1,0 +1,226 @@
+{
+  "run_id": "run-1777971225",
+  "items": [
+    {
+      "source_id": "cvpr2026-37067",
+      "original_url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37067",
+      "pdf_url": "",
+      "pdf_download_attempted": false,
+      "pdf_download_status": "not_available",
+      "pdf_download_error": "",
+      "fallback_reason": "Official CVPR 2026 virtual-site record has paper_pdf_url=null and no CVF/OpenAccess proceedings PDF was available in the run-local official search artifact.",
+      "raw_format": "txt",
+      "access_date": "2026-05-05",
+      "raw_path": "runs/run-1777971225/raw/sources/cvpr2026-37067.txt",
+      "parsed_path": "runs/run-1777971225/parsed/sources/cvpr2026-37067.txt",
+      "extraction_method": "official_cvpr_virtual_json_fields_to_text",
+      "known_failures": [
+        "Original PDF unavailable from official CVPR virtual-site metadata at ingest time."
+      ]
+    },
+    {
+      "source_id": "iclr2026-RTTYGeC2Io",
+      "original_url_or_path": "https://openreview.net/forum?id=RTTYGeC2Io",
+      "pdf_url": "https://openreview.net/pdf?id=RTTYGeC2Io",
+      "pdf_download_attempted": true,
+      "pdf_download_status": "failed",
+      "pdf_download_error": "curl: (6) Could not resolve host: openreview.net",
+      "fallback_reason": "Direct OpenReview PDF download was attempted with curl but shell networking could not resolve openreview.net; saved browser-accessible official OpenReview forum text instead.",
+      "raw_format": "txt",
+      "access_date": "2026-05-05",
+      "raw_path": "runs/run-1777971225/raw/sources/iclr2026-RTTYGeC2Io.txt",
+      "parsed_path": "runs/run-1777971225/parsed/sources/iclr2026-RTTYGeC2Io.txt",
+      "extraction_method": "official_openreview_visible_text_fallback",
+      "known_failures": [
+        "PDF not preserved because shell network DNS resolution failed during curl download."
+      ]
+    },
+    {
+      "source_id": "cvpr2026-36688",
+      "original_url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36688",
+      "pdf_url": "",
+      "pdf_download_attempted": false,
+      "pdf_download_status": "not_available",
+      "pdf_download_error": "",
+      "fallback_reason": "Official CVPR 2026 virtual-site record has paper_pdf_url=null and no CVF/OpenAccess proceedings PDF was available in the run-local official search artifact.",
+      "raw_format": "txt",
+      "access_date": "2026-05-05",
+      "raw_path": "runs/run-1777971225/raw/sources/cvpr2026-36688.txt",
+      "parsed_path": "runs/run-1777971225/parsed/sources/cvpr2026-36688.txt",
+      "extraction_method": "official_cvpr_virtual_json_fields_to_text",
+      "known_failures": [
+        "Original PDF unavailable from official CVPR virtual-site metadata at ingest time."
+      ]
+    },
+    {
+      "source_id": "iclr2026-SaiDRQU7Ez",
+      "original_url_or_path": "https://openreview.net/forum?id=SaiDRQU7Ez",
+      "pdf_url": "https://openreview.net/pdf?id=SaiDRQU7Ez",
+      "pdf_download_attempted": true,
+      "pdf_download_status": "failed",
+      "pdf_download_error": "curl: (6) Could not resolve host: openreview.net",
+      "fallback_reason": "Direct OpenReview PDF download was attempted with curl but shell networking could not resolve openreview.net; saved browser-accessible official OpenReview forum text instead.",
+      "raw_format": "txt",
+      "access_date": "2026-05-05",
+      "raw_path": "runs/run-1777971225/raw/sources/iclr2026-SaiDRQU7Ez.txt",
+      "parsed_path": "runs/run-1777971225/parsed/sources/iclr2026-SaiDRQU7Ez.txt",
+      "extraction_method": "official_openreview_visible_text_fallback",
+      "known_failures": [
+        "PDF not preserved because shell network DNS resolution failed during curl download."
+      ]
+    },
+    {
+      "source_id": "cvpr2026-39439",
+      "original_url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39439",
+      "pdf_url": "",
+      "pdf_download_attempted": false,
+      "pdf_download_status": "not_available",
+      "pdf_download_error": "",
+      "fallback_reason": "Official CVPR 2026 virtual-site record has paper_pdf_url=null and no CVF/OpenAccess proceedings PDF was available in the run-local official search artifact.",
+      "raw_format": "txt",
+      "access_date": "2026-05-05",
+      "raw_path": "runs/run-1777971225/raw/sources/cvpr2026-39439.txt",
+      "parsed_path": "runs/run-1777971225/parsed/sources/cvpr2026-39439.txt",
+      "extraction_method": "official_cvpr_virtual_json_fields_to_text",
+      "known_failures": [
+        "Original PDF unavailable from official CVPR virtual-site metadata at ingest time."
+      ]
+    },
+    {
+      "source_id": "cvpr2026-38602",
+      "original_url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/38602",
+      "pdf_url": "",
+      "pdf_download_attempted": false,
+      "pdf_download_status": "not_available",
+      "pdf_download_error": "",
+      "fallback_reason": "Official CVPR 2026 virtual-site record has paper_pdf_url=null and no CVF/OpenAccess proceedings PDF was available in the run-local official search artifact.",
+      "raw_format": "txt",
+      "access_date": "2026-05-05",
+      "raw_path": "runs/run-1777971225/raw/sources/cvpr2026-38602.txt",
+      "parsed_path": "runs/run-1777971225/parsed/sources/cvpr2026-38602.txt",
+      "extraction_method": "official_cvpr_virtual_json_fields_to_text",
+      "known_failures": [
+        "Original PDF unavailable from official CVPR virtual-site metadata at ingest time."
+      ]
+    },
+    {
+      "source_id": "cvpr2026-37759",
+      "original_url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37759",
+      "pdf_url": "",
+      "pdf_download_attempted": false,
+      "pdf_download_status": "not_available",
+      "pdf_download_error": "",
+      "fallback_reason": "Official CVPR 2026 virtual-site record has paper_pdf_url=null and no CVF/OpenAccess proceedings PDF was available in the run-local official search artifact.",
+      "raw_format": "txt",
+      "access_date": "2026-05-05",
+      "raw_path": "runs/run-1777971225/raw/sources/cvpr2026-37759.txt",
+      "parsed_path": "runs/run-1777971225/parsed/sources/cvpr2026-37759.txt",
+      "extraction_method": "official_cvpr_virtual_json_fields_to_text",
+      "known_failures": [
+        "Original PDF unavailable from official CVPR virtual-site metadata at ingest time."
+      ]
+    },
+    {
+      "source_id": "cvpr2026-39409",
+      "original_url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39409",
+      "pdf_url": "",
+      "pdf_download_attempted": false,
+      "pdf_download_status": "not_available",
+      "pdf_download_error": "",
+      "fallback_reason": "Official CVPR 2026 virtual-site record has paper_pdf_url=null and no CVF/OpenAccess proceedings PDF was available in the run-local official search artifact.",
+      "raw_format": "txt",
+      "access_date": "2026-05-05",
+      "raw_path": "runs/run-1777971225/raw/sources/cvpr2026-39409.txt",
+      "parsed_path": "runs/run-1777971225/parsed/sources/cvpr2026-39409.txt",
+      "extraction_method": "official_cvpr_virtual_json_fields_to_text",
+      "known_failures": [
+        "Original PDF unavailable from official CVPR virtual-site metadata at ingest time."
+      ]
+    },
+    {
+      "source_id": "cvpr2026-37041",
+      "original_url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37041",
+      "pdf_url": "",
+      "pdf_download_attempted": false,
+      "pdf_download_status": "not_available",
+      "pdf_download_error": "",
+      "fallback_reason": "Official CVPR 2026 virtual-site record has paper_pdf_url=null and no CVF/OpenAccess proceedings PDF was available in the run-local official search artifact.",
+      "raw_format": "txt",
+      "access_date": "2026-05-05",
+      "raw_path": "runs/run-1777971225/raw/sources/cvpr2026-37041.txt",
+      "parsed_path": "runs/run-1777971225/parsed/sources/cvpr2026-37041.txt",
+      "extraction_method": "official_cvpr_virtual_json_fields_to_text",
+      "known_failures": [
+        "Original PDF unavailable from official CVPR virtual-site metadata at ingest time."
+      ]
+    },
+    {
+      "source_id": "cvpr2026-39496",
+      "original_url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/39496",
+      "pdf_url": "",
+      "pdf_download_attempted": false,
+      "pdf_download_status": "not_available",
+      "pdf_download_error": "",
+      "fallback_reason": "Official CVPR 2026 virtual-site record has paper_pdf_url=null and no CVF/OpenAccess proceedings PDF was available in the run-local official search artifact.",
+      "raw_format": "txt",
+      "access_date": "2026-05-05",
+      "raw_path": "runs/run-1777971225/raw/sources/cvpr2026-39496.txt",
+      "parsed_path": "runs/run-1777971225/parsed/sources/cvpr2026-39496.txt",
+      "extraction_method": "official_cvpr_virtual_json_fields_to_text",
+      "known_failures": [
+        "Original PDF unavailable from official CVPR virtual-site metadata at ingest time."
+      ]
+    },
+    {
+      "source_id": "cvpr2026-37570",
+      "original_url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/37570",
+      "pdf_url": "",
+      "pdf_download_attempted": false,
+      "pdf_download_status": "not_available",
+      "pdf_download_error": "",
+      "fallback_reason": "Official CVPR 2026 virtual-site record has paper_pdf_url=null and no CVF/OpenAccess proceedings PDF was available in the run-local official search artifact.",
+      "raw_format": "txt",
+      "access_date": "2026-05-05",
+      "raw_path": "runs/run-1777971225/raw/sources/cvpr2026-37570.txt",
+      "parsed_path": "runs/run-1777971225/parsed/sources/cvpr2026-37570.txt",
+      "extraction_method": "official_cvpr_virtual_json_fields_to_text",
+      "known_failures": [
+        "Original PDF unavailable from official CVPR virtual-site metadata at ingest time."
+      ]
+    },
+    {
+      "source_id": "cvpr2026-36695",
+      "original_url_or_path": "https://cvpr.thecvf.com/virtual/2026/poster/36695",
+      "pdf_url": "",
+      "pdf_download_attempted": false,
+      "pdf_download_status": "not_available",
+      "pdf_download_error": "",
+      "fallback_reason": "Official CVPR 2026 virtual-site record has paper_pdf_url=null and no CVF/OpenAccess proceedings PDF was available in the run-local official search artifact.",
+      "raw_format": "txt",
+      "access_date": "2026-05-05",
+      "raw_path": "runs/run-1777971225/raw/sources/cvpr2026-36695.txt",
+      "parsed_path": "runs/run-1777971225/parsed/sources/cvpr2026-36695.txt",
+      "extraction_method": "official_cvpr_virtual_json_fields_to_text",
+      "known_failures": [
+        "Original PDF unavailable from official CVPR virtual-site metadata at ingest time."
+      ]
+    },
+    {
+      "source_id": "iclr2026-DTQIjngDta",
+      "original_url_or_path": "https://openreview.net/forum?id=DTQIjngDta",
+      "pdf_url": "https://openreview.net/pdf?id=DTQIjngDta",
+      "pdf_download_attempted": true,
+      "pdf_download_status": "failed",
+      "pdf_download_error": "curl: (6) Could not resolve host: openreview.net",
+      "fallback_reason": "Direct OpenReview PDF download was attempted with curl but shell networking could not resolve openreview.net; saved browser-accessible official OpenReview forum text instead.",
+      "raw_format": "txt",
+      "access_date": "2026-05-05",
+      "raw_path": "runs/run-1777971225/raw/sources/iclr2026-DTQIjngDta.txt",
+      "parsed_path": "runs/run-1777971225/parsed/sources/iclr2026-DTQIjngDta.txt",
+      "extraction_method": "official_openreview_visible_text_fallback",
+      "known_failures": [
+        "PDF not preserved because shell network DNS resolution failed during curl download."
+      ]
+    }
+  ]
+}

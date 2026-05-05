@@ -1,0 +1,184 @@
+{
+  "run_id": "run-1777971225",
+  "user_instruction": "please search for \"online streaming video 3d point map reconstruction\" in CVPR 2026, ICLR2026, ICML2026.",
+  "task_type": "knowledge_building",
+  "source_scope": {
+    "mode": "venue_scope",
+    "allowed_sources": [
+      "CVPR 2026 official accepted-paper/proceedings sources, including official CVF/OpenAccess pages if available",
+      "ICLR 2026 official accepted-paper sources, including official OpenReview venue/group pages if available",
+      "ICML 2026 official accepted-paper/proceedings sources, including official conference, OpenReview, or PMLR pages if available"
+    ],
+    "disallowed_sources": [
+      "Sources outside CVPR 2026, ICLR 2026, or ICML 2026",
+      "Preprints, project pages, code repositories, blogs, news, social media, or non-official mirrors unless they are used only to locate an in-scope official venue record",
+      "Other years of CVPR, ICLR, or ICML unless logged only as rejected out-of-scope candidates"
+    ],
+    "allowed_source_types": [
+      "paper",
+      "official venue paper page",
+      "official proceedings entry",
+      "official abstract page",
+      "official PDF"
+    ],
+    "recency": "Venue year 2026 only",
+    "expansion_policy": "ask_user_before_expanding",
+    "queries": [
+      "\"online streaming video 3d point map reconstruction\"",
+      "\"online streaming video\" \"3d point map\" reconstruction",
+      "\"streaming video\" \"3D\" \"point map\" reconstruction",
+      "\"online\" \"3D reconstruction\" \"streaming video\"",
+      "\"point map\" \"video\" \"reconstruction\""
+    ],
+    "venues": [
+      {
+        "name": "CVPR",
+        "year": "2026"
+      },
+      {
+        "name": "ICLR",
+        "year": "2026"
+      },
+      {
+        "name": "ICML",
+        "year": "2026"
+      }
+    ]
+  },
+  "stages": [
+    {
+      "name": "search",
+      "agent_skill": "research-os-search",
+      "inputs": [
+        "runs/run-1777971225/plan.json"
+      ],
+      "outputs": [
+        "runs/run-1777971225/search_results.json"
+      ],
+      "may_mutate_wiki": false,
+      "wiki_mutation_permission": "none",
+      "notes": "Search only the declared 2026 venue scope. Record searched locations, exact queries, browser-render attempts for JavaScript-rendered official venue pages, rejected out-of-scope candidates, and coverage gaps. Do not use out-of-scope sources as evidence."
+    },
+    {
+      "name": "source_triage",
+      "agent_skill": "research-os-source-triage",
+      "inputs": [
+        "runs/run-1777971225/plan.json",
+        "runs/run-1777971225/search_results.json"
+      ],
+      "outputs": [
+        "runs/run-1777971225/selected_sources.json"
+      ],
+      "may_mutate_wiki": false,
+      "wiki_mutation_permission": "none",
+      "notes": "Select only in-scope official venue records relevant to online or streaming video 3D point-map reconstruction. Preserve coverage gaps and rejected out-of-scope records."
+    },
+    {
+      "name": "ingest",
+      "agent_skill": "research-os-ingest",
+      "inputs": [
+        "runs/run-1777971225/plan.json",
+        "runs/run-1777971225/selected_sources.json"
+      ],
+      "outputs": [
+        "runs/run-1777971225/raw/sources/",
+        "runs/run-1777971225/parsed/sources/",
+        "runs/run-1777971225/ingest_manifest.json"
+      ],
+      "may_mutate_wiki": false,
+      "wiki_mutation_permission": "none",
+      "notes": "Preserve raw sources immutably under the run-local raw root and parsed text under the run-local parsed root. Attempt PDF-first ingestion for paper sources."
+    },
+    {
+      "name": "reader",
+      "agent_skill": "research-os-reader",
+      "inputs": [
+        "runs/run-1777971225/plan.json",
+        "runs/run-1777971225/ingest_manifest.json",
+        "runs/run-1777971225/parsed/sources/"
+      ],
+      "outputs": [
+        "runs/run-1777971225/wiki/sources/"
+      ],
+      "may_mutate_wiki": true,
+      "wiki_mutation_permission": "source_notes_only",
+      "notes": "Create one structured source note per ingested source. Do not update topics, synthesis, outputs, index, log, or followups."
+    },
+    {
+      "name": "wiki_update_sources",
+      "agent_skill": "research-os-wiki-update",
+      "inputs": [
+        "runs/run-1777971225/plan.json",
+        "runs/run-1777971225/wiki/sources/",
+        "runs/run-1777971225/wiki/index.md",
+        "runs/run-1777971225/wiki/log.md",
+        "runs/run-1777971225/wiki/followups.md"
+      ],
+      "outputs": [
+        "runs/run-1777971225/wiki/index.md",
+        "runs/run-1777971225/wiki/log.md",
+        "runs/run-1777971225/wiki/followups.md",
+        "runs/run-1777971225/wiki/topics/",
+        "runs/run-1777971225/wiki_update_report.md"
+      ],
+      "may_mutate_wiki": true,
+      "wiki_mutation_permission": "durable_wiki_update",
+      "notes": "Integrate source notes into the compact run-local wiki. Every important technical claim in topics must cite run-local source notes."
+    },
+    {
+      "name": "synthesis",
+      "agent_skill": "research-os-synthesis",
+      "inputs": [
+        "runs/run-1777971225/plan.json",
+        "runs/run-1777971225/wiki/index.md",
+        "runs/run-1777971225/wiki/sources/",
+        "runs/run-1777971225/wiki/topics/"
+      ],
+      "outputs": [
+        "runs/run-1777971225/wiki/synthesis/online-streaming-video-3d-point-map-reconstruction.md"
+      ],
+      "may_mutate_wiki": true,
+      "wiki_mutation_permission": "planned_synthesis_page_only",
+      "notes": "Synthesize only from run-local source notes and wiki pages, not raw search snippets. Include trends, conflicts, gaps, and unresolved questions for the scoped 2026 venue results."
+    },
+    {
+      "name": "wiki_update_synthesis",
+      "agent_skill": "research-os-wiki-update",
+      "inputs": [
+        "runs/run-1777971225/plan.json",
+        "runs/run-1777971225/wiki/sources/",
+        "runs/run-1777971225/wiki/topics/",
+        "runs/run-1777971225/wiki/synthesis/online-streaming-video-3d-point-map-reconstruction.md",
+        "runs/run-1777971225/wiki/index.md",
+        "runs/run-1777971225/wiki/log.md",
+        "runs/run-1777971225/wiki/followups.md"
+      ],
+      "outputs": [
+        "runs/run-1777971225/wiki/index.md",
+        "runs/run-1777971225/wiki/log.md",
+        "runs/run-1777971225/wiki/followups.md",
+        "runs/run-1777971225/wiki/outputs/final_answer.md",
+        "runs/run-1777971225/wiki_update_report.md"
+      ],
+      "may_mutate_wiki": true,
+      "wiki_mutation_permission": "durable_wiki_update",
+      "notes": "Update the wiki catalog, log, followups, and durable output. Preserve citation traceability to run-local source notes."
+    },
+    {
+      "name": "lint_critic",
+      "agent_skill": "research-os-lint-critic",
+      "inputs": [
+        "runs/run-1777971225/plan.json",
+        "runs/run-1777971225/wiki/",
+        "runs/run-1777971225/wiki/outputs/final_answer.md"
+      ],
+      "outputs": [
+        "runs/run-1777971225/lint_report.md"
+      ],
+      "may_mutate_wiki": false,
+      "wiki_mutation_permission": "none",
+      "notes": "Check for missing citations, unsupported claims, source-scope violations, weak evidence, coverage gaps, contradictions, and broken links. Do not rewrite wiki pages."
+    }
+  ],
+  "final_expected_artifact": "runs/run-1777971225/wiki/outputs/final_answer.md"
+}

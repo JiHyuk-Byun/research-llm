@@ -1,0 +1,15 @@
+Source ID: iclr2026-stream3r
+Original URL: https://openreview.net/forum?id=RTTYGeC2Io
+Access date: 2026-05-05
+Capture method: Browser-rendered OpenReview forum text captured because shell DNS/network access was unavailable.
+
+Title: STream3R: Scalable Sequential 3D Reconstruction with Causal Transformer
+Authors: Yushi LAN; Yihang Luo; Fangzhou Hong; Shangchen Zhou; Honghua Chen; Zhaoyang Lyu; Bo Dai; Shuai Yang; Chen Change Loy; Xingang Pan
+Venue status: Published: 26 Jan 2026, Last Modified: 11 Apr 2026. ICLR 2026 Poster.
+License shown: CC BY 4.0
+Keywords: Monocular and Video 3D reconstruction
+TL;DR: Feedforward 4D reconstruction from causal videos.
+Abstract: We present STream3R, a novel approach to 3D reconstruction that reformulates pointmap prediction as a decoder-only Transformer problem. Existing state-of-the-art methods for multi-view reconstruction either depend on expensive global optimization or rely on simplistic memory mechanisms that scale poorly with sequence length. In contrast, STream3R introduces a streaming framework that processes image sequences efficiently using causal attention, inspired by advances in modern language modeling. By learning geometric priors from large-scale 3D datasets, STream3R generalizes well to diverse and challenging scenarios, including dynamic scenes where traditional methods often fail. Extensive experiments show that our method consistently outperforms prior work across both static and dynamic scene benchmarks. Moreover, STream3R is inherently compatible with LLM-style training infrastructure, enabling efficient large-scale pretraining and fine-tuning for various downstream 3D tasks. Our results underscore the potential of causal Transformer models for online 3D perception, paving the way for real-time 3D understanding in streaming environments.
+Supplementary material: zip.
+Primary area: applications to computer vision, audio, language, and other modalities.
+Submission number: 4027.

@@ -1,0 +1,253 @@
+{
+  "run_id": "run-1777879749",
+  "user_instruction": "Please research for \"real-time streaming point map reconstruction\" in recent CVPR, ICLR, ICML 2026.",
+  "task_type": "knowledge_building",
+  "source_scope": {
+    "mode": "venue_scope",
+    "allowed_sources": [
+      {
+        "venue": "CVPR",
+        "year": 2026,
+        "collections": [
+          "official CVPR 2026 proceedings",
+          "CVF Open Access CVPR 2026 pages",
+          "official accepted-paper metadata"
+        ]
+      },
+      {
+        "venue": "ICLR",
+        "year": 2026,
+        "collections": [
+          "official ICLR 2026 accepted papers",
+          "OpenReview ICLR 2026 accepted-paper entries",
+          "official accepted-paper metadata"
+        ]
+      },
+      {
+        "venue": "ICML",
+        "year": 2026,
+        "collections": [
+          "official ICML 2026 proceedings",
+          "PMLR ICML 2026 pages when available",
+          "official accepted-paper metadata"
+        ]
+      }
+    ],
+    "disallowed_sources": [
+      "papers not accepted to CVPR 2026, ICLR 2026, or ICML 2026",
+      "papers from other venues or years",
+      "blog posts, social media, videos, slide decks, newsletters, and code repositories unless used only as non-evidentiary discovery aids",
+      "arXiv-only papers unless independently verified as accepted to one of the allowed venue-year collections"
+    ],
+    "allowed_source_types": [
+      "conference papers",
+      "official proceedings pages",
+      "official accepted-paper records",
+      "OpenReview records for ICLR 2026 accepted papers",
+      "PMLR records for ICML 2026 papers when available",
+      "CVF Open Access records for CVPR 2026 papers when available"
+    ],
+    "topic_query": "real-time streaming point map reconstruction",
+    "topic_terms": [
+      "real-time reconstruction",
+      "streaming reconstruction",
+      "point map",
+      "pointmap",
+      "point cloud mapping",
+      "online mapping",
+      "incremental reconstruction",
+      "3D reconstruction",
+      "SLAM",
+      "visual odometry",
+      "Gaussian splatting mapping"
+    ],
+    "recency": "2026 venue-year only, limited to CVPR 2026, ICLR 2026, and ICML 2026 accepted or official-proceedings papers",
+    "expansion_policy": "ask_user_before_expanding"
+  },
+  "stages": [
+    {
+      "order": 1,
+      "name": "search",
+      "agent_skill": "research-os-search",
+      "required_inputs": [
+        "runs/run-1777879749/plan.json"
+      ],
+      "required_outputs": [
+        "runs/run-1777879749/search_results.json",
+        "runs/run-1777879749/rejected_out_of_scope_sources.json"
+      ],
+      "wiki_mutation_permissions": {
+        "may_mutate_wiki": false,
+        "allowed_paths": [],
+        "notes": "Search must obey source_scope exactly. Out-of-scope discoveries may be logged only in the run directory and must not be used as evidence."
+      }
+    },
+    {
+      "order": 2,
+      "name": "source_triage",
+      "agent_skill": "research-os-source-triage",
+      "required_inputs": [
+        "runs/run-1777879749/plan.json",
+        "runs/run-1777879749/search_results.json"
+      ],
+      "required_outputs": [
+        "runs/run-1777879749/triage.json",
+        "runs/run-1777879749/accepted_sources.json",
+        "runs/run-1777879749/excluded_sources.json"
+      ],
+      "wiki_mutation_permissions": {
+        "may_mutate_wiki": false,
+        "allowed_paths": [],
+        "notes": "Triage must reject sources outside CVPR 2026, ICLR 2026, and ICML 2026 unless the user later approves expansion."
+      }
+    },
+    {
+      "order": 3,
+      "name": "ingest",
+      "agent_skill": "research-os-ingest",
+      "required_inputs": [
+        "runs/run-1777879749/plan.json",
+        "runs/run-1777879749/accepted_sources.json"
+      ],
+      "required_outputs": [
+        "raw/sources/{source_id}/",
+        "parsed/sources/{source_id}/metadata.json",
+        "parsed/sources/{source_id}/text.md",
+        "runs/run-1777879749/ingest_manifest.json"
+      ],
+      "wiki_mutation_permissions": {
+        "may_mutate_wiki": false,
+        "allowed_paths": [],
+        "notes": "Raw sources are immutable after ingest. Parsed outputs must preserve source provenance."
+      }
+    },
+    {
+      "order": 4,
+      "name": "reader",
+      "agent_skill": "research-os-reader",
+      "required_inputs": [
+        "runs/run-1777879749/plan.json",
+        "runs/run-1777879749/ingest_manifest.json",
+        "parsed/sources/{source_id}/metadata.json",
+        "parsed/sources/{source_id}/text.md",
+        "wiki/index.md"
+      ],
+      "required_outputs": [
+        "wiki/sources/{source_id}.md",
+        "runs/run-1777879749/reader_manifest.json"
+      ],
+      "wiki_mutation_permissions": {
+        "may_mutate_wiki": true,
+        "allowed_paths": [
+          "wiki/sources/"
+        ],
+        "notes": "Reader may create or update one structured source note per accepted source. It must not create new top-level wiki folders."
+      }
+    },
+    {
+      "order": 5,
+      "name": "wiki_update_after_reading",
+      "agent_skill": "research-os-wiki-update",
+      "required_inputs": [
+        "runs/run-1777879749/plan.json",
+        "runs/run-1777879749/reader_manifest.json",
+        "wiki/index.md",
+        "wiki/sources/{source_id}.md"
+      ],
+      "required_outputs": [
+        "wiki/index.md",
+        "wiki/log.md",
+        "wiki/followups.md",
+        "wiki/topics/{topic_slug}.md"
+      ],
+      "wiki_mutation_permissions": {
+        "may_mutate_wiki": true,
+        "allowed_paths": [
+          "wiki/index.md",
+          "wiki/log.md",
+          "wiki/followups.md",
+          "wiki/topics/"
+        ],
+        "notes": "Every important technical claim added to topic pages must cite wiki/sources notes."
+      }
+    },
+    {
+      "order": 6,
+      "name": "synthesis",
+      "agent_skill": "research-os-synthesis",
+      "required_inputs": [
+        "runs/run-1777879749/plan.json",
+        "wiki/index.md",
+        "wiki/sources/{source_id}.md",
+        "wiki/topics/{topic_slug}.md"
+      ],
+      "required_outputs": [
+        "wiki/synthesis/real-time-streaming-point-map-reconstruction-2026.md",
+        "runs/run-1777879749/synthesis_manifest.json"
+      ],
+      "wiki_mutation_permissions": {
+        "may_mutate_wiki": true,
+        "allowed_paths": [
+          "wiki/synthesis/"
+        ],
+        "notes": "Synthesis may create the planned synthesis page only. Claims must cite wiki/sources notes and distinguish confirmed evidence from weak matches or gaps."
+      }
+    },
+    {
+      "order": 7,
+      "name": "wiki_update_after_synthesis",
+      "agent_skill": "research-os-wiki-update",
+      "required_inputs": [
+        "runs/run-1777879749/plan.json",
+        "wiki/index.md",
+        "wiki/log.md",
+        "wiki/followups.md",
+        "wiki/synthesis/real-time-streaming-point-map-reconstruction-2026.md",
+        "runs/run-1777879749/synthesis_manifest.json"
+      ],
+      "required_outputs": [
+        "wiki/index.md",
+        "wiki/log.md",
+        "wiki/followups.md",
+        "wiki/outputs/real-time-streaming-point-map-reconstruction-cvpr-iclr-icml-2026.md"
+      ],
+      "wiki_mutation_permissions": {
+        "may_mutate_wiki": true,
+        "allowed_paths": [
+          "wiki/index.md",
+          "wiki/log.md",
+          "wiki/followups.md",
+          "wiki/outputs/"
+        ],
+        "notes": "The output page should preserve the final user-facing research answer after wiki evidence exists. All important claims must cite wiki/sources notes."
+      }
+    },
+    {
+      "order": 8,
+      "name": "lint_critic",
+      "agent_skill": "research-os-lint-critic",
+      "required_inputs": [
+        "runs/run-1777879749/plan.json",
+        "runs/run-1777879749/search_results.json",
+        "runs/run-1777879749/triage.json",
+        "runs/run-1777879749/ingest_manifest.json",
+        "runs/run-1777879749/reader_manifest.json",
+        "runs/run-1777879749/synthesis_manifest.json",
+        "wiki/index.md",
+        "wiki/sources/{source_id}.md",
+        "wiki/topics/{topic_slug}.md",
+        "wiki/synthesis/real-time-streaming-point-map-reconstruction-2026.md",
+        "wiki/outputs/real-time-streaming-point-map-reconstruction-cvpr-iclr-icml-2026.md"
+      ],
+      "required_outputs": [
+        "runs/run-1777879749/lint_report.json"
+      ],
+      "wiki_mutation_permissions": {
+        "may_mutate_wiki": false,
+        "allowed_paths": [],
+        "notes": "Lint critic must report citation gaps, source-scope violations, unsupported claims, missing followups, and stale index entries without mutating wiki pages."
+      }
+    }
+  ],
+  "final_expected_artifact": "wiki/outputs/real-time-streaming-point-map-reconstruction-cvpr-iclr-icml-2026.md"
+}

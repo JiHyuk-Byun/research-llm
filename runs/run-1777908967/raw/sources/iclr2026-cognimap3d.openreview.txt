@@ -1,0 +1,13 @@
+Source ID: iclr2026-cognimap3d
+Original URL: https://openreview.net/forum?id=9agaxh8ClV
+Access date: 2026-05-05
+Capture method: Browser-rendered OpenReview forum text captured because shell DNS/network access was unavailable.
+
+Title: CogniMap3D: Cognitive 3D Mapping and Rapid Retrieval
+Authors: Feiran Wang; Junyi Wu; Dawen Cai; Yuan Hong; Yan Yan
+Venue status: Published: 26 Jan 2026, Last Modified: 11 Apr 2026. ICLR 2026 Poster.
+License shown: CC BY 4.0
+Keywords: Feed-Forward 3D; Dynamic Scene Understanding
+Abstract: We present CogniMap3D, a bioinspired framework for dynamic 3D scene understanding and reconstruction that emulates human cognitive processes. Our approach maintains a persistent memory bank of static scenes, enabling efficient spatial knowledge storage and rapid retrieval. CogniMap3D integrates three core capabilities: a multi-stage motion cue framework for identifying dynamic objects, a cognitive mapping system for storing, recalling, and updating static scenes across multiple visits, and a factor graph optimization strategy for refining camera poses. Given an image stream, our model identifies dynamic regions through motion cues with depth and camera pose priors, then matches static elements against its memory bank. When revisiting familiar locations, CogniMap3D retrieves stored scenes, relocates cameras, and updates memory with new observations. Evaluations on video depth estimation, camera pose reconstruction, and 3D mapping tasks demonstrate its state-of-the-art performance, while effectively supporting continuous scene understanding across extended sequences and multiple visits.
+Primary area: applications to computer vision, audio, language, and other modalities.
+Submission number: 15107.

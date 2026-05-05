@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "research-os ingest manifest",
+  "type": "object",
+  "required": ["run_id", "items"],
+  "properties": {
+    "run_id": { "type": "string" },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_id", "original_url_or_path", "raw_path", "parsed_path", "extraction_method"],
+        "properties": {
+          "source_id": { "type": "string" },
+          "original_url_or_path": { "type": "string" },
+          "access_date": { "type": "string" },
+          "raw_path": { "type": "string" },
+          "parsed_path": { "type": "string" },
+          "extraction_method": { "type": "string" },
+          "known_failures": { "type": "array", "items": { "type": "string" } }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}
+

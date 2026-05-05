@@ -1,0 +1,15 @@
+Source ID: iclr2026-streamsplat
+Original URL: https://openreview.net/forum?id=SaiDRQU7Ez
+Access date: 2026-05-05
+Capture method: Browser-rendered OpenReview forum text captured because shell DNS/network access was unavailable.
+
+Title: StreamSplat: Towards Online Dynamic 3D Reconstruction from Uncalibrated Video Streams
+Authors: Zike Wu; Qi Yan; Xuanyu Yi; Lele Wang; Renjie Liao
+Venue status: Published: 26 Jan 2026, Last Modified: 11 Apr 2026. ICLR 2026 Poster.
+License shown: CC BY 4.0
+Keywords: 3D Gaussian Splatting; Monocular Video Reconstruction
+TL;DR: We proposed an efficient, scalable, and feed-forward framework for online dynamic 3D reconstruction.
+Abstract: Real-time reconstruction of dynamic 3D scenes from uncalibrated video streams demands robust online methods that recover scene dynamics from sparse observations under strict latency and memory constraints. Yet most dynamic reconstruction methods rely on hours of per-scene optimization under full-sequence access, limiting practical deployment. In this work, we introduce StreamSplat, a fully feed-forward framework that instantly transforms uncalibrated video streams of arbitrary length into dynamic 3D Gaussian Splatting (3DGS) representations in an online manner. It is achieved via three key technical innovations: 1) a probabilistic sampling mechanism that robustly predicts 3D Gaussians from uncalibrated inputs; 2) a bidirectional deformation field that yields reliable associations across frames and mitigates long-term error accumulation; 3) an adaptive Gaussian fusion operation that propagates persistent Gaussians while handling emerging and vanishing ones. Extensive experiments on standard dynamic and static benchmarks demonstrate that StreamSplat achieves state-of-the-art reconstruction quality and dynamic scene modeling. Uniquely, our method supports the online reconstruction of arbitrarily long video streams with a 1200x speedup over optimization-based methods. Code and models are available at https://streamsplat3d.github.io/.
+Supplementary material: zip.
+Primary area: applications to computer vision, audio, language, and other modalities.
+Submission number: 1083.

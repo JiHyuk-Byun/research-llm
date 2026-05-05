@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "research-os stage status",
+  "type": "object",
+  "required": ["run_id", "stage", "agent_skill", "status"],
+  "properties": {
+    "run_id": { "type": "string" },
+    "stage": { "type": "string" },
+    "agent_skill": { "type": "string" },
+    "status": { "type": "string", "enum": ["pending", "running", "done", "failed", "skipped"] },
+    "inputs": { "type": "array", "items": { "type": "string" } },
+    "outputs": { "type": "array", "items": { "type": "string" } },
+    "error": { "type": "string" }
+  },
+  "additionalProperties": true
+}
+
