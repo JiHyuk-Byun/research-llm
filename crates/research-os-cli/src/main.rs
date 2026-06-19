@@ -4999,6 +4999,7 @@ fn claude_mcp_tools(skill: &str) -> &'static str {
             "mcp__researchos__ledger_read,",
             "mcp__researchos__propose_experiment,",
             "mcp__researchos__coverage_report,",
+            "mcp__researchos__graph_query,",
             "mcp__researchos__checkpoint_ask"
         ),
         // POST / wiki writers: promote experiment results into the wiki.

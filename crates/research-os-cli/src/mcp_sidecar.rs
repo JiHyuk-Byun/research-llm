@@ -127,6 +127,16 @@ struct PhaseRouteParams {
     reason: String,
 }
 
+#[derive(Debug, Deserialize, schemars::JsonSchema)]
+struct GraphQueryParams {
+    /// One of: neighbors, contradictions, orphans, impact.
+    query: String,
+    /// Node id for neighbors / impact queries (a source_id, hypothesis, or
+    /// experiment id).
+    #[serde(default)]
+    node: Option<String>,
+}
+
 #[tool_router]
 impl Sidecar {
     #[tool(
@@ -246,6 +256,11 @@ impl Sidecar {
         self.save(&l)
             .map_err(|e| McpError::internal_error(format!("save ledger: {e}"), None))?;
 
+        // Rebuild the derived graph so the new experiment note + its relations
+        // are immediately queryable.
+        let g = crate::graph::build_graph(&self.session_root(), &l);
+        let _ = g.save(&crate::graph::graph_path(&self.session_root()));
+
         let out = format!("{{\"exp_id\":\"{exp_id}\",\"source_note_path\":\"{note_rel}\"}}");
         Ok(CallToolResult::success(vec![Content::text(out)]))
     }
@@ -355,6 +370,35 @@ impl Sidecar {
         Ok(CallToolResult::success(vec![Content::text(
             "{\"routed\":true}".to_string(),
         )]))
+    }
+
+    #[tool(
+        description = "Query the wiki relationship graph (read-only). query is one of: neighbors, contradictions, orphans, impact. neighbors/impact need a node id (a source_id, hypothesis, or experiment id; impact = edges pointing AT the node). Returns matching edges/nodes as JSON. Use it to expand discussion — e.g. find what a new finding contradicts, or what depends on a source."
+    )]
+    fn graph_query(
+        &self,
+        Parameters(p): Parameters<GraphQueryParams>,
+    ) -> Result<CallToolResult, McpError> {
+        let led = self.load();
+        let g = crate::graph::build_graph(&self.session_root(), &led);
+        let val = match p.query.trim().to_ascii_lowercase().as_str() {
+            "contradictions" => serde_json::to_value(g.contradictions()).unwrap_or_default(),
+            "orphans" => serde_json::to_value(g.orphans()).unwrap_or_default(),
+            "neighbors" => {
+                let id = p.node.as_deref().unwrap_or("");
+                serde_json::to_value(g.neighbors(id)).unwrap_or_default()
+            }
+            "impact" => {
+                let id = p.node.as_deref().unwrap_or("");
+                let incoming: Vec<&crate::graph::Edge> =
+                    g.edges.iter().filter(|e| e.to == id).collect();
+                serde_json::to_value(incoming).unwrap_or_default()
+            }
+            other => serde_json::json!({
+                "error": format!("unknown query '{other}'; use neighbors|contradictions|orphans|impact")
+            }),
+        };
+        Ok(CallToolResult::success(vec![Content::text(val.to_string())]))
     }
 }
 
