@@ -4324,17 +4324,24 @@ fn claude_allowed_tools(skill: &str) -> &'static str {
 /// server key must match the one written by [`session_mcp_config_path`].
 fn claude_mcp_tools(skill: &str) -> &'static str {
     match skill {
-        "research-os-discussion" => {
-            "mcp__researchos__ledger_read,mcp__researchos__propose_experiment"
+        // DISCUSS hub: read state, raise hypotheses, read coverage gaps.
+        "research-os-discussion" => concat!(
+            "mcp__researchos__ledger_read,",
+            "mcp__researchos__propose_experiment,",
+            "mcp__researchos__coverage_report"
+        ),
+        // POST / wiki writers: promote experiment results into the wiki.
+        "research-os-writing" | "research-os-wiki-update" => {
+            "mcp__researchos__ledger_read,mcp__researchos__capture_results"
         }
-        "research-os-qa"
-        | "research-os-ideation"
-        | "research-os-writing"
-        | "research-os-visualization"
-        | "research-os-synthesis"
-        | "research-os-wiki-update"
-        | "research-os-coding"
-        | "research-os-experiment-planning" => "mcp__researchos__ledger_read",
+        // EXPERIMENT planning + read-mostly stages: read state + coverage.
+        "research-os-experiment-planning" | "research-os-qa" | "research-os-ideation" => {
+            "mcp__researchos__ledger_read,mcp__researchos__coverage_report"
+        }
+        // Other knowledge stages: read ledger state.
+        "research-os-visualization" | "research-os-synthesis" | "research-os-coding" => {
+            "mcp__researchos__ledger_read"
+        }
         _ => "",
     }
 }
