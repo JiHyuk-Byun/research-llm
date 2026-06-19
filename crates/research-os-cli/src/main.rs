@@ -3736,6 +3736,7 @@ fn action_label(a: ledger::DecisionAction) -> &'static str {
 /// Per-phase work-stage prompt: the existing session stage prompt plus loop
 /// context (subject + phase goal + the active proposal/experiment).
 fn loop_stage_prompt(
+    root: &Path,
     session_id: &str,
     turn_id: &str,
     phase: ledger::Phase,
@@ -3781,7 +3782,16 @@ fn loop_stage_prompt(
              capture_results to promote the finding into wiki/sources as a citable note.",
         ),
     }
-    session_stage_prompt(session_id, turn_id, SessionTurnKind::Loop, skill, &ctx)
+    let base = session_stage_prompt(session_id, turn_id, SessionTurnKind::Loop, skill, &ctx);
+    // Working-context pack: inject the graph slice most relevant to this phase
+    // (empty early in INIT before the graph has nodes).
+    let session_root = root.join("sessions").join(session_id);
+    let pack = graph::context_pack(&session_root, led, phase, 12);
+    if pack.is_empty() {
+        base
+    } else {
+        format!("{pack}\n{base}")
+    }
 }
 
 /// Standalone prompt for the synthetic checkpoint stage (no SKILL.md). It must
@@ -3994,7 +4004,7 @@ fn run_phase_loop_tui(
                 session_id,
                 &loop_turn_id,
                 skill,
-                &loop_stage_prompt(session_id, &loop_turn_id, phase, skill, &led_now),
+                &loop_stage_prompt(root, session_id, &loop_turn_id, phase, skill, &led_now),
                 &tx,
                 &control,
             )?;

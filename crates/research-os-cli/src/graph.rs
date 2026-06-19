@@ -85,6 +85,98 @@ impl Graph {
     }
 }
 
+fn truncate(s: &str, max: usize) -> String {
+    if s.chars().count() <= max {
+        s.to_string()
+    } else {
+        format!("{}…", s.chars().take(max.saturating_sub(1)).collect::<String>())
+    }
+}
+
+/// A compact markdown digest of the graph slice most relevant to the current
+/// phase — the working-context pack injected into a stage prompt. Seeds from
+/// the active experiment/hypothesis (EXPERIMENT/POST), unresolved
+/// contradictions, and the highest-degree hubs; expands one hop; caps at
+/// `max_nodes`. Returns "" when the graph is empty (e.g. early INIT).
+pub fn context_pack(
+    session_root: &Path,
+    ledger: &Ledger,
+    phase: crate::ledger::Phase,
+    max_nodes: usize,
+) -> String {
+    use crate::ledger::Phase;
+    let g = build_graph(session_root, ledger);
+    if g.nodes.is_empty() {
+        return String::new();
+    }
+
+    // Seeds.
+    let mut seeds: Vec<String> = Vec::new();
+    if matches!(phase, Phase::Experiment | Phase::Post) {
+        if let Some(e) = ledger.experiments.last() {
+            seeds.push(e.id.clone());
+            if !e.hypothesis_id.is_empty() {
+                seeds.push(e.hypothesis_id.clone());
+            }
+        }
+    }
+    for e in g.contradictions() {
+        seeds.push(e.from.clone());
+        seeds.push(e.to.clone());
+    }
+    let mut by_degree: Vec<&Node> = g.nodes.iter().collect();
+    by_degree.sort_by(|a, b| b.degree.cmp(&a.degree).then(a.id.cmp(&b.id)));
+    for n in by_degree.iter().take(5) {
+        seeds.push(n.id.clone());
+    }
+
+    // Expand one hop, dedup, cap.
+    let mut selected: Vec<String> = Vec::new();
+    let mut seen = std::collections::BTreeSet::new();
+    for s in &seeds {
+        if seen.insert(s.clone()) {
+            selected.push(s.clone());
+        }
+        for e in g.neighbors(s) {
+            for nb in [&e.from, &e.to] {
+                if nb != s && seen.insert(nb.clone()) {
+                    selected.push(nb.clone());
+                }
+            }
+        }
+        if selected.len() >= max_nodes {
+            break;
+        }
+    }
+    selected.truncate(max_nodes);
+    if selected.is_empty() {
+        return String::new();
+    }
+
+    let node_by_id: BTreeMap<&str, &Node> =
+        g.nodes.iter().map(|n| (n.id.as_str(), n)).collect();
+    let mut out = String::from("## Relevant knowledge (curated from the wiki graph)\n");
+    for id in &selected {
+        match node_by_id.get(id.as_str()) {
+            Some(n) => {
+                let title = n.title.as_deref().unwrap_or(id);
+                let path = n
+                    .path
+                    .as_deref()
+                    .map(|p| format!(" ({p})"))
+                    .unwrap_or_default();
+                out.push_str(&format!("- [{}] {}{}\n", n.kind, truncate(title, 80), path));
+                for e in g.edges.iter().filter(|e| &e.from == id) {
+                    out.push_str(&format!("    ↳ {} → {}\n", e.kind, e.to));
+                }
+            }
+            None => out.push_str(&format!("- [ref] {id}\n")),
+        }
+    }
+    out.push_str("(Read a node's path for full detail, or call graph_query for more.)\n");
+    out
+}
+
 /// Build the graph from a session's wiki source notes + ledger.
 pub fn build_graph(session_root: &Path, ledger: &Ledger) -> Graph {
     let mut nodes: BTreeMap<String, Node> = BTreeMap::new();
@@ -345,5 +437,26 @@ mod tests {
         assert_eq!(rel[0].0, "refines");
         assert_eq!(rel[0].1, "src:y");
         assert_eq!(rel[1], ("supports".to_string(), "z".to_string(), None));
+    }
+
+    #[test]
+    fn context_pack_surfaces_relevant_slice() {
+        let dir = std::env::temp_dir().join(format!("ros-ctx-{}", crate::ledger::now_ms()));
+        write(
+            &dir.join("wiki/sources/paper-a.md"),
+            "---\nsource_id: paper-a\nsource_type: paper\ntitle: \"Paper A\"\n---\n",
+        );
+        write(
+            &dir.join("wiki/sources/exp-1.md"),
+            "---\nsource_id: exp-1\nsource_type: experiment\ntitle: \"Exp 1\"\nrelations:\n  - { type: contradicts, target: src:paper-a }\n---\n",
+        );
+        let pack = context_pack(&dir, &Ledger::new("s"), crate::ledger::Phase::Discuss, 12);
+        assert!(pack.contains("Relevant knowledge"));
+        assert!(pack.contains("contradicts"));
+        let _ = fs::remove_dir_all(&dir);
+
+        // Empty graph -> empty pack (e.g. early INIT).
+        let empty = std::env::temp_dir().join(format!("ros-ctx-e-{}", crate::ledger::now_ms()));
+        assert!(context_pack(&empty, &Ledger::new("s"), crate::ledger::Phase::Init, 12).is_empty());
     }
 }
