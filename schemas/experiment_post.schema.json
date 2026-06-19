@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "research-os experiment post",
+  "description": "The (Question, Setup, Result, Analysis) write-up of an experiment. Rendered as post.md (a markdown body with these sections) carrying this structured object as YAML frontmatter. capture_results promotes a distilled copy into wiki/sources/exp-{exp_id}.md (source_type: experiment), a citable note that embeds the figures.",
+  "type": "object",
+  "required": ["exp_id", "question", "setup", "result", "analysis", "outcome"],
+  "properties": {
+    "exp_id": { "type": "string" },
+    "title": { "type": "string" },
+    "question": { "type": "string", "description": "The hypothesis / question the experiment tests." },
+    "setup": { "type": "string", "description": "How the experiment is set up to answer the question (design, baselines, conditions)." },
+    "result": { "type": "string", "description": "What was observed, referencing key_metrics and figures." },
+    "analysis": { "type": "string", "description": "Interpretation: what it means for the hypothesis, caveats, limitations." },
+    "outcome": {
+      "type": "string",
+      "enum": ["supports", "contradicts", "inconclusive"]
+    },
+    "key_metrics": {
+      "type": "object",
+      "additionalProperties": { "type": ["number", "string", "boolean"] }
+    },
+    "figures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": { "type": "string", "description": "Relative path to the figure image." },
+          "caption": { "type": "string" },
+          "what_it_shows": { "type": "string" },
+          "evidence_use": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "relates_to": {
+      "type": "array",
+      "description": "Source/page references this finding supports, contradicts, or refines. Drives the graph edge from the experiment node into prior knowledge.",
+      "items": {
+        "type": "object",
+        "required": ["target"],
+        "properties": {
+          "target": { "type": "string", "description": "A wiki source id or page reference (e.g. src:...)." },
+          "relation": {
+            "type": "string",
+            "enum": ["supports", "contradicts", "refines", "extends", "duplicates"]
+          },
+          "note": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

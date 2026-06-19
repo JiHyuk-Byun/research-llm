@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "research-os experiment record",
+  "description": "A first-class, schema'd record for a single hypothesis-driven experiment, stored at sessions/{session_id}/experiments/{exp_id}/record.json. Two-tier: a lean required core plus an optional reproducibility extension filled only when comparison/reproduction matters. Structured truth lives here; the human narrative lives in post.md; raw bytes live in code/, runs/, outputs/, figures/.",
+  "type": "object",
+  "required": ["exp_id", "hypothesis_id", "status"],
+  "properties": {
+    "exp_id": { "type": "string", "description": "Stable experiment id (matches ledger.experiments[].id), not a turn id." },
+    "hypothesis_id": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["planned", "running", "has_results", "analyzed", "done", "abandoned"]
+    },
+    "outcome": {
+      "type": ["string", "null"],
+      "enum": ["supports", "contradicts", "inconclusive", null],
+      "description": "Required when status == done."
+    },
+    "key_metrics": {
+      "type": "object",
+      "description": "Headline scalar metrics, structured for cross-experiment comparison. Required when status == done.",
+      "additionalProperties": { "type": ["number", "string", "boolean"] }
+    },
+    "lineage": {
+      "type": "object",
+      "description": "What this experiment builds on. Drives graph derives_from / uses edges.",
+      "properties": {
+        "inputs": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "References to wiki source ids, datasets, or prior experiment ids (e.g. src:..., exp:...)."
+        }
+      },
+      "additionalProperties": true
+    },
+    "post_path": { "type": "string", "description": "Relative path to the (Q,S,R,A) post, typically post.md." },
+    "created_at": { "type": "string" },
+    "updated_at": { "type": "string" },
+
+    "repro": {
+      "type": "object",
+      "description": "Optional reproducibility extension. Fill when the experiment must be reproduced or compared.",
+      "properties": {
+        "code_ref": { "type": "string", "description": "git sha, tag, or snapshot path." },
+        "command": { "type": "string" },
+        "env": { "type": "string" },
+        "seed": { "type": ["integer", "string", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "config_path": {
+      "type": ["string", "null"],
+      "description": "Optional pointer to a structured setup/hyperparameter file (config.json|yaml)."
+    },
+    "runs": {
+      "type": "array",
+      "description": "Optional. Relative paths to per-run subdirectories (seed/config variants), each holding metrics.json, logs/, outputs/.",
+      "items": { "type": "string" }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "done" } } },
+      "then": { "required": ["outcome", "key_metrics", "post_path"] }
+    }
+  ],
+  "additionalProperties": true
+}
