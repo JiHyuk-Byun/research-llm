@@ -33,6 +33,7 @@ use unicode_width::UnicodeWidthStr;
 // wired yet; allow dead_code until then so the build stays warning-clean.
 #[allow(dead_code)]
 mod ledger;
+mod checkpoint_ipc;
 mod mcp_sidecar;
 
 const SKILLS: &[&str] = &[

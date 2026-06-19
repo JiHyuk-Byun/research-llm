@@ -93,6 +93,17 @@ struct CaptureResultsParams {
     relates_to: Option<Vec<RelatesToParam>>,
 }
 
+#[derive(Debug, Deserialize, schemars::JsonSchema)]
+struct CheckpointAskParams {
+    /// The phase-transition / checkpoint question to put to the user.
+    question: String,
+    /// Your self-assessment / why you're asking now (shown to the user).
+    #[serde(default)]
+    assessment: Option<String>,
+    /// The options to choose from; put your recommended option first.
+    options: Vec<String>,
+}
+
 #[tool_router]
 impl Sidecar {
     #[tool(
@@ -246,6 +257,34 @@ impl Sidecar {
             "open_hypotheses": open_hypotheses,
         });
         Ok(CallToolResult::success(vec![Content::text(json.to_string())]))
+    }
+
+    #[tool(
+        description = "Ask the human a phase-transition / checkpoint question and BLOCK until they choose. Put the recommended option first. Returns the chosen index and label as JSON. Requires the research-os TUI to be running (it renders the question)."
+    )]
+    fn checkpoint_ask(
+        &self,
+        Parameters(p): Parameters<CheckpointAskParams>,
+    ) -> Result<CallToolResult, McpError> {
+        let req = crate::checkpoint_ipc::CheckpointRequest {
+            question: p.question,
+            assessment: p.assessment,
+            options: p.options,
+        };
+        match crate::checkpoint_ipc::ask(&self.root, &req) {
+            Ok(r) => {
+                let out = format!(
+                    "{{\"chosen\":{},\"label\":\"{}\"}}",
+                    r.chosen,
+                    r.label.replace('"', "'")
+                );
+                Ok(CallToolResult::success(vec![Content::text(out)]))
+            }
+            Err(e) => Err(McpError::internal_error(
+                format!("checkpoint_ask failed: {e} (is the research-os TUI running?)"),
+                None,
+            )),
+        }
     }
 }
 
