@@ -29,10 +29,11 @@ use ratatui::widgets::{
 use ratatui::Terminal;
 use unicode_width::UnicodeWidthStr;
 
-// Consumed by the MCP sidecar (Phase 2) and the phase driver (Phase 3); allow
-// dead_code until those call sites land so the build stays warning-clean.
+// Some ledger items are consumed by the phase driver (Phase 3) which isn't
+// wired yet; allow dead_code until then so the build stays warning-clean.
 #[allow(dead_code)]
 mod ledger;
+mod mcp_sidecar;
 
 const SKILLS: &[&str] = &[
     "research-os-planner",
@@ -162,6 +163,9 @@ fn run() -> Result<(), String> {
             Err("`research-os validate <run_id>` is deprecated for session-only mode.".into())
         }
         "install-skills" => install_skills(&root),
+        // Hidden: started by a claude stage via --mcp-config. Serves the local
+        // MCP sidecar (custom domain tools) over stdio for `<session_id>`.
+        "__mcp" => mcp_sidecar::run(&root, args.next()),
         "help" | "--help" | "-h" => {
             print_help();
             Ok(())
