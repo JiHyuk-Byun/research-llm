@@ -23,7 +23,7 @@ use ratatui::layout::{Alignment, Constraint, Direction, Layout, Position, Rect};
 use ratatui::style::{Color, Modifier, Style};
 use ratatui::text::{Line, Span};
 use ratatui::widgets::{
-    Block, BorderType, Borders, List, ListItem, Paragraph, Scrollbar, ScrollbarOrientation,
+    Block, BorderType, Borders, List, ListItem, Padding, Paragraph, Scrollbar, ScrollbarOrientation,
     ScrollbarState, Wrap,
 };
 use ratatui::Terminal;
@@ -1712,14 +1712,15 @@ fn draw_tui(frame: &mut ratatui::Frame<'_>, app: &TuiApp) {
         );
     }
 
-    let chat_height = body[1].height.saturating_sub(2) as usize;
-    let chat_width = body[1].width.saturating_sub(4) as usize;
+    // Borderless transcript (Claude Code-style): no box, just light side padding;
+    // the rightmost column stays free for the scrollbar.
+    let chat_height = body[1].height as usize;
+    let chat_width = body[1].width.saturating_sub(2) as usize;
     let all_chat_lines = build_chat_lines(app, chat_width);
     let chat_content_len = all_chat_lines.len();
     let chat_lines = visible_chat_lines(all_chat_lines, chat_height, app.log_scroll);
-    let scroll_title = pane_title("conversation", app.log_scroll);
     frame.render_widget(
-        Paragraph::new(chat_lines).block(focused_block(app, FocusPane::Conversation, scroll_title)),
+        Paragraph::new(chat_lines).block(Block::default().padding(Padding::new(1, 1, 0, 0))),
         body[1],
     );
     render_scrollbar(
@@ -1770,21 +1771,42 @@ fn draw_tui(frame: &mut ratatui::Frame<'_>, app: &TuiApp) {
             root[2].width as usize,
         ));
     } else {
-        input_lines.push(Line::from(vec![
-            Span::styled("> ", Style::default().fg(Color::Cyan)),
-            Span::raw(app.input.as_str()),
-        ]));
+        let prompt = Span::styled(
+            "> ",
+            Style::default().fg(Color::Cyan).add_modifier(Modifier::BOLD),
+        );
+        if app.input.is_empty() {
+            input_lines.push(Line::from(vec![
+                prompt,
+                Span::styled(
+                    "Ask anything · Tab to plan · / for tools · /loop to run the research loop",
+                    Style::default().fg(Color::DarkGray),
+                ),
+            ]));
+        } else {
+            input_lines.push(Line::from(vec![prompt, Span::raw(app.input.clone())]));
+        }
         if slash_completion_open(app) {
             input_lines.extend(build_slash_completion_lines(app, root[2].height));
         } else {
             input_lines.push(build_input_hint_line(app));
         }
     }
+    // Claude Code-style input box: rounded border, accent color when the prompt
+    // is an editable line, dim otherwise (running / tool views / modals).
+    let input_active =
+        !app.running && app.input_tool_view == InputToolView::None && !resume_picker_active(app);
+    let border_color = if input_active {
+        Color::Cyan
+    } else {
+        Color::DarkGray
+    };
     frame.render_widget(
         Paragraph::new(input_lines).block(
             Block::default()
                 .borders(Borders::ALL)
-                .border_type(BorderType::Plain),
+                .border_type(BorderType::Rounded)
+                .border_style(Style::default().fg(border_color)),
         ),
         root[2],
     );
