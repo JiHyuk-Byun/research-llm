@@ -4008,7 +4008,13 @@ fn session_stage_prompt(
 #[allow(dead_code)]
 /// Build the subprocess command for one agent stage on the selected backend.
 /// Both backends pipe stdout/stderr; the caller streams and waits.
-fn build_agent_command(backend: Backend, skill: &str, root: &Path, prompt: &str) -> Command {
+fn build_agent_command(
+    backend: Backend,
+    skill: &str,
+    root: &Path,
+    prompt: &str,
+    session: Option<&str>,
+) -> Command {
     let mut cmd = Command::new(backend_label(backend));
     match backend {
         Backend::Codex => {
@@ -4036,17 +4042,32 @@ fn build_agent_command(backend: Backend, skill: &str, root: &Path, prompt: &str)
                 .arg("stream-json")
                 .arg("--verbose");
             if tool_scoping_enabled() {
-                // Phase 1 tool-scoping (opt-in via RESEARCH_OS_TOOL_SCOPING):
-                // restrict built-in tools per stage and auto-deny anything
-                // unlisted (`dontAsk`) instead of bypassing all permissions.
-                // `-p` print mode cannot answer interactive prompts, so
-                // `dontAsk` avoids hangs on unlisted tools.
-                cmd.arg("--permission-mode")
-                    .arg("dontAsk")
-                    .arg("--allowedTools")
-                    .arg(claude_allowed_tools(skill));
+                // New agent harness (opt-in via RESEARCH_OS_TOOL_SCOPING):
+                // restrict tools per stage and auto-deny anything unlisted
+                // (`dontAsk`) instead of bypassing all permissions. `-p` print
+                // mode cannot answer interactive prompts, so `dontAsk` avoids
+                // hangs on unlisted tools.
+                cmd.arg("--permission-mode").arg("dontAsk");
+                let mut allowed = claude_allowed_tools(skill).to_string();
+                // In session mode, attach the local MCP sidecar (custom loop
+                // tools) and allow this stage's MCP tools alongside built-ins.
+                // `--strict-mcp-config` loads only our server (avoids the known
+                // multi-server stdio hang under `-p`).
+                if let Some(session_id) = session {
+                    if let Some(cfg) = session_mcp_config_path(root, session_id) {
+                        cmd.arg("--strict-mcp-config")
+                            .arg("--mcp-config")
+                            .arg(&cfg);
+                        let mcp = claude_mcp_tools(skill);
+                        if !mcp.is_empty() {
+                            allowed.push(',');
+                            allowed.push_str(mcp);
+                        }
+                    }
+                }
+                cmd.arg("--allowedTools").arg(allowed);
             } else {
-                // Default (until per-stage tool lists are validated): bypass
+                // Default (until the new harness is validated): bypass
                 // permissions, since `-p` cannot answer interactive prompts.
                 cmd.arg("--dangerously-skip-permissions");
             }
@@ -4081,7 +4102,7 @@ fn invoke_agent(
             .map_err(|e| format!("open transcript {}: {e}", transcript_path.display()))?,
     ));
 
-    let mut cmd = build_agent_command(backend, skill, root, prompt);
+    let mut cmd = build_agent_command(backend, skill, root, prompt, None);
     let backend_name = backend_label(backend);
 
     let mut child = cmd
@@ -4127,7 +4148,7 @@ fn invoke_agent_tui(
             .map_err(|e| format!("open transcript {}: {e}", transcript_path.display()))?,
     ));
 
-    let mut cmd = build_agent_command(backend, skill, root, prompt);
+    let mut cmd = build_agent_command(backend, skill, root, prompt, None);
     let backend_name = backend_label(backend);
 
     let mut child = cmd
@@ -4195,7 +4216,7 @@ fn invoke_session_agent_tui(
             .map_err(|e| format!("open transcript {}: {e}", transcript_path.display()))?,
     ));
 
-    let mut cmd = build_agent_command(backend, skill, root, prompt);
+    let mut cmd = build_agent_command(backend, skill, root, prompt, Some(session_id));
     let backend_name = backend_label(backend);
 
     let mut child = cmd
@@ -4295,6 +4316,51 @@ fn claude_allowed_tools(skill: &str) -> &'static str {
         // read + write/edit markdown artifacts; no shell or web.
         _ => "Read,Glob,Grep,Write,Edit",
     }
+}
+
+/// Fully-qualified MCP sidecar tool names (`mcp__researchos__<tool>`) a stage
+/// may call, for `--allowedTools` under scoping. Only the file-based tools that
+/// exist today (Phase 2b-1) are listed; more land as the sidecar grows. The
+/// server key must match the one written by [`session_mcp_config_path`].
+fn claude_mcp_tools(skill: &str) -> &'static str {
+    match skill {
+        "research-os-discussion" => {
+            "mcp__researchos__ledger_read,mcp__researchos__propose_experiment"
+        }
+        "research-os-qa"
+        | "research-os-ideation"
+        | "research-os-writing"
+        | "research-os-visualization"
+        | "research-os-synthesis"
+        | "research-os-wiki-update"
+        | "research-os-coding"
+        | "research-os-experiment-planning" => "mcp__researchos__ledger_read",
+        _ => "",
+    }
+}
+
+/// Write (idempotently) the per-session MCP config that tells a `claude -p`
+/// stage to spawn the local sidecar over stdio, and return its path. The server
+/// command is this same binary's `__mcp <session_id>` subcommand. Returns None
+/// if the executable path can't be resolved or the file can't be written, in
+/// which case the caller simply skips `--mcp-config`.
+fn session_mcp_config_path(root: &Path, session_id: &str) -> Option<PathBuf> {
+    let exe = env::current_exe().ok()?;
+    let cfg = serde_json::json!({
+        "mcpServers": {
+            "researchos": {
+                "type": "stdio",
+                "command": exe.to_string_lossy(),
+                "args": ["__mcp", session_id],
+            }
+        }
+    });
+    let path = root.join("sessions").join(session_id).join(".mcp.json");
+    if let Some(parent) = path.parent() {
+        fs::create_dir_all(parent).ok()?;
+    }
+    fs::write(&path, serde_json::to_string_pretty(&cfg).ok()?).ok()?;
+    Some(path)
 }
 
 fn is_deprecated_skill(skill: &str) -> bool {
@@ -5526,6 +5592,7 @@ mod tests {
             "research-os-discussion",
             Path::new("/tmp/root"),
             "do the thing",
+            None,
         );
         assert_eq!(cmd.get_program().to_str().unwrap(), "claude");
         let args: Vec<String> = cmd
@@ -5547,6 +5614,7 @@ mod tests {
             "research-os-doc-search",
             Path::new("/tmp/root"),
             "find papers",
+            None,
         );
         assert_eq!(cmd.get_program().to_str().unwrap(), "codex");
         let args: Vec<String> = cmd
@@ -5569,6 +5637,26 @@ mod tests {
         assert!(claude_allowed_tools("research-os-coding").contains("Bash"));
         let disc = claude_allowed_tools("research-os-discussion");
         assert!(disc.contains("Read") && disc.contains("Write") && !disc.contains("Bash"));
+    }
+
+    #[test]
+    fn discussion_gets_propose_experiment_mcp_tool() {
+        assert!(claude_mcp_tools("research-os-discussion").contains("propose_experiment"));
+        assert!(claude_mcp_tools("research-os-wiki-update").contains("ledger_read"));
+        assert_eq!(claude_mcp_tools("research-os-doc-search"), "");
+    }
+
+    #[test]
+    fn session_mcp_config_points_at_sidecar() {
+        let dir = std::env::temp_dir().join(format!("ros-mcp-{}", crate::ledger::now_ms()));
+        let path = session_mcp_config_path(&dir, "sess-1").expect("write config");
+        let text = std::fs::read_to_string(&path).expect("read config");
+        // Spawns this binary's __mcp subcommand for the session, under the
+        // server key that claude_mcp_tools' mcp__researchos__ names reference.
+        assert!(text.contains("researchos"));
+        assert!(text.contains("__mcp"));
+        assert!(text.contains("sess-1"));
+        let _ = std::fs::remove_dir_all(&dir);
     }
 
     #[test]
