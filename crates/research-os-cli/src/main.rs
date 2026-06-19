@@ -35,6 +35,9 @@ use unicode_width::UnicodeWidthStr;
 mod ledger;
 mod checkpoint_ipc;
 mod mcp_sidecar;
+// Phase-driver decision logic; consumed by the driver integration (Phase 3b).
+#[allow(dead_code)]
+mod phase;
 
 const SKILLS: &[&str] = &[
     "research-os-planner",
