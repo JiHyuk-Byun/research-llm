@@ -69,6 +69,7 @@ const SLASH_COMMANDS: &[(&str, &str)] = &[
     ("/help", "show commands"),
     ("/init", "start a new research session"),
     ("/search", "search sources in this session"),
+    ("/loop", "run the human-steered phase research loop on a subject"),
     ("/skills", "list agent skills"),
     ("/scope", "set or show search scope"),
     ("/agent", "show or switch agent backend (codex|claude)"),
@@ -282,6 +283,7 @@ enum SessionTurnKind {
     Discussion,
     Search,
     Plan,
+    Loop,
 }
 
 impl SessionTurnKind {
@@ -290,6 +292,7 @@ impl SessionTurnKind {
             SessionTurnKind::Discussion => "discussion",
             SessionTurnKind::Search => "search",
             SessionTurnKind::Plan => "plan",
+            SessionTurnKind::Loop => "loop",
         }
     }
 }
@@ -668,6 +671,17 @@ fn handle_slash_command(
                 )?;
             }
         }
+        "/loop" => {
+            // Empty subject => continue the loop from the ledger's current phase.
+            app.planning_mode = false;
+            start_session_turn(
+                root,
+                app,
+                tx,
+                rest.trim().to_string(),
+                SessionTurnKind::Loop,
+            )?;
+        }
         "/skills" => {
             push_system_lines(app, &["Available skills:"]);
             for skill in SKILLS {
@@ -768,7 +782,10 @@ fn start_session_turn(
     instruction: String,
     turn_kind: SessionTurnKind,
 ) -> Result<(), String> {
-    let instruction = if matches!(turn_kind, SessionTurnKind::Discussion) {
+    let instruction = if matches!(
+        turn_kind,
+        SessionTurnKind::Discussion | SessionTurnKind::Loop
+    ) {
         instruction
     } else {
         apply_tui_scope(&instruction, &app.source_scope)
@@ -3595,6 +3612,11 @@ fn run_session_turn_tui(
     init_workspace(root)?;
     init_session_workspace(root, session_id)?;
     check_cancelled(&control)?;
+    // The phase driver is its own long-running multi-phase loop; it doesn't use
+    // the fixed single-pass stage list below.
+    if matches!(turn_kind, SessionTurnKind::Loop) {
+        return run_phase_loop_tui(backend, root, session_id, instruction, tx, control);
+    }
     let turn_id = make_turn_id();
     let started_at_ms = current_millis();
     let stages = session_turn_stages(turn_kind);
@@ -3667,6 +3689,431 @@ fn run_session_turn_tui(
     )?;
     tx.send(UiMsg::Done(format!(
         "Turn complete: sessions/{session_id}/turns.jsonl#{turn_id}"
+    )))
+    .map_err(|e| e.to_string())?;
+    Ok(())
+}
+
+const LOOP_MAX_ITERATIONS: u32 = 24;
+const LOOP_FORCE_CHECKPOINT_AFTER: u32 = 3;
+
+fn loop_phase_work_stages(phase: ledger::Phase) -> Vec<&'static str> {
+    use ledger::Phase;
+    match phase {
+        Phase::Init => vec!["research-os-doc-search", "research-os-wiki-update"],
+        Phase::Discuss => vec!["research-os-discussion"],
+        Phase::Experiment => vec![
+            "research-os-experiment-planning",
+            "research-os-coding",
+            "research-os-visualization",
+        ],
+        Phase::Post => vec!["research-os-writing"],
+    }
+}
+
+fn signal_details_brief(signal: &phase::ExitSignal) -> String {
+    let d = &signal.details;
+    format!(
+        "src={} prop={} has_results={} done={} open_hyp={}",
+        d.source_count, d.pending_proposals, d.experiments_has_results, d.experiments_done,
+        d.open_hypotheses
+    )
+}
+
+fn action_label(a: ledger::DecisionAction) -> &'static str {
+    use ledger::DecisionAction::*;
+    match a {
+        Stay => "STAY",
+        Advance => "ADVANCE",
+        Branch => "BRANCH",
+        Stop => "STOP",
+    }
+}
+
+/// Per-phase work-stage prompt: the existing session stage prompt plus loop
+/// context (subject + phase goal + the active proposal/experiment).
+fn loop_stage_prompt(
+    session_id: &str,
+    turn_id: &str,
+    phase: ledger::Phase,
+    skill: &str,
+    led: &ledger::Ledger,
+) -> String {
+    use ledger::Phase;
+    let subject = led.subject.as_deref().unwrap_or("(no subject set)");
+    let mut ctx = format!(
+        "You are running ONE work stage inside an autonomous research-loop iteration (phase {}). \
+         Research subject: {subject}. Do the focused work for this stage, then stop; the driver \
+         decides the next step.",
+        phase::phase_key(phase)
+    );
+    match phase {
+        Phase::Init => ctx.push_str(&format!(
+            " INIT goal: gather sources on the subject and build the initial wiki (aim for at least \
+             {} notes in wiki/sources/).",
+            phase::INIT_MIN_SOURCES
+        )),
+        Phase::Discuss => ctx.push_str(
+            " DISCUSS goal: read the wiki and reason about the subject. When a testable hypothesis \
+             crystallizes, call propose_experiment (with a rough_design) so the loop can branch to \
+             an experiment.",
+        ),
+        Phase::Experiment => {
+            if let Some(p) = led.proposals.iter().rev().find(|p| {
+                matches!(p.status, ledger::ProposalStatus::Proposed) && p.rough_design.is_some()
+            }) {
+                ctx.push_str(&format!(
+                    " EXPERIMENT goal: design and run a toy experiment for proposal {} (hypothesis {}). \
+                     Rough design: {}. Place code/results under sessions/{session_id}/experiments/<exp_id>/.",
+                    p.id,
+                    p.hypothesis_id,
+                    p.rough_design.as_deref().unwrap_or("")
+                ));
+            } else {
+                ctx.push_str(" EXPERIMENT goal: design and run a toy experiment for the latest hypothesis.");
+            }
+        }
+        Phase::Post => ctx.push_str(
+            " POST goal: write the experiment up as (Question, Setup, Result, Analysis) and call \
+             capture_results to promote the finding into wiki/sources as a citable note.",
+        ),
+    }
+    session_stage_prompt(session_id, turn_id, SessionTurnKind::Loop, skill, &ctx)
+}
+
+/// Standalone prompt for the synthetic checkpoint stage (no SKILL.md). It must
+/// call exactly one of phase_route (low-stakes only) or checkpoint_ask (human).
+fn loop_checkpoint_prompt(
+    session_id: &str,
+    turn_id: &str,
+    phase: ledger::Phase,
+    signal: &phase::ExitSignal,
+    low: bool,
+    forced: bool,
+) -> String {
+    let d = &signal.details;
+    let mut s = format!(
+        "You are the phase-transition checkpoint for an autonomous research loop.\n\
+         Session id: {session_id}\nTurn id: {turn_id}\nCurrent phase: {}\n\
+         Work in session-only mode under sessions/{session_id}/. Do NOT write any files.\n\n\
+         First call coverage_report and ledger_read to inspect the loop state. Mechanical signal \
+         for this phase: boundary_plausible={}, source_count={}, pending_proposals={}, \
+         experiments_has_results={}, experiments_done={}, open_hypotheses={}.\n\n",
+        phase::phase_key(phase),
+        signal.boundary_plausible,
+        d.source_count,
+        d.pending_proposals,
+        d.experiments_has_results,
+        d.experiments_done,
+        d.open_hypotheses,
+    );
+    s.push_str(match phase {
+        ledger::Phase::Init => {
+            "INIT: if there are enough sources, ADVANCE to DISCUSS; else STAY to gather more.\n"
+        }
+        ledger::Phase::Discuss => {
+            "DISCUSS (hub): if a proposal with a rough_design exists, BRANCH to EXPERIMENT \
+             (target_phase EXPERIMENT); else STAY to keep discussing, or STOP.\n"
+        }
+        ledger::Phase::Experiment => {
+            "EXPERIMENT: if results exist, ADVANCE to POST; else STAY to keep working, or BRANCH to \
+             DISCUSS to drop the experiment.\n"
+        }
+        ledger::Phase::Post => {
+            "POST: once the finding is captured, ADVANCE to DISCUSS to expand the discussion, or STOP.\n"
+        }
+    });
+    if low {
+        s.push_str(
+            "\nThis is a LOW-STAKES boundary. If the next step is obvious and low-risk (e.g. \
+             INIT->DISCUSS once sources suffice, or STAY), call phase_route(action, target_phase?, \
+             reason) to proceed WITHOUT bothering the human. If genuinely ambiguous, use \
+             checkpoint_ask instead.\n",
+        );
+    } else {
+        s.push_str(
+            "\nThis is a HIGH-STAKES boundary (starting an experiment, committing to the wiki, or \
+             stopping). You MUST call checkpoint_ask so the human decides — do not self-route.\n",
+        );
+    }
+    if forced {
+        s.push_str(
+            "\nNOTE: the loop has run several iterations without a checkpoint; re-confirm with the \
+             human via checkpoint_ask even if little changed.\n",
+        );
+    }
+    s.push_str(
+        "\nCall exactly one of phase_route or checkpoint_ask. For checkpoint_ask, give a concise \
+         question, an assessment, and options with the recommended option FIRST; each option must \
+         carry action (STAY/ADVANCE/BRANCH/STOP) and target_phase for BRANCH.",
+    );
+    s
+}
+
+fn record_loop_decision(
+    led: &mut ledger::Ledger,
+    phase: ledger::Phase,
+    signal: &phase::ExitSignal,
+    route: &Option<ledger::RouteDecision>,
+    action: ledger::DecisionAction,
+    target: Option<ledger::Phase>,
+) {
+    let (by, reason, question, chosen_label) = match route {
+        Some(r) => (r.by, r.reason.clone(), r.question.clone(), r.chosen_label.clone()),
+        None => (
+            ledger::DecisionBy::Llm,
+            Some("no route from checkpoint".to_string()),
+            None,
+            None,
+        ),
+    };
+    led.decisions.push(ledger::Decision {
+        id: format!("dec-{}", ledger::now_ms()),
+        phase,
+        signal_hash: Some(signal.signal_hash.clone()),
+        question,
+        chosen: ledger::Chosen {
+            label: chosen_label,
+            action,
+            target_phase: target,
+        },
+        by,
+        reason,
+        note: None,
+        at: ledger::now_ms().to_string(),
+    });
+}
+
+/// The `/loop` phase driver: runs each phase's work stages, computes the exit
+/// signal, runs a stakes-gated checkpoint stage (which asks the human via
+/// checkpoint_ask or self-routes low-stakes via phase_route), reads the
+/// resulting ledger.pending_route, records the decision, and routes — bounded
+/// (LOOP_MAX_ITERATIONS) and fully cancellable so it can never silently spin.
+fn run_phase_loop_tui(
+    backend: Backend,
+    root: &Path,
+    session_id: &str,
+    subject: &str,
+    tx: Sender<UiMsg>,
+    control: RunControl,
+) -> Result<(), String> {
+    use ledger::{DecisionAction, Ledger};
+    use phase::{compute_exit_signal, is_low_stakes, next_phase, phase_key};
+
+    let loop_turn_id = make_turn_id();
+    let started_at_ms = current_millis();
+    let ledger_path = ledger::ledger_path(root, session_id);
+    let session_root = root.join("sessions").join(session_id);
+
+    tx.send(UiMsg::SessionTurnStarted(loop_turn_id.clone()))
+        .map_err(|e| e.to_string())?;
+    tx.send(UiMsg::Line(format!("system: session {session_id}")))
+        .map_err(|e| e.to_string())?;
+    tx.send(UiMsg::Line("system: turn loop".to_string()))
+        .map_err(|e| e.to_string())?;
+
+    // Setup: clear any stale route from a cancelled prior run; seed the subject
+    // if given, else continue from the ledger's current phase.
+    {
+        let mut led = Ledger::load_or_new(&ledger_path, session_id).map_err(|e| e.to_string())?;
+        led.pending_route = None;
+        if !subject.trim().is_empty() {
+            led.current_phase = ledger::Phase::Init;
+            led.subject = Some(subject.trim().to_string());
+            tx.send(UiMsg::Line(format!("user: /loop {}", subject.trim())))
+                .map_err(|e| e.to_string())?;
+        } else {
+            tx.send(UiMsg::Line(format!(
+                "system: continuing from {}",
+                phase_key(led.current_phase)
+            )))
+            .map_err(|e| e.to_string())?;
+            if led.subject.is_none() {
+                tx.send(UiMsg::Line(
+                    "system: no subject set; use /loop <subject> to seed".to_string(),
+                ))
+                .map_err(|e| e.to_string())?;
+            }
+        }
+        led.save(&ledger_path).map_err(|e| e.to_string())?;
+    }
+
+    let mut iterations: u32 = 0;
+    let mut suppressed: u32 = 0;
+    let mut last_phase: Option<ledger::Phase> = None;
+
+    loop {
+        check_cancelled(&control)?;
+        iterations += 1;
+        if iterations > LOOP_MAX_ITERATIONS {
+            tx.send(UiMsg::Line(format!(
+                "system: hit LOOP_MAX_ITERATIONS ({LOOP_MAX_ITERATIONS}); stopping"
+            )))
+            .map_err(|e| e.to_string())?;
+            break;
+        }
+
+        let phase = {
+            let mut led =
+                Ledger::load_or_new(&ledger_path, session_id).map_err(|e| e.to_string())?;
+            let phase = led.current_phase;
+            if last_phase != Some(phase) {
+                suppressed = 0;
+                last_phase = Some(phase);
+            }
+            led.phases.entry(phase_key(phase).to_string()).or_default().visits += 1;
+            led.save(&ledger_path).map_err(|e| e.to_string())?;
+            phase
+        };
+
+        tx.send(UiMsg::Line(format!(
+            "system: --- iteration {iterations}/{LOOP_MAX_ITERATIONS}  phase {} ---",
+            phase_key(phase)
+        )))
+        .map_err(|e| e.to_string())?;
+
+        // 1. Run the phase's work stages.
+        let work = loop_phase_work_stages(phase);
+        let mut pane: Vec<String> = work.iter().map(|s| s.to_string()).collect();
+        pane.push("checkpoint".to_string());
+        tx.send(UiMsg::Stages(pane)).map_err(|e| e.to_string())?;
+        for skill in &work {
+            check_cancelled(&control)?;
+            tx.send(UiMsg::StageStarted((*skill).to_string()))
+                .map_err(|e| e.to_string())?;
+            tx.send(UiMsg::Line(format!("stage: {skill}")))
+                .map_err(|e| e.to_string())?;
+            let led_now =
+                Ledger::load_or_new(&ledger_path, session_id).map_err(|e| e.to_string())?;
+            invoke_session_agent_tui(
+                backend,
+                root,
+                session_id,
+                &loop_turn_id,
+                skill,
+                &loop_stage_prompt(session_id, &loop_turn_id, phase, skill, &led_now),
+                &tx,
+                &control,
+            )?;
+            check_cancelled(&control)?;
+            tx.send(UiMsg::StageDone((*skill).to_string()))
+                .map_err(|e| e.to_string())?;
+            tx.send(UiMsg::Artifacts(list_session_artifacts(root, session_id)))
+                .map_err(|e| e.to_string())?;
+        }
+
+        // 2. Compute the exit signal and decide whether to checkpoint.
+        let led = Ledger::load_or_new(&ledger_path, session_id).map_err(|e| e.to_string())?;
+        let signal = compute_exit_signal(phase, &led, &session_root);
+        let forced = suppressed + 1 >= LOOP_FORCE_CHECKPOINT_AFTER;
+        // v1: hysteresis-suppression is OFF — always checkpoint on a met gate.
+        let run_checkpoint = signal.boundary_plausible || forced;
+        tx.send(UiMsg::Line(format!(
+            "system: signal gate={} forced={} ({})",
+            signal.boundary_plausible,
+            forced,
+            signal_details_brief(&signal)
+        )))
+        .map_err(|e| e.to_string())?;
+        if !run_checkpoint {
+            suppressed += 1;
+            tx.send(UiMsg::Line(format!(
+                "system: boundary not reached ({suppressed}/{LOOP_FORCE_CHECKPOINT_AFTER}); continuing the phase"
+            )))
+            .map_err(|e| e.to_string())?;
+            continue;
+        }
+        suppressed = 0;
+
+        // 3. Run the stakes-gated checkpoint stage (clears any stale route first).
+        let low = is_low_stakes(phase, DecisionAction::Advance);
+        let ck_skill = if low {
+            "research-os-checkpoint-low"
+        } else {
+            "research-os-checkpoint-high"
+        };
+        {
+            let mut led =
+                Ledger::load_or_new(&ledger_path, session_id).map_err(|e| e.to_string())?;
+            led.pending_route = None;
+            led.save(&ledger_path).map_err(|e| e.to_string())?;
+        }
+        check_cancelled(&control)?;
+        tx.send(UiMsg::StageStarted(ck_skill.to_string()))
+            .map_err(|e| e.to_string())?;
+        tx.send(UiMsg::Line(format!("stage: {ck_skill}")))
+            .map_err(|e| e.to_string())?;
+        invoke_session_agent_tui(
+            backend,
+            root,
+            session_id,
+            &loop_turn_id,
+            ck_skill,
+            &loop_checkpoint_prompt(session_id, &loop_turn_id, phase, &signal, low, forced),
+            &tx,
+            &control,
+        )?;
+        tx.send(UiMsg::StageDone(ck_skill.to_string()))
+            .map_err(|e| e.to_string())?;
+
+        // 4. Consume the route, record the decision, stamp hysteresis, route.
+        let mut led = Ledger::load_or_new(&ledger_path, session_id).map_err(|e| e.to_string())?;
+        let route = led.pending_route.take();
+        let (action, target) = match &route {
+            Some(r) => (r.action, r.target_phase),
+            None => {
+                tx.send(UiMsg::Line(
+                    "system: checkpoint produced no route; defaulting STAY".to_string(),
+                ))
+                .map_err(|e| e.to_string())?;
+                (DecisionAction::Stay, None)
+            }
+        };
+        record_loop_decision(&mut led, phase, &signal, &route, action, target);
+        {
+            let st = led.phases.entry(phase_key(phase).to_string()).or_default();
+            st.last_signal_hash = Some(signal.signal_hash.clone());
+            st.last_decision = Some(action);
+            st.last_checkpoint_at = Some(ledger::now_ms().to_string());
+        }
+        led.pending_route = None;
+        led.save(&ledger_path).map_err(|e| e.to_string())?;
+
+        match next_phase(phase, action, target) {
+            None => {
+                tx.send(UiMsg::Line("system: decision STOP; ending loop".to_string()))
+                    .map_err(|e| e.to_string())?;
+                break;
+            }
+            Some(next) => {
+                if next != phase {
+                    let mut led2 =
+                        Ledger::load_or_new(&ledger_path, session_id).map_err(|e| e.to_string())?;
+                    led2.current_phase = next;
+                    led2.save(&ledger_path).map_err(|e| e.to_string())?;
+                }
+                tx.send(UiMsg::Line(format!(
+                    "system: {} -> {} ({})",
+                    phase_key(phase),
+                    phase_key(next),
+                    action_label(action)
+                )))
+                .map_err(|e| e.to_string())?;
+            }
+        }
+    }
+
+    record_session_turn(
+        root,
+        session_id,
+        &loop_turn_id,
+        SessionTurnKind::Loop,
+        subject,
+        &[],
+        started_at_ms,
+    )?;
+    tx.send(UiMsg::Done(format!(
+        "Loop ended: sessions/{session_id}/ledger.json ({iterations} iterations)"
     )))
     .map_err(|e| e.to_string())?;
     Ok(())
@@ -4129,6 +4576,9 @@ fn session_turn_stages(turn_kind: SessionTurnKind) -> Vec<&'static str> {
             "research-os-discussion",
         ],
         SessionTurnKind::Plan => vec!["research-os-planner"],
+        // The phase driver manages its own per-phase stages; it does not go
+        // through the fixed session_turn_stages path.
+        SessionTurnKind::Loop => vec![],
     }
 }
 
@@ -4522,8 +4972,11 @@ fn claude_allowed_tools(skill: &str) -> &'static str {
         "research-os-coding" => "Read,Glob,Grep,Write,Edit,Bash",
         // Visualization: read evidence + write figures + run plotting.
         "research-os-visualization" => "Read,Glob,Grep,Write,Bash",
-        // Read-only review.
-        "research-os-lint-critic" => "Read,Glob,Grep",
+        // Read-only review + the driver's checkpoint stages (they only read
+        // state and call MCP tools to route; they write nothing to the FS).
+        "research-os-lint-critic"
+        | "research-os-checkpoint-low"
+        | "research-os-checkpoint-high" => "Read,Glob,Grep",
         // Everything else (wiki-update, synthesis, reader, qa, discussion,
         // writing, ideation, experiment-planning, planner, source-triage):
         // read + write/edit markdown artifacts; no shell or web.
@@ -4557,6 +5010,21 @@ fn claude_mcp_tools(skill: &str) -> &'static str {
         "research-os-visualization" | "research-os-synthesis" | "research-os-coding" => {
             "mcp__researchos__ledger_read"
         }
+        // Driver checkpoint stages: read coverage + ask the human. Only the
+        // low-stakes variant gets phase_route (self-routing); withholding it
+        // from the high-stakes variant is how "high-stakes always human" is
+        // enforced by construction.
+        "research-os-checkpoint-low" => concat!(
+            "mcp__researchos__ledger_read,",
+            "mcp__researchos__coverage_report,",
+            "mcp__researchos__checkpoint_ask,",
+            "mcp__researchos__phase_route"
+        ),
+        "research-os-checkpoint-high" => concat!(
+            "mcp__researchos__ledger_read,",
+            "mcp__researchos__coverage_report,",
+            "mcp__researchos__checkpoint_ask"
+        ),
         _ => "",
     }
 }
@@ -5866,6 +6334,33 @@ mod tests {
         assert!(claude_mcp_tools("research-os-discussion").contains("propose_experiment"));
         assert!(claude_mcp_tools("research-os-wiki-update").contains("ledger_read"));
         assert_eq!(claude_mcp_tools("research-os-doc-search"), "");
+    }
+
+    #[test]
+    fn checkpoint_stage_stakes_gating() {
+        // The enforcement boundary: only the low-stakes checkpoint stage may
+        // self-route (phase_route); the high-stakes one can only ask the human.
+        let low = claude_mcp_tools("research-os-checkpoint-low");
+        let high = claude_mcp_tools("research-os-checkpoint-high");
+        assert!(low.contains("phase_route") && low.contains("checkpoint_ask"));
+        assert!(!high.contains("phase_route") && high.contains("checkpoint_ask"));
+        // Checkpoint stages are read-only on the filesystem.
+        assert_eq!(claude_allowed_tools("research-os-checkpoint-high"), "Read,Glob,Grep");
+    }
+
+    #[test]
+    fn loop_phase_work_stages_per_phase() {
+        use crate::ledger::Phase;
+        assert_eq!(
+            loop_phase_work_stages(Phase::Init),
+            vec!["research-os-doc-search", "research-os-wiki-update"]
+        );
+        assert_eq!(
+            loop_phase_work_stages(Phase::Discuss),
+            vec!["research-os-discussion"]
+        );
+        assert!(loop_phase_work_stages(Phase::Experiment).contains(&"research-os-coding"));
+        assert_eq!(loop_phase_work_stages(Phase::Post), vec!["research-os-writing"]);
     }
 
     #[test]

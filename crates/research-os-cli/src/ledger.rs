@@ -214,6 +214,10 @@ pub struct Ledger {
     pub session_id: String,
     pub schema_version: String,
     pub current_phase: Phase,
+    /// The research subject seeded by `/loop <subject>`; used in INIT/DISCUSS
+    /// stage prompts so the loop knows what it is researching.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub subject: Option<String>,
     #[serde(default)]
     pub phases: BTreeMap<String, PhaseState>,
     /// Set by a checkpoint tool, consumed and cleared by the driver.
@@ -236,6 +240,7 @@ impl Ledger {
             session_id: session_id.to_string(),
             schema_version: SCHEMA_VERSION.to_string(),
             current_phase: Phase::Init,
+            subject: None,
             phases: BTreeMap::new(),
             pending_route: None,
             decisions: Vec::new(),
