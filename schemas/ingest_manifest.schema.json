@@ -9,9 +9,12 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["source_id", "original_url_or_path", "raw_path", "parsed_path", "extraction_method"],
+        "required": ["source_id", "original_url_or_path", "raw_path", "extraction_method"],
         "properties": {
           "source_id": { "type": "string" },
+          "title": { "type": "string" },
+          "venue_or_publisher": { "type": "string" },
+          "file_stem": { "type": "string" },
           "original_url_or_path": { "type": "string" },
           "pdf_url": { "type": "string" },
           "pdf_discovery_method": { "type": "string" },
@@ -36,8 +39,12 @@
             "enum": ["pdf", "html", "txt", "metadata_only"]
           },
           "access_date": { "type": "string" },
-          "raw_path": { "type": "string" },
-          "parsed_path": { "type": "string" },
+          "raw_path": { "type": ["string", "null"] },
+          "extracted_path": { "type": ["string", "null"] },
+          "derived_artifact_paths": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
           "extraction_method": { "type": "string" },
           "known_failures": { "type": "array", "items": { "type": "string" } }
         },

@@ -5,7 +5,7 @@ description: Design research PoCs, experiments, benchmarks, ablations, and imple
 
 # Research-OS Experiment Planning
 
-Read `runs/{run_id}/wiki/index.md`, `runs/{run_id}/wiki/followups.md`, relevant run-local source notes, topics, and synthesis pages.
+Read `runs/{run_id}/wiki/index.md`, `runs/{run_id}/wiki/followups.md`, and relevant run-local source, concept, entity, method, dataset, comparison, and synthesis pages. If legacy `wiki/topics/` pages exist, use them only as compatibility input.
 
 ## Required Output Content
 

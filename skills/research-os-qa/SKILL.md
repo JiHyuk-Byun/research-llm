@@ -5,12 +5,12 @@ description: Answer research questions from the research-os wiki first, citing s
 
 # Research-OS Q&A
 
-Read `runs/{run_id}/wiki/index.md` first, then relevant run-local `wiki/topics/`, `wiki/synthesis/`, and `wiki/sources/` pages. Write a durable answer under `runs/{run_id}/wiki/outputs/` when assigned by the plan.
+Read `sessions/{session_id}/wiki/index.md` first. Then read relevant active session wiki `sources/`, `concepts/`, `entities/`, `methods/`, `datasets/`, `comparisons/`, and `synthesis/` pages. If legacy `wiki/topics/` pages exist, use them only as compatibility input. Write a durable answer under the active wiki `outputs/` directory when assigned by the orchestrator prompt.
 
 ## Rules
 
 - Cite source notes for technical claims.
 - State uncertainty and coverage gaps.
 - Do not search externally first.
-- If wiki coverage is insufficient, request a hybrid or knowledge-building run.
-- Do not mutate topic or synthesis pages directly.
+- If wiki coverage is insufficient, request `/search` or `/research` in the active session.
+- Do not mutate durable wiki pages directly.

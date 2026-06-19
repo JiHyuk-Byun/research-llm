@@ -5,7 +5,7 @@ description: Synthesize findings across source notes and wiki pages into cited t
 
 # Research-OS Synthesis
 
-Read source notes, relevant topic pages, previous synthesis pages, and `runs/{run_id}/plan.json`. Write a synthesis page under `runs/{run_id}/wiki/synthesis/` or the path assigned in the plan.
+Read source summaries, relevant concept/entity/method/dataset/comparison pages, previous synthesis pages, and the orchestrator prompt for the active session. If legacy `wiki/topics/` pages exist, use them only as compatibility input. Write a synthesis page under `sessions/{session_id}/wiki/synthesis/` or the path assigned by the orchestrator prompt.
 
 ## Rules
 

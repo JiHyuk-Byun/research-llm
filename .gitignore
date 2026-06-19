@@ -1,4 +1,25 @@
+# Rust
 /target/
+
+# Node / browser tooling
 /node_modules/
-/runs/*/transcripts/
+/playwright-report/
+/test-results/
+
+# OS/editor metadata
+.DS_Store
+**/.DS_Store
+._*
+*.swp
+*.swo
+
+# Generated research-os runtime artifacts
+/runs/
+/sessions/
+/raw/
+/artifacts/
+/wiki/
+
+# Temporary files
 *.tmp
+*.log

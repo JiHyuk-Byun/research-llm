@@ -5,7 +5,9 @@ description: Rank and select search results for ingestion while preserving sourc
 
 # Research-OS Source Triage
 
-Read `runs/{run_id}/plan.json` and `runs/{run_id}/search_results.json`. Write `runs/{run_id}/selected_sources.json`.
+Deprecated for new plans. Use `research-os-doc-search`, which combines scoped search, triage, and ingest. This skill remains only for legacy run compatibility.
+
+Read `runs/{run_id}/plan/plan.json` and `runs/{run_id}/search_results.json`. Write `runs/{run_id}/selected_sources.json`.
 
 ## Rules
 

@@ -5,7 +5,17 @@ description: Implement research-related code, parsers, analysis scripts, demos, 
 
 # Research-OS Coding
 
-Read `runs/{run_id}/wiki/index.md` first, then relevant run-local source notes, topics, synthesis, and experiment plans. Implement code only in paths assigned by the plan.
+Read `sessions/{session_id}/wiki/index.md` first, then relevant session-local source, concept, entity, method, dataset, comparison, synthesis, and output pages. If the wiki is not sufficient to justify the requested implementation, request knowledge-building or a hybrid pipeline instead of guessing.
+
+Implement code only in paths assigned by the plan or explicitly requested by the user.
+
+## Storage Contract
+
+- Repo/product feature or bug fix: edit the assigned repository files directly. Also write `sessions/{session_id}/artifacts/implementation/{turn_id}/notes.md` with changed files, validation commands, and the wiki evidence or user instruction that motivated the implementation.
+- Research prototype, experiment scaffold, analysis script, parser, demo, simulation, or generated code artifact: create it under `sessions/{session_id}/artifacts/implementation/{turn_id}/`.
+- Research implementation artifacts must include `README.md` or `notes.md` with purpose, entrypoints, inputs, outputs, and run instructions.
+- Keep generated outputs from research implementation work inside the same `sessions/{session_id}/artifacts/implementation/{turn_id}/` subtree unless the plan assigns a more specific session-local artifact path.
+- Do not create `runs/` or copy the session into a new workspace.
 
 ## Rules
 

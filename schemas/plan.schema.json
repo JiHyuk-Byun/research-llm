@@ -2,14 +2,52 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "research-os plan",
   "type": "object",
-  "required": ["run_id", "user_instruction", "task_type", "source_scope", "stages", "final_expected_artifact"],
+  "required": [
+    "run_id",
+    "user_instruction",
+    "turn_type",
+    "task_type",
+    "wiki_sufficiency",
+    "selected_agents",
+    "selection_rationale",
+    "source_scope",
+    "stages",
+    "final_expected_artifact"
+  ],
   "properties": {
     "run_id": { "type": "string" },
+    "session_id": { "type": "string" },
     "user_instruction": { "type": "string" },
+    "turn_type": {
+      "type": "string",
+      "enum": [
+        "new_research",
+        "followup_qa",
+        "discussion",
+        "ideation",
+        "implementation",
+        "visualization",
+        "experiment_planning",
+        "writing"
+      ]
+    },
     "task_type": {
       "type": "string",
       "enum": ["knowledge_building", "knowledge_using", "hybrid"]
     },
+    "wiki_sufficiency": {
+      "type": "object",
+      "properties": {
+        "sufficient": { "type": "boolean" },
+        "reason": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "selected_agents": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "selection_rationale": { "type": "string" },
     "source_scope": {
       "type": "object",
       "required": ["mode", "allowed_sources", "expansion_policy"],
@@ -48,4 +86,3 @@
   },
   "additionalProperties": true
 }
-

@@ -25,9 +25,9 @@ Knowledge Using consumes the research state to answer questions, generate ideas,
 
 ```text
 raw sources
-→ source notes
-→ concept / method / dataset / benchmark pages
-→ synthesis pages
+→ doc search manifest + source-native files
+→ Karpathy-style wiki pages
+→ optional synthesis pages
 → followups / index / log
 → downstream research tasks
 ```
@@ -61,26 +61,19 @@ Knowledge-building agents create, structure, validate, and update the persistent
 
 They are responsible for:
 
-- finding sources
-- triaging sources
-- ingesting raw materials
-- reading sources
-- extracting structured source notes
+- finding, triaging, and downloading sources
+- preserving source-native files and session extraction artifacts
 - updating the wiki
-- synthesizing multi-source findings
+- optionally synthesizing multi-source findings for user-facing analysis
 - validating citations, conflicts, and coverage gaps
 
 Default knowledge-building pipeline:
 
 ```text
 Planner
-→ Search
-→ Source Triage
-→ Ingest
-→ Reader
+→ Doc Search
 → Wiki Update
-→ Synthesis
-→ Wiki Update
+→ optional Synthesis / output agent
 → Lint / Critic
 ```
 
@@ -122,7 +115,7 @@ Plan the required pipeline for the given research instruction using predefined s
 
 ### Output
 
-- `runs/{run_id}/plan.json`
+- `sessions/{session_id}/plan/`
 
 ### Responsibilities
 
@@ -142,24 +135,26 @@ Plan the required pipeline for the given research instruction using predefined s
 
 ---
 
-## 2. Search Agent
+## 2. Doc Search Agent
 
 ### Purpose
 
-Search for potentially relevant sources.
+Find, triage, download, and preserve relevant research documents.
 
 ### Input
 
-- `runs/{run_id}/plan.json`
+- orchestrator prompt and existing `sessions/{session_id}/wiki/index.md`
 
 ### Output
 
-- `runs/{run_id}/search_results.json`
+- `sessions/{session_id}/doc_search_manifest.json`
+- source-native downloads/imports under `raw/`
+- session extracted text and discovery records under `artifacts/`
 
 ### Responsibilities
 
-- Search web sources, academic sources, and/or fixed local library.
-- Collect source metadata:
+- Search web sources, academic sources, and/or fixed local library within the declared `source_scope`.
+- Collect and rank candidate metadata:
   - title
   - authors or organization
   - date
@@ -168,6 +163,11 @@ Search for potentially relevant sources.
   - abstract or snippet
   - venue or publisher if available
 - Deduplicate obvious duplicates.
+- Select a balanced set of sources.
+- Download or import PDFs, web pages, reports, code, slides, or other source-native files.
+- Preserve raw sources in immutable form.
+- Extract text and metadata where useful.
+- Record provenance, rejected out-of-scope candidates, download failures, and coverage gaps.
 
 ### Must not
 
@@ -177,134 +177,7 @@ Search for potentially relevant sources.
 
 ---
 
-## 3. Source Triage Agent
-
-### Purpose
-
-Select the sources that should be ingested and read.
-
-### Input
-
-- `runs/{run_id}/search_results.json`
-- `runs/{run_id}/plan.json`
-
-### Output
-
-- `runs/{run_id}/selected_sources.json`
-
-### Responsibilities
-
-- Rank sources by:
-  - relevance
-  - credibility
-  - recency
-  - diversity
-  - expected usefulness
-  - source type
-- Select a balanced set of sources.
-- Identify missing coverage areas.
-- Explain why each selected source matters.
-
-### Must not
-
-- Prefer recency blindly over foundational importance.
-- Summarize the field without reading selected sources.
-- Mutate the wiki.
-
----
-
-## 4. Ingest Agent
-
-### Purpose
-
-Bring selected sources into the local research workspace.
-
-### Input
-
-- `runs/{run_id}/selected_sources.json`
-
-### Output
-
-- raw sources under `raw/`
-- parsed text under `parsed/`
-- `runs/{run_id}/ingest_manifest.json`
-
-### Responsibilities
-
-- Download or import PDFs, web pages, reports, code, slides, or other source types.
-- Preserve raw sources in immutable form.
-- Extract text and metadata where possible.
-- Record provenance:
-  - original URL
-  - access date
-  - local raw path
-  - parsed path
-  - extraction method
-  - known extraction failures
-
-### Must not
-
-- Modify raw sources.
-- Create high-level synthesis.
-- Mutate concept, method, or synthesis pages.
-
----
-
-## 5. Reader Agent
-
-### Purpose
-
-Read each ingested source and create a structured source note.
-
-### Input
-
-- Parsed source text
-- Raw source metadata
-- User research question or plan context
-
-### Output
-
-- `wiki/sources/{source_id}.md`
-
-### Responsibilities
-
-Extract:
-
-- main claims
-- problem statement
-- contributions
-- methods
-- datasets
-- benchmarks
-- metrics
-- findings
-- evidence
-- limitations
-- future work
-- interesting details
-- relevance to the user’s research question
-- possible links to existing concepts
-
-### Must
-
-- Separate what the source claims from what the agent infers.
-- Include location references when available:
-  - page
-  - section
-  - figure
-  - table
-  - paragraph
-- Preserve uncertainty.
-
-### Must not
-
-- Generalize across multiple sources.
-- Update concept or synthesis pages directly.
-- Add unsupported claims.
-
----
-
-## 6. Wiki Update Agent
+## 3. Wiki Update Agent
 
 ### Purpose
 
@@ -314,7 +187,8 @@ Wiki Update is a first-class stage because it mutates the durable research state
 
 ### Input
 
-- Newly created or updated source notes
+- `sessions/{session_id}/doc_search_manifest.json`
+- raw source files and extracted artifacts
 - Existing wiki pages
 - Optional synthesis output
 - Optional downstream task artifacts
@@ -322,15 +196,16 @@ Wiki Update is a first-class stage because it mutates the durable research state
 ### Output
 
 - Updated wiki pages
-- `runs/{run_id}/wiki_update_report.md`
+- `sessions/{session_id}/wiki_update_report.md`
 
 ### Responsibilities
 
+- Create source summary pages under `wiki/sources/`.
 - Update concept pages.
+- Update entity pages.
 - Update method pages.
 - Update dataset pages.
-- Update benchmark pages.
-- Update synthesis indexes.
+- Update comparison pages.
 - Update `index.md`.
 - Update `followups.md`.
 - Update `log.md`.
@@ -345,7 +220,7 @@ Wiki Update is a first-class stage because it mutates the durable research state
 
 ### Must
 
-- Run after every knowledge-producing stage, especially after Reader and Synthesis.
+- Run after Doc Search for knowledge-building runs.
 - Keep raw source claims and agent interpretation separate.
 - Preserve traceability from wiki claims to source notes.
 - Prefer conservative updates.
@@ -418,7 +293,7 @@ Validate the research state and final outputs.
 
 ### Output
 
-- `runs/{run_id}/lint_report.md`
+- `sessions/{session_id}/lint_report.md`
 
 ### Responsibilities
 
@@ -550,11 +425,11 @@ Raw sources are the source of truth and should be preserved.
 
 ## 3. Wiki is the structured research state
 
-The wiki contains source notes, concept pages, method pages, dataset pages, benchmark pages, synthesis pages, follow-ups, indexes, and logs.
+The wiki contains source summaries, concept pages, entity pages, method pages, dataset pages, comparison pages, synthesis pages, follow-ups, indexes, and logs.
 
 ## 4. Wiki Update is a first-class stage
 
-Wiki Update is separated from Reader and Synthesis because it mutates persistent research state.
+Wiki Update is separated from Doc Search and output-oriented Synthesis because it mutates persistent research state.
 
 It has two purposes:
 
@@ -589,7 +464,7 @@ Wiki Update Agent decides how to incorporate them.
 
 ## 9. Auditability
 
-Every run should leave artifacts under `runs/{run_id}/`.
+Every session turn should append metadata to `sessions/{session_id}/turns.jsonl` and leave artifacts under `sessions/{session_id}/`.
 
 Every meaningful wiki change should be traceable through:
 
@@ -615,10 +490,9 @@ research-os/
     code/
     slides/
 
-  parsed/
-    papers/
-    web/
-    reports/
+  artifacts/
+    extracted/
+    discovery/
 
   wiki/
     index.md
@@ -627,17 +501,18 @@ research-os/
 
     sources/
     concepts/
+    entities/
     methods/
     datasets/
-    benchmarks/
+    comparisons/
     synthesis/
-    ideas/
-    experiments/
-    artifacts/
+    outputs/
 
   runs/
     {run_id}/
-      plan.json
+      plan/
+        plan.json
+        plan.md
       search_results.json
       selected_sources.json
       ingest_manifest.json
@@ -661,16 +536,13 @@ research-os/
 ```text
 User instruction
 → Planner
-→ Search
-→ Source Triage
-→ Ingest
-→ Reader
-→ Wiki Update
-→ Synthesis
+→ Doc Search
 → Wiki Update
 → Lint / Critic
 → Final response
 ```
+
+If the user asks for analysis, conclusions, taxonomy, or a report, add `Synthesis` after `Wiki Update`.
 
 ## Knowledge-Using Pipeline
 
@@ -692,10 +564,7 @@ User instruction
 → Planner
 → Wiki Retrieval
 → coverage gap detected
-→ Search
-→ Source Triage
-→ Ingest
-→ Reader
+→ Doc Search
 → Wiki Update
 → Task-specific Knowledge-Using Agent
 → Optional Synthesis
@@ -724,4 +593,3 @@ User instruction
 6. Knowledge-using agents must read the wiki first.
 
 7. If the wiki is insufficient, run or request knowledge building before giving a confident answer.
-

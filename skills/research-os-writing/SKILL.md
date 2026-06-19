@@ -5,7 +5,7 @@ description: Produce research memos, literature reviews, related work, proposals
 
 # Research-OS Writing
 
-Read `runs/{run_id}/wiki/index.md` first, then relevant run-local source notes, topics, and synthesis pages. Write outputs under `runs/{run_id}/wiki/outputs/` or the path assigned in the plan.
+Read `runs/{run_id}/wiki/index.md` first, then relevant run-local source, concept, entity, method, dataset, comparison, and synthesis pages. If legacy `wiki/topics/` pages exist, use them only as compatibility input. Write outputs under `runs/{run_id}/wiki/outputs/` or the path assigned in the plan.
 
 ## Rules
 

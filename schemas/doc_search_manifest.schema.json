@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "research-os doc search manifest",
+  "type": "object",
+  "required": ["run_id", "source_scope_obeyed", "candidates", "selected_sources", "downloaded_sources", "coverage_gaps"],
+  "properties": {
+    "run_id": { "type": "string" },
+    "source_scope_obeyed": { "type": "boolean" },
+    "queries": { "type": "array", "items": { "type": "string" } },
+    "browser_render_attempts": { "type": "array" },
+    "venue_coverage": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "venue": { "type": "string" },
+          "year": { "type": "string" },
+          "official_locations": { "type": "array", "items": { "type": "string" } },
+          "render_status": { "type": "string" },
+          "candidate_count": { "type": "integer" },
+          "selected_count": { "type": "integer" },
+          "gap_reason": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "candidates": { "type": "array" },
+    "selected_sources": { "type": "array" },
+    "downloaded_sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_id", "title", "original_url_or_path", "download_status"],
+        "properties": {
+          "source_id": { "type": "string" },
+          "title": { "type": "string" },
+          "venue_or_publisher": { "type": "string" },
+          "file_stem": { "type": "string" },
+          "original_url_or_path": { "type": "string" },
+          "pdf_url": { "type": "string" },
+          "pdf_discovery_method": { "type": "string" },
+          "pdf_discovery_queries": { "type": "array", "items": { "type": "string" } },
+          "pdf_candidate_urls": { "type": "array", "items": { "type": "string" } },
+          "pdf_match_rationale": { "type": "string" },
+          "code_status": {
+            "type": "object",
+            "properties": {
+              "availability": {
+                "type": "string",
+                "enum": ["official", "unofficial", "not_found", "uncertain"]
+              },
+              "artifact_types": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": ["code", "model", "demo", "dataset", "supplementary"]
+                }
+              },
+              "official_urls": { "type": "array", "items": { "type": "string" } },
+              "unofficial_urls": { "type": "array", "items": { "type": "string" } },
+              "lookup_queries": { "type": "array", "items": { "type": "string" } },
+              "candidate_urls": { "type": "array", "items": { "type": "string" } },
+              "match_rationale": { "type": "string" },
+              "last_checked": { "type": "string" },
+              "notes": { "type": "string" }
+            },
+            "additionalProperties": true
+          },
+          "download_attempted": { "type": "boolean" },
+          "download_status": {
+            "type": "string",
+            "enum": ["success", "failed", "not_available", "not_applicable"]
+          },
+          "download_error": { "type": "string" },
+          "fallback_reason": { "type": "string" },
+          "raw_format": {
+            "type": "string",
+            "enum": ["pdf", "html", "txt", "json", "metadata_only"]
+          },
+          "access_date": { "type": "string" },
+          "raw_path": { "type": ["string", "null"] },
+          "extracted_path": { "type": ["string", "null"] },
+          "derived_artifact_paths": { "type": "array", "items": { "type": "string" } },
+          "extraction_method": { "type": "string" },
+          "known_failures": { "type": "array", "items": { "type": "string" } }
+        },
+        "additionalProperties": true
+      }
+    },
+    "visual_assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_id", "asset_type", "label", "extraction_status"],
+        "properties": {
+          "source_id": { "type": "string" },
+          "asset_type": {
+            "type": "string",
+            "enum": ["figure", "table", "page", "other"]
+          },
+          "label": { "type": "string" },
+          "caption": { "type": "string" },
+          "asset_path": { "type": ["string", "null"] },
+          "page": { "type": ["integer", "null"] },
+          "bbox": {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 4,
+            "maxItems": 4
+          },
+          "extraction_status": {
+            "type": "string",
+            "enum": ["success", "uncertain", "failed", "not_applicable"]
+          },
+          "crop_method": { "type": "string" },
+          "rationale": { "type": "string" },
+          "error": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "rejected_out_of_scope": { "type": "array" },
+    "coverage_gaps": { "type": "array" }
+  },
+  "additionalProperties": true
+}

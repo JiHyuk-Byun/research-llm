@@ -5,7 +5,7 @@ description: Generate research ideas, hypotheses, and paper angles grounded in g
 
 # Research-OS Ideation
 
-Read `runs/{run_id}/wiki/index.md`, relevant run-local synthesis pages, followups, and source notes before ideating.
+Read `runs/{run_id}/wiki/index.md`, `runs/{run_id}/wiki/followups.md`, and relevant run-local source, concept, entity, method, dataset, comparison, and synthesis pages before ideating. If legacy `wiki/topics/` pages exist, use them only as compatibility input.
 
 ## Rules
 

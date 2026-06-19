@@ -5,7 +5,7 @@ description: Create cited research tables, diagrams, charts, timelines, and visu
 
 # Research-OS Visualization
 
-Read `runs/{run_id}/wiki/index.md` first. Identify the evidence source for each visual element.
+Read `runs/{run_id}/wiki/index.md` first, then relevant run-local source, concept, entity, method, dataset, comparison, and synthesis pages. If legacy `wiki/topics/` pages exist, use them only as compatibility input. Identify the evidence source for each visual element.
 
 ## Rules
 

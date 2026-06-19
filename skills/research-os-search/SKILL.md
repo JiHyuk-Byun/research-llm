@@ -5,7 +5,9 @@ description: Search only within the source_scope declared by research-os Planner
 
 # Research-OS Search
 
-Read `runs/{run_id}/plan.json` first. Write `runs/{run_id}/search_results.json`.
+Deprecated for new plans. Use `research-os-doc-search`, which combines scoped search, triage, and ingest. This skill remains only for legacy run compatibility.
+
+Read `runs/{run_id}/plan/plan.json` first. Write `runs/{run_id}/search_results.json`.
 
 ## Rules
 
@@ -15,6 +17,7 @@ Read `runs/{run_id}/plan.json` first. Write `runs/{run_id}/search_results.json`.
 - Do not spend effort finding download-target PDF/file links. The Search agent discovers research source candidates, not downloadable files.
 - If a direct PDF URL is already visible in the same source candidate record, you may preserve it as incidental metadata, but do not derive, validate, or search for it.
 - When an allowed source page is JavaScript-rendered and static text fetch does not expose the source list, use a browser-rendering fallback before declaring a coverage gap.
+- Store rendered DOM, extracted snippets, candidate enumeration records, and other search-derived artifacts under `runs/{run_id}/artifacts/discovery/`, not under `runs/{run_id}/raw/sources/`.
 - Do not treat search results as verified knowledge.
 - Do not mutate `wiki/`.
 
@@ -29,7 +32,7 @@ Required fallback behavior:
 1. Try the allowed static page first and inspect whether it contains source records.
 2. If the page says JavaScript is required, shows an empty list, or only exposes navigation/chrome, open the allowed page with a headless browser and read the rendered DOM.
 3. Prefer the repo-local helper when available:
-   `npm run render-source -- '<allowed-url>' --out 'runs/{run_id}/raw/sources/rendered-source.json'`.
+   `npm run render-source -- '<allowed-url>' --out 'runs/{run_id}/artifacts/discovery/rendered-source.json'`.
    The helper launches Chromium headless through Playwright, opens the page, waits for rendered DOM, then extracts source-candidate titles, authors, detail links, and snippets from anchors and nearby DOM text.
 4. Keep the rendered collection inside the declared `source_scope`. Do not follow unrelated venue years, sponsor pages, personal project pages, or general web results unless the plan explicitly allows them.
 5. If the rendered DOM exposes poster/oral/detail links, record those official links as `url_or_path`.
