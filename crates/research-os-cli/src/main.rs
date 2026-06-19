@@ -95,6 +95,7 @@ enum InputToolView {
     None,
     Resume,
     PlanQuestion,
+    Checkpoint,
     Artifacts,
 }
 
@@ -210,6 +211,12 @@ struct TuiApp {
     plan_question: Option<PlanQuestion>,
     plan_question_turn_id: Option<String>,
     plan_choice_index: usize,
+    // Blocking checkpoint question from the MCP sidecar (answerable while a
+    // stage is running). The responder sends the chosen index back to the
+    // socket server thread, unblocking the sidecar.
+    checkpoint: Option<PlanQuestion>,
+    checkpoint_responder: Option<Sender<usize>>,
+    checkpoint_choice_index: usize,
     sidebar_visible: bool,
     focus_pane: FocusPane,
     run_control: RunControl,
@@ -254,6 +261,10 @@ enum UiMsg {
     StageDone(String),
     Line(String),
     PlanQuestion(PlanQuestion),
+    /// A blocking checkpoint question from the MCP sidecar: render it and send
+    /// the chosen option index back through the channel so the sidecar (and the
+    /// claude stage waiting on it) can continue.
+    Checkpoint(PlanQuestion, Sender<usize>),
     Artifacts(Vec<String>),
     Done(String),
     Failed(String),
@@ -305,6 +316,10 @@ fn run_tui_loop(
     root: PathBuf,
 ) -> Result<(), String> {
     let (tx, rx) = mpsc::channel::<UiMsg>();
+    // Listen for checkpoint questions from MCP sidecars spawned by claude
+    // stages (best-effort; if the socket can't bind, checkpoint_ask just errors
+    // in the sidecar and the stage reports it).
+    spawn_checkpoint_server(root.clone(), tx.clone());
     let mut app = TuiApp {
         status: "Type a research instruction. Tab toggles plan mode. Use /exit to quit.".into(),
         session_id: make_session_id(),
@@ -317,6 +332,19 @@ fn run_tui_loop(
 
     loop {
         drain_ui_messages(&mut app, &rx);
+        // A checkpoint can only be answered while its stage runs; if the run was
+        // cancelled with one still open, resolve it (default option) so the
+        // sidecar/server thread doesn't block forever.
+        if !app.running && app.checkpoint_responder.is_some() {
+            if let Some(responder) = app.checkpoint_responder.take() {
+                let _ = responder.send(0);
+            }
+            app.checkpoint = None;
+            app.checkpoint_choice_index = 0;
+            if app.input_tool_view == InputToolView::Checkpoint {
+                app.input_tool_view = InputToolView::None;
+            }
+        }
         terminal
             .draw(|frame| draw_tui(frame, &app))
             .map_err(|e| e.to_string())?;
@@ -348,6 +376,18 @@ fn run_tui_loop(
                     } else {
                         return_to_prompt(&mut app);
                     }
+                }
+                // Checkpoint questions are answered WHILE a stage runs (the
+                // sidecar blocks on the answer), so these are not gated on
+                // `!app.running`.
+                KeyCode::Up if app.input_tool_view == InputToolView::Checkpoint => {
+                    move_checkpoint_choice(&mut app, -1);
+                }
+                KeyCode::Down if app.input_tool_view == InputToolView::Checkpoint => {
+                    move_checkpoint_choice(&mut app, 1);
+                }
+                KeyCode::Enter if app.input_tool_view == InputToolView::Checkpoint => {
+                    submit_checkpoint_choice(&mut app);
                 }
                 KeyCode::Enter
                     if !app.running
@@ -537,6 +577,13 @@ fn drain_ui_messages(app: &mut TuiApp, rx: &Receiver<UiMsg>) {
                 app.input_cursor = 0;
                 app.planning_mode = true;
                 app.status = "Planner is asking for a choice".into();
+            }
+            UiMsg::Checkpoint(question, responder) => {
+                app.checkpoint = Some(question);
+                app.checkpoint_responder = Some(responder);
+                app.checkpoint_choice_index = 0;
+                app.input_tool_view = InputToolView::Checkpoint;
+                app.status = "Checkpoint: Up/Down to select, Enter to answer".into();
             }
             UiMsg::Artifacts(artifacts) => {
                 app.artifacts = artifacts;
@@ -928,6 +975,14 @@ fn clear_input_tool_view(app: &mut TuiApp) {
     app.plan_question = None;
     app.plan_question_turn_id = None;
     app.plan_choice_index = 0;
+    // Never strand a sidecar that is blocked on a checkpoint answer: if one is
+    // still pending when the tool view is cleared (Backspace, cancel, return to
+    // prompt), resolve it with the default (recommended, first) option.
+    if let Some(responder) = app.checkpoint_responder.take() {
+        let _ = responder.send(0);
+    }
+    app.checkpoint = None;
+    app.checkpoint_choice_index = 0;
 }
 
 fn return_to_prompt(app: &mut TuiApp) {
@@ -969,6 +1024,96 @@ fn move_plan_choice(app: &mut TuiApp, delta: isize) {
     }
     let len = question.options.len() as isize;
     app.plan_choice_index = (app.plan_choice_index as isize + delta).rem_euclid(len) as usize;
+}
+
+fn move_checkpoint_choice(app: &mut TuiApp, delta: isize) {
+    let Some(question) = &app.checkpoint else {
+        return;
+    };
+    if question.options.is_empty() {
+        return;
+    }
+    let len = question.options.len() as isize;
+    app.checkpoint_choice_index =
+        (app.checkpoint_choice_index as isize + delta).rem_euclid(len) as usize;
+}
+
+/// Send the selected option index back to the sidecar (unblocking the stage that
+/// is waiting on the answer), log the choice, and clear the checkpoint UI.
+fn submit_checkpoint_choice(app: &mut TuiApp) {
+    let Some(question) = app.checkpoint.clone() else {
+        return;
+    };
+    let idx = app
+        .checkpoint_choice_index
+        .min(question.options.len().saturating_sub(1));
+    if let Some(label) = question.options.get(idx) {
+        app.log.push(format!("user: {label}"));
+        app.status = format!("Checkpoint: chose \"{label}\"");
+    }
+    if let Some(responder) = app.checkpoint_responder.take() {
+        let _ = responder.send(idx);
+    }
+    app.checkpoint = None;
+    app.checkpoint_choice_index = 0;
+    if app.input_tool_view == InputToolView::Checkpoint {
+        app.input_tool_view = InputToolView::None;
+    }
+}
+
+/// Bind the per-workspace checkpoint socket and serve checkpoint questions from
+/// MCP sidecars: read a request, surface it in the TUI via `tx`, block for the
+/// user's chosen index, and reply. Best-effort — a bind failure is ignored
+/// (checkpoint_ask then errors in the sidecar).
+fn spawn_checkpoint_server(root: PathBuf, tx: Sender<UiMsg>) {
+    let path = checkpoint_ipc::socket_path(&root);
+    let _ = fs::remove_file(&path); // clear any stale socket
+    let listener = match std::os::unix::net::UnixListener::bind(&path) {
+        Ok(l) => l,
+        Err(_) => return,
+    };
+    thread::spawn(move || {
+        for conn in listener.incoming() {
+            let Ok(stream) = conn else { continue };
+            // Checkpoints are sequential; handle one connection at a time.
+            let _ = handle_checkpoint_conn(stream, &tx);
+        }
+    });
+}
+
+fn handle_checkpoint_conn(
+    stream: std::os::unix::net::UnixStream,
+    tx: &Sender<UiMsg>,
+) -> io::Result<()> {
+    let mut reader = BufReader::new(stream.try_clone()?);
+    let mut line = String::new();
+    reader.read_line(&mut line)?;
+    let req: checkpoint_ipc::CheckpointRequest = serde_json::from_str(line.trim())
+        .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e.to_string()))?;
+    // Fold the assessment into the displayed question text.
+    let question_text = match &req.assessment {
+        Some(a) if !a.trim().is_empty() => format!("{}  —  {}", req.question, a),
+        _ => req.question.clone(),
+    };
+    let pq = PlanQuestion {
+        question: question_text,
+        options: req.options.clone(),
+        final_confirmation: false,
+    };
+    let (resp_tx, resp_rx) = mpsc::channel::<usize>();
+    if tx.send(UiMsg::Checkpoint(pq, resp_tx)).is_err() {
+        return Ok(()); // TUI is gone
+    }
+    let chosen = resp_rx.recv().unwrap_or(0);
+    let label = req.options.get(chosen).cloned().unwrap_or_default();
+    let resp = checkpoint_ipc::CheckpointResponse { chosen, label };
+    let mut out = serde_json::to_string(&resp)
+        .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e.to_string()))?;
+    out.push('\n');
+    let mut w = stream;
+    w.write_all(out.as_bytes())?;
+    w.flush()?;
+    Ok(())
 }
 
 fn submit_plan_choice(root: &Path, app: &mut TuiApp, tx: &Sender<UiMsg>) -> Result<(), String> {
@@ -1228,7 +1373,10 @@ fn render_scrollbar(
 fn draw_tui(frame: &mut ratatui::Frame<'_>, app: &TuiApp) {
     let input_height = if matches!(
         app.input_tool_view,
-        InputToolView::Resume | InputToolView::PlanQuestion | InputToolView::Artifacts
+        InputToolView::Resume
+            | InputToolView::PlanQuestion
+            | InputToolView::Checkpoint
+            | InputToolView::Artifacts
     ) {
         16
     } else if slash_completion_open(app) {
@@ -1516,6 +1664,12 @@ fn draw_tui(frame: &mut ratatui::Frame<'_>, app: &TuiApp) {
         ));
     } else if app.input_tool_view == InputToolView::PlanQuestion {
         input_lines.extend(build_plan_question_lines(
+            app,
+            root[2].height,
+            root[2].width as usize,
+        ));
+    } else if app.input_tool_view == InputToolView::Checkpoint {
+        input_lines.extend(build_checkpoint_lines(
             app,
             root[2].height,
             root[2].width as usize,
@@ -2273,6 +2427,61 @@ fn build_resume_picker_lines(
             Span::styled(
                 truncate_label(&detail, text_width),
                 Style::default().fg(Color::DarkGray),
+            ),
+        ]));
+    }
+    lines
+}
+
+fn build_checkpoint_lines(
+    app: &TuiApp,
+    input_area_height: u16,
+    input_area_width: usize,
+) -> Vec<Line<'static>> {
+    let Some(question) = &app.checkpoint else {
+        return vec![Line::from(vec![Span::styled(
+            "No checkpoint is active.",
+            Style::default().fg(Color::DarkGray),
+        )])];
+    };
+    let mut lines = vec![
+        Line::from(vec![
+            Span::styled(
+                "Checkpoint",
+                Style::default()
+                    .fg(Color::Yellow)
+                    .add_modifier(Modifier::BOLD),
+            ),
+            Span::styled(
+                "  Up/Down to select, Enter to answer",
+                Style::default().fg(Color::DarkGray),
+            ),
+        ]),
+        Line::from(vec![Span::styled(
+            truncate_label(
+                &question.question,
+                input_area_width.saturating_sub(4).max(20),
+            ),
+            Style::default().fg(Color::Gray),
+        )]),
+    ];
+    let max_rows = input_area_height.saturating_sub(4).max(1) as usize;
+    let label_width = input_area_width.saturating_sub(8).max(20);
+    for (idx, option) in question.options.iter().take(max_rows).enumerate() {
+        let selected = idx == app.checkpoint_choice_index;
+        let color = if selected {
+            Color::Yellow
+        } else {
+            Color::DarkGray
+        };
+        lines.push(Line::from(vec![
+            Span::styled(
+                if selected { "[x] " } else { "[ ] " },
+                Style::default().fg(color),
+            ),
+            Span::styled(
+                truncate_label(option, label_width),
+                Style::default().fg(if selected { Color::White } else { Color::Gray }),
             ),
         ]));
     }
@@ -4325,11 +4534,13 @@ fn claude_allowed_tools(skill: &str) -> &'static str {
 /// server key must match the one written by [`session_mcp_config_path`].
 fn claude_mcp_tools(skill: &str) -> &'static str {
     match skill {
-        // DISCUSS hub: read state, raise hypotheses, read coverage gaps.
+        // DISCUSS hub: read state, raise hypotheses, read coverage gaps, and
+        // ask the human at phase boundaries.
         "research-os-discussion" => concat!(
             "mcp__researchos__ledger_read,",
             "mcp__researchos__propose_experiment,",
-            "mcp__researchos__coverage_report"
+            "mcp__researchos__coverage_report,",
+            "mcp__researchos__checkpoint_ask"
         ),
         // POST / wiki writers: promote experiment results into the wiki.
         "research-os-writing" | "research-os-wiki-update" => {
@@ -5664,6 +5875,47 @@ mod tests {
         assert!(text.contains("researchos"));
         assert!(text.contains("__mcp"));
         assert!(text.contains("sess-1"));
+        let _ = std::fs::remove_dir_all(&dir);
+    }
+
+    #[test]
+    fn checkpoint_server_round_trips_with_sidecar_client() {
+        use std::time::Duration;
+        let dir = std::env::temp_dir().join(format!("ros-cp-{}", crate::ledger::now_ms()));
+        std::fs::create_dir_all(&dir).unwrap();
+        let (tx, rx) = mpsc::channel::<UiMsg>();
+        spawn_checkpoint_server(dir.clone(), tx);
+
+        // Sidecar-side client: retry until the listener is bound, then ask.
+        let dir2 = dir.clone();
+        let client = thread::spawn(move || {
+            let req = crate::checkpoint_ipc::CheckpointRequest {
+                question: "Advance?".to_string(),
+                assessment: Some("a hypothesis crystallized".to_string()),
+                options: vec!["stay".to_string(), "advance".to_string()],
+            };
+            for _ in 0..100 {
+                if let Ok(r) = crate::checkpoint_ipc::ask(&dir2, &req) {
+                    return Some(r);
+                }
+                thread::sleep(Duration::from_millis(20));
+            }
+            None
+        });
+
+        // TUI-side: receive the surfaced question and answer with option index 1.
+        let msg = rx.recv_timeout(Duration::from_secs(5)).expect("checkpoint msg");
+        match msg {
+            UiMsg::Checkpoint(pq, responder) => {
+                assert!(pq.question.contains("Advance?"));
+                assert_eq!(pq.options.len(), 2);
+                responder.send(1).unwrap();
+            }
+            _ => panic!("expected a Checkpoint message"),
+        }
+        let r = client.join().unwrap().expect("client got a response");
+        assert_eq!(r.chosen, 1);
+        assert_eq!(r.label, "advance");
         let _ = std::fs::remove_dir_all(&dir);
     }
 

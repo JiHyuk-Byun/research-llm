@@ -23,3 +23,6 @@
 # Temporary files
 *.tmp
 *.log
+
+# research-os checkpoint IPC socket
+.mcp.sock
