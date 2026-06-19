@@ -4018,16 +4018,29 @@ fn build_agent_command(backend: Backend, skill: &str, root: &Path, prompt: &str)
         Backend::Claude => {
             // Claude has no `--cd`, so run with cwd at the workspace root; the
             // prompt's relative skill path and run/session artifact roots then
-            // resolve. Every stage uses bypassPermissions because `-p` print
-            // mode cannot answer interactive permission prompts. WebSearch is a
-            // built-in tool, so acquisition stages need no extra flag.
+            // resolve. WebSearch is a built-in tool, so acquisition stages need
+            // no extra flag.
             cmd.current_dir(root)
                 .arg("-p")
                 .arg(prompt)
                 .arg("--output-format")
                 .arg("stream-json")
-                .arg("--verbose")
-                .arg("--dangerously-skip-permissions");
+                .arg("--verbose");
+            if tool_scoping_enabled() {
+                // Phase 1 tool-scoping (opt-in via RESEARCH_OS_TOOL_SCOPING):
+                // restrict built-in tools per stage and auto-deny anything
+                // unlisted (`dontAsk`) instead of bypassing all permissions.
+                // `-p` print mode cannot answer interactive prompts, so
+                // `dontAsk` avoids hangs on unlisted tools.
+                cmd.arg("--permission-mode")
+                    .arg("dontAsk")
+                    .arg("--allowedTools")
+                    .arg(claude_allowed_tools(skill));
+            } else {
+                // Default (until per-stage tool lists are validated): bypass
+                // permissions, since `-p` cannot answer interactive prompts.
+                cmd.arg("--dangerously-skip-permissions");
+            }
             if let Ok(model) = env::var("RESEARCH_OS_CLAUDE_MODEL") {
                 if !model.trim().is_empty() {
                     cmd.arg("--model").arg(model);
@@ -4236,6 +4249,43 @@ fn agent_needs_search(skill: &str) -> bool {
     skill == "research-os-doc-search"
         || skill == "research-os-search"
         || skill == "research-os-ingest"
+}
+
+/// Phase 1 tool-scoping is opt-in until per-stage tool lists are validated
+/// against every skill. Enable with `RESEARCH_OS_TOOL_SCOPING=1`.
+fn tool_scoping_enabled() -> bool {
+    env::var("RESEARCH_OS_TOOL_SCOPING")
+        .map(|v| {
+            let v = v.trim();
+            !v.is_empty() && v != "0" && !v.eq_ignore_ascii_case("false")
+        })
+        .unwrap_or(false)
+}
+
+/// Comma-separated built-in tools a stage's `claude -p` run may use, passed to
+/// `--allowedTools` under `--permission-mode dontAsk`. Phase 1 covers built-in
+/// tools only; MCP loop tools (checkpoint/ledger/...) are layered in when the
+/// sidecar lands. Lists follow the per-stage action-space matrix and must stay
+/// at least as permissive as each skill's contract, or `dontAsk` will silently
+/// deny a tool the stage legitimately needs.
+fn claude_allowed_tools(skill: &str) -> &'static str {
+    match skill {
+        // Acquisition: web fetch/search + write raw/manifests + run the
+        // render/extract helper scripts via Bash.
+        "research-os-doc-search" | "research-os-search" | "research-os-ingest" => {
+            "Read,Glob,Grep,Write,Edit,Bash,WebSearch,WebFetch"
+        }
+        // Code: full local file editing + shell.
+        "research-os-coding" => "Read,Glob,Grep,Write,Edit,Bash",
+        // Visualization: read evidence + write figures + run plotting.
+        "research-os-visualization" => "Read,Glob,Grep,Write,Bash",
+        // Read-only review.
+        "research-os-lint-critic" => "Read,Glob,Grep",
+        // Everything else (wiki-update, synthesis, reader, qa, discussion,
+        // writing, ideation, experiment-planning, planner, source-triage):
+        // read + write/edit markdown artifacts; no shell or web.
+        _ => "Read,Glob,Grep,Write,Edit",
+    }
 }
 
 fn is_deprecated_skill(skill: &str) -> bool {
@@ -5498,6 +5548,18 @@ mod tests {
         assert!(args.contains(&"--search".to_string()));
         assert!(args.contains(&"--sandbox".to_string()));
         assert!(args.contains(&"danger-full-access".to_string()));
+    }
+
+    #[test]
+    fn claude_allowed_tools_scopes_per_stage() {
+        // Acquisition gets web + bash; review is read-only; the default writes
+        // markdown but gets no shell or web.
+        let acq = claude_allowed_tools("research-os-doc-search");
+        assert!(acq.contains("WebSearch") && acq.contains("Bash"));
+        assert_eq!(claude_allowed_tools("research-os-lint-critic"), "Read,Glob,Grep");
+        assert!(claude_allowed_tools("research-os-coding").contains("Bash"));
+        let disc = claude_allowed_tools("research-os-discussion");
+        assert!(disc.contains("Read") && disc.contains("Write") && !disc.contains("Bash"));
     }
 
     #[test]
