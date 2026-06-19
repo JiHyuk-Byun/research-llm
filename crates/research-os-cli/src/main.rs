@@ -224,6 +224,12 @@ struct TuiApp {
     checkpoint: Option<PlanQuestion>,
     checkpoint_responder: Option<Sender<usize>>,
     checkpoint_choice_index: usize,
+    checkpoint_assessment: Option<String>,
+    // Loop driver state, for the always-visible phase timeline.
+    loop_phase: Option<String>,
+    loop_iter: u32,
+    loop_max: u32,
+    loop_gate: Option<String>,
     sidebar_visible: bool,
     focus_pane: FocusPane,
     run_control: RunControl,
@@ -270,8 +276,17 @@ enum UiMsg {
     PlanQuestion(PlanQuestion),
     /// A blocking checkpoint question from the MCP sidecar: render it and send
     /// the chosen option index back through the channel so the sidecar (and the
-    /// claude stage waiting on it) can continue.
-    Checkpoint(PlanQuestion, Sender<usize>),
+    /// claude stage waiting on it) can continue. The optional second field is
+    /// the agent's plain-language assessment, rendered as a dim line above the
+    /// options.
+    Checkpoint(PlanQuestion, Option<String>, Sender<usize>),
+    /// Loop-driver phase state for the always-visible phase timeline.
+    LoopState {
+        phase: String,
+        iter: u32,
+        max: u32,
+        gate: String,
+    },
     Artifacts(Vec<String>),
     Done(String),
     Failed(String),
@@ -587,12 +602,24 @@ fn drain_ui_messages(app: &mut TuiApp, rx: &Receiver<UiMsg>) {
                 app.planning_mode = true;
                 app.status = "Planner is asking for a choice".into();
             }
-            UiMsg::Checkpoint(question, responder) => {
+            UiMsg::Checkpoint(question, assessment, responder) => {
                 app.checkpoint = Some(question);
+                app.checkpoint_assessment = assessment;
                 app.checkpoint_responder = Some(responder);
                 app.checkpoint_choice_index = 0;
                 app.input_tool_view = InputToolView::Checkpoint;
                 app.status = "Checkpoint: Up/Down to select, Enter to answer".into();
+            }
+            UiMsg::LoopState {
+                phase,
+                iter,
+                max,
+                gate,
+            } => {
+                app.loop_phase = Some(phase);
+                app.loop_iter = iter;
+                app.loop_max = max;
+                app.loop_gate = if gate.is_empty() { None } else { Some(gate) };
             }
             UiMsg::Artifacts(artifacts) => {
                 app.artifacts = artifacts;
@@ -603,11 +630,13 @@ fn drain_ui_messages(app: &mut TuiApp, rx: &Receiver<UiMsg>) {
                 app.status = message;
                 app.running = false;
                 app.active_stage.clear();
+                app.loop_phase = None;
             }
             UiMsg::Failed(err) => {
                 finish_run_timer(app);
                 app.status = format!("Failed: {err}");
                 app.running = false;
+                app.loop_phase = None;
             }
         }
     }
@@ -1113,18 +1142,21 @@ fn handle_checkpoint_conn(
     reader.read_line(&mut line)?;
     let req: checkpoint_ipc::CheckpointRequest = serde_json::from_str(line.trim())
         .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e.to_string()))?;
-    // Fold the assessment into the displayed question text.
-    let question_text = match &req.assessment {
-        Some(a) if !a.trim().is_empty() => format!("{}  —  {}", req.question, a),
-        _ => req.question.clone(),
-    };
+    // Keep the assessment separate so the modal can render it as its own dim
+    // line above the options (Claude Code-style), instead of folding it into
+    // the question text.
+    let assessment = req
+        .assessment
+        .as_ref()
+        .map(|a| a.trim().to_string())
+        .filter(|a| !a.is_empty());
     let pq = PlanQuestion {
-        question: question_text,
+        question: req.question.clone(),
         options: req.options.clone(),
         final_confirmation: false,
     };
     let (resp_tx, resp_rx) = mpsc::channel::<usize>();
-    if tx.send(UiMsg::Checkpoint(pq, resp_tx)).is_err() {
+    if tx.send(UiMsg::Checkpoint(pq, assessment, resp_tx)).is_err() {
         return Ok(()); // TUI is gone
     }
     let chosen = resp_rx.recv().unwrap_or(0);
@@ -1404,6 +1436,9 @@ fn draw_tui(frame: &mut ratatui::Frame<'_>, app: &TuiApp) {
         16
     } else if slash_completion_open(app) {
         12
+    } else if app.loop_phase.is_some() {
+        // Room for the phase-timeline line above the running/working footer.
+        6
     } else {
         5
     };
@@ -1672,7 +1707,17 @@ fn draw_tui(frame: &mut ratatui::Frame<'_>, app: &TuiApp) {
     );
 
     let mut input_lines = Vec::new();
-    if app.running {
+    // The phase timeline rides above everything else while a loop is active.
+    input_lines.extend(build_phase_timeline_lines(app));
+    // A checkpoint can arrive WHILE a stage runs, so it must take priority over
+    // the running/working footer — otherwise the modal is never visible.
+    if app.input_tool_view == InputToolView::Checkpoint {
+        input_lines.extend(build_checkpoint_lines(
+            app,
+            root[2].height,
+            root[2].width as usize,
+        ));
+    } else if app.running {
         input_lines.extend(build_planning_status_lines(
             app,
             root[2].height,
@@ -1687,12 +1732,6 @@ fn draw_tui(frame: &mut ratatui::Frame<'_>, app: &TuiApp) {
         ));
     } else if app.input_tool_view == InputToolView::PlanQuestion {
         input_lines.extend(build_plan_question_lines(
-            app,
-            root[2].height,
-            root[2].width as usize,
-        ));
-    } else if app.input_tool_view == InputToolView::Checkpoint {
-        input_lines.extend(build_checkpoint_lines(
             app,
             root[2].height,
             root[2].width as usize,
@@ -2456,6 +2495,48 @@ fn build_resume_picker_lines(
     lines
 }
 
+/// The always-visible loop phase timeline (INIT → DISCUSS → EXPERIMENT → POST),
+/// rendered as a single slim line above the input box while a `/loop` runs.
+/// Returns nothing when no loop is active.
+fn build_phase_timeline_lines(app: &TuiApp) -> Vec<Line<'static>> {
+    let Some(cur) = app.loop_phase.as_deref() else {
+        return Vec::new();
+    };
+    const PHASES: [&str; 4] = ["INIT", "DISCUSS", "EXPERIMENT", "POST"];
+    let mut spans = Vec::new();
+    for (i, p) in PHASES.iter().enumerate() {
+        if i > 0 {
+            spans.push(Span::styled(" → ", Style::default().fg(Color::DarkGray)));
+        }
+        let active = cur == *p;
+        spans.push(Span::styled(
+            if active {
+                format!("●{p}")
+            } else {
+                p.to_string()
+            },
+            if active {
+                Style::default()
+                    .fg(Color::Yellow)
+                    .add_modifier(Modifier::BOLD)
+            } else {
+                Style::default().fg(Color::DarkGray)
+            },
+        ));
+    }
+    spans.push(Span::styled(
+        format!("    iter {}/{}", app.loop_iter, app.loop_max),
+        Style::default().fg(Color::DarkGray),
+    ));
+    if let Some(gate) = app.loop_gate.as_deref() {
+        spans.push(Span::styled(
+            format!(" · {gate}"),
+            Style::default().fg(Color::DarkGray),
+        ));
+    }
+    vec![Line::from(spans)]
+}
+
 fn build_checkpoint_lines(
     app: &TuiApp,
     input_area_height: u16,
@@ -2467,44 +2548,65 @@ fn build_checkpoint_lines(
             Style::default().fg(Color::DarkGray),
         )])];
     };
-    let mut lines = vec![
-        Line::from(vec![
+    let wrap = input_area_width.saturating_sub(4).max(20);
+    let title = match app.loop_phase.as_deref() {
+        Some(p) => format!("Checkpoint · {p}"),
+        None => "Checkpoint".to_string(),
+    };
+    let mut lines = vec![Line::from(vec![
+        Span::styled(
+            title,
+            Style::default()
+                .fg(Color::Yellow)
+                .add_modifier(Modifier::BOLD),
+        ),
+        Span::styled(
+            "   ↑↓ select · enter confirm",
+            Style::default().fg(Color::DarkGray),
+        ),
+    ])];
+    // The agent's plain-language assessment / coverage context (dim).
+    if let Some(assessment) = app.checkpoint_assessment.as_deref() {
+        lines.push(Line::from(vec![Span::styled(
+            truncate_label(assessment, wrap),
+            Style::default().fg(Color::DarkGray),
+        )]));
+    }
+    // The decision question.
+    lines.push(Line::from(vec![Span::styled(
+        truncate_label(&question.question, wrap),
+        Style::default()
+            .fg(Color::Gray)
+            .add_modifier(Modifier::BOLD),
+    )]));
+    // Options, rendered as a Claude Code-style pointer list.
+    let header_rows = lines.len();
+    let max_rows = (input_area_height as usize)
+        .saturating_sub(header_rows + 1)
+        .max(1);
+    let label_width = input_area_width.saturating_sub(8).max(20);
+    for (idx, option) in question.options.iter().take(max_rows).enumerate() {
+        let selected = idx == app.checkpoint_choice_index;
+        lines.push(Line::from(vec![
             Span::styled(
-                "Checkpoint",
+                if selected { "❯ " } else { "  " },
                 Style::default()
                     .fg(Color::Yellow)
                     .add_modifier(Modifier::BOLD),
             ),
             Span::styled(
-                "  Up/Down to select, Enter to answer",
+                format!("{}. ", idx + 1),
                 Style::default().fg(Color::DarkGray),
-            ),
-        ]),
-        Line::from(vec![Span::styled(
-            truncate_label(
-                &question.question,
-                input_area_width.saturating_sub(4).max(20),
-            ),
-            Style::default().fg(Color::Gray),
-        )]),
-    ];
-    let max_rows = input_area_height.saturating_sub(4).max(1) as usize;
-    let label_width = input_area_width.saturating_sub(8).max(20);
-    for (idx, option) in question.options.iter().take(max_rows).enumerate() {
-        let selected = idx == app.checkpoint_choice_index;
-        let color = if selected {
-            Color::Yellow
-        } else {
-            Color::DarkGray
-        };
-        lines.push(Line::from(vec![
-            Span::styled(
-                if selected { "[x] " } else { "[ ] " },
-                Style::default().fg(color),
             ),
             Span::styled(
                 truncate_label(option, label_width),
-                Style::default().fg(if selected { Color::White } else { Color::Gray }),
+                if selected {
+                    Style::default()
+                        .fg(Color::White)
+                        .add_modifier(Modifier::BOLD)
+                } else {
+                    Style::default().fg(Color::Gray)
+                },
             ),
         ]));
     }
@@ -3856,9 +3958,15 @@ fn loop_checkpoint_prompt(
         );
     }
     s.push_str(
-        "\nCall exactly one of phase_route or checkpoint_ask. For checkpoint_ask, give a concise \
-         question, an assessment, and options with the recommended option FIRST; each option must \
-         carry action (STAY/ADVANCE/BRANCH/STOP) and target_phase for BRANCH.",
+        "\nCall exactly one of phase_route or checkpoint_ask. For checkpoint_ask: the TUI renders \
+         your text in a compact modal, so keep it tight.\n\
+         - question: ONE sentence asking the human to decide.\n\
+         - assessment: ONE short line that LEADS with the coverage numbers that matter \
+           (e.g. 'src 6 · proposals 1 · open hyp 2 — a testable hypothesis crystallized').\n\
+         - options: recommended option FIRST; each option must carry action \
+           (STAY/ADVANCE/BRANCH/STOP) and target_phase for BRANCH. Make each option LABEL short \
+           and end it with the routing in caps, e.g. 'Run the experiment — BRANCH→EXPERIMENT', \
+           'Keep discussing — STAY', 'Stop the loop — STOP', so the human sees the action inline.",
     );
     s
 }
@@ -3984,6 +4092,15 @@ fn run_phase_loop_tui(
             phase_key(phase)
         )))
         .map_err(|e| e.to_string())?;
+        // Drive the always-visible phase timeline (gate filled in after the
+        // signal is computed below).
+        tx.send(UiMsg::LoopState {
+            phase: phase_key(phase).to_string(),
+            iter: iterations,
+            max: LOOP_MAX_ITERATIONS,
+            gate: String::new(),
+        })
+        .map_err(|e| e.to_string())?;
 
         // 1. Run the phase's work stages.
         let work = loop_phase_work_stages(phase);
@@ -4029,6 +4146,17 @@ fn run_phase_loop_tui(
             forced,
             signal_details_brief(&signal)
         )))
+        .map_err(|e| e.to_string())?;
+        tx.send(UiMsg::LoopState {
+            phase: phase_key(phase).to_string(),
+            iter: iterations,
+            max: LOOP_MAX_ITERATIONS,
+            gate: format!(
+                "gate {} · {}",
+                if signal.boundary_plausible { "✓" } else { "·" },
+                signal_details_brief(&signal)
+            ),
+        })
         .map_err(|e| e.to_string())?;
         if !run_checkpoint {
             suppressed += 1;
@@ -6420,7 +6548,7 @@ mod tests {
         // TUI-side: receive the surfaced question and answer with option index 1.
         let msg = rx.recv_timeout(Duration::from_secs(5)).expect("checkpoint msg");
         match msg {
-            UiMsg::Checkpoint(pq, responder) => {
+            UiMsg::Checkpoint(pq, _assessment, responder) => {
                 assert!(pq.question.contains("Advance?"));
                 assert_eq!(pq.options.len(), 2);
                 responder.send(1).unwrap();
