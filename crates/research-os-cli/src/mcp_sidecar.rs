@@ -304,11 +304,19 @@ impl Sidecar {
         &self,
         Parameters(p): Parameters<CheckpointAskParams>,
     ) -> Result<CallToolResult, McpError> {
-        let labels: Vec<String> = p.options.iter().map(|o| o.label.clone()).collect();
+        let options: Vec<crate::checkpoint_ipc::CheckpointOption> = p
+            .options
+            .iter()
+            .map(|o| crate::checkpoint_ipc::CheckpointOption {
+                label: o.label.clone(),
+                action: Some(o.action.clone()),
+                target_phase: o.target_phase.clone(),
+            })
+            .collect();
         let req = crate::checkpoint_ipc::CheckpointRequest {
             question: p.question.clone(),
             assessment: p.assessment,
-            options: labels,
+            options,
         };
         let r = crate::checkpoint_ipc::ask(&self.root, &req).map_err(|e| {
             McpError::internal_error(

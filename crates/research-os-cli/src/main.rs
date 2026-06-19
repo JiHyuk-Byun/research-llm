@@ -225,6 +225,9 @@ struct TuiApp {
     checkpoint_responder: Option<Sender<usize>>,
     checkpoint_choice_index: usize,
     checkpoint_assessment: Option<String>,
+    /// Per-option routing tags (e.g. "BRANCH→EXPERIMENT"), parallel to
+    /// `checkpoint.options`, from the structured checkpoint IPC.
+    checkpoint_actions: Vec<String>,
     // Loop driver state, for the always-visible phase timeline.
     loop_phase: Option<String>,
     loop_iter: u32,
@@ -276,10 +279,11 @@ enum UiMsg {
     PlanQuestion(PlanQuestion),
     /// A blocking checkpoint question from the MCP sidecar: render it and send
     /// the chosen option index back through the channel so the sidecar (and the
-    /// claude stage waiting on it) can continue. The optional second field is
-    /// the agent's plain-language assessment, rendered as a dim line above the
-    /// options.
-    Checkpoint(PlanQuestion, Option<String>, Sender<usize>),
+    /// claude stage waiting on it) can continue. The second field is the agent's
+    /// plain-language assessment (dim line above the options); the third is the
+    /// per-option routing tag (e.g. "BRANCH→EXPERIMENT") parsed from the
+    /// structured IPC options, rendered inline next to each label.
+    Checkpoint(PlanQuestion, Option<String>, Vec<String>, Sender<usize>),
     /// Loop-driver phase state for the always-visible phase timeline.
     LoopState {
         phase: String,
@@ -602,9 +606,10 @@ fn drain_ui_messages(app: &mut TuiApp, rx: &Receiver<UiMsg>) {
                 app.planning_mode = true;
                 app.status = "Planner is asking for a choice".into();
             }
-            UiMsg::Checkpoint(question, assessment, responder) => {
+            UiMsg::Checkpoint(question, assessment, actions, responder) => {
                 app.checkpoint = Some(question);
                 app.checkpoint_assessment = assessment;
+                app.checkpoint_actions = actions;
                 app.checkpoint_responder = Some(responder);
                 app.checkpoint_choice_index = 0;
                 app.input_tool_view = InputToolView::Checkpoint;
@@ -1150,17 +1155,29 @@ fn handle_checkpoint_conn(
         .as_ref()
         .map(|a| a.trim().to_string())
         .filter(|a| !a.is_empty());
+    // Split the structured options into display labels (for PlanQuestion bounds /
+    // the index-0 fallback) and parallel routing tags (e.g. "BRANCH→EXPERIMENT")
+    // composed deterministically from the action/target the agent supplied.
+    let labels: Vec<String> = req.options.iter().map(|o| o.label.clone()).collect();
+    let action_tags: Vec<String> = req
+        .options
+        .iter()
+        .map(|o| checkpoint_action_tag(o.action.as_deref(), o.target_phase.as_deref()))
+        .collect();
     let pq = PlanQuestion {
         question: req.question.clone(),
-        options: req.options.clone(),
+        options: labels.clone(),
         final_confirmation: false,
     };
     let (resp_tx, resp_rx) = mpsc::channel::<usize>();
-    if tx.send(UiMsg::Checkpoint(pq, assessment, resp_tx)).is_err() {
+    if tx
+        .send(UiMsg::Checkpoint(pq, assessment, action_tags, resp_tx))
+        .is_err()
+    {
         return Ok(()); // TUI is gone
     }
     let chosen = resp_rx.recv().unwrap_or(0);
-    let label = req.options.get(chosen).cloned().unwrap_or_default();
+    let label = labels.get(chosen).cloned().unwrap_or_default();
     let resp = checkpoint_ipc::CheckpointResponse { chosen, label };
     let mut out = serde_json::to_string(&resp)
         .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e.to_string()))?;
@@ -1445,7 +1462,7 @@ fn draw_tui(frame: &mut ratatui::Frame<'_>, app: &TuiApp) {
     let root = Layout::default()
         .direction(Direction::Vertical)
         .constraints([
-            Constraint::Length(3),
+            Constraint::Length(2),
             Constraint::Min(10),
             Constraint::Length(input_height),
         ])
@@ -1454,56 +1471,66 @@ fn draw_tui(frame: &mut ratatui::Frame<'_>, app: &TuiApp) {
     let stage_count = app.stages.len();
     let done_count = app.completed_stages.len().min(stage_count);
     let elapsed = run_elapsed_label(app);
-    let header = Paragraph::new(vec![Line::from(vec![
+    // Slim, Claude Code-style identity line: research-os · <backend> · <mode> ·
+    // <id>, then a compact running detail, then the transient status (dim).
+    let sep = || Span::styled(" · ", Style::default().fg(Color::DarkGray));
+    let (mode, mode_color) = if app.loop_phase.is_some() {
+        ("loop", Color::Magenta)
+    } else if app.running {
+        ("run", Color::Yellow)
+    } else {
+        ("ready", Color::Green)
+    };
+    let id: &str = if app.run_id.is_empty() {
+        &app.session_id
+    } else {
+        &app.run_id
+    };
+    let mut spans = vec![
         Span::styled(
             "research-os",
             Style::default()
                 .fg(Color::Cyan)
                 .add_modifier(Modifier::BOLD),
         ),
-        Span::raw("  "),
+        sep(),
         Span::styled(
-            if app.running { "RUNNING" } else { "READY" },
-            Style::default()
-                .fg(if app.running {
-                    Color::Yellow
-                } else {
-                    Color::Green
-                })
-                .add_modifier(Modifier::BOLD),
-        ),
-        Span::raw("  "),
-        Span::styled(
-            if app.run_id.is_empty() {
-                &app.session_id
-            } else {
-                &app.run_id
-            },
-            Style::default().fg(Color::Gray),
-        ),
-        Span::raw("  "),
-        Span::styled(
-            format!("{done_count}/{stage_count} stages"),
+            backend_label(app.backend),
             Style::default().fg(Color::DarkGray),
         ),
-        Span::raw("  "),
+        sep(),
         Span::styled(
-            elapsed.as_deref().unwrap_or("elapsed:--"),
-            Style::default().fg(Color::DarkGray),
+            mode,
+            Style::default().fg(mode_color).add_modifier(Modifier::BOLD),
         ),
-        Span::raw("  "),
-        Span::styled(
-            if app.source_scope.is_empty() {
-                "scope:any"
-            } else {
-                "scope:set"
-            },
+        sep(),
+        Span::styled(id.to_string(), Style::default().fg(Color::DarkGray)),
+    ];
+    if app.running {
+        if app.loop_phase.is_none() && stage_count > 0 {
+            spans.push(Span::styled(
+                format!("  {done_count}/{stage_count}"),
+                Style::default().fg(Color::DarkGray),
+            ));
+        }
+        if let Some(e) = elapsed.as_deref() {
+            spans.push(Span::styled(
+                format!("  {e}"),
+                Style::default().fg(Color::DarkGray),
+            ));
+        }
+    }
+    if !app.source_scope.is_empty() {
+        spans.push(sep());
+        spans.push(Span::styled("scope:set", Style::default().fg(Color::DarkGray)));
+    }
+    if !app.status.is_empty() {
+        spans.push(Span::styled(
+            format!("   {}", app.status),
             Style::default().fg(Color::DarkGray),
-        ),
-        Span::raw("  "),
-        Span::styled(&app.status, Style::default().fg(Color::Yellow)),
-    ])])
-    .alignment(Alignment::Left);
+        ));
+    }
+    let header = Paragraph::new(vec![Line::from(spans)]).alignment(Alignment::Left);
     frame.render_widget(
         header.block(
             Block::default()
@@ -2495,6 +2522,20 @@ fn build_resume_picker_lines(
     lines
 }
 
+/// Compose a compact routing tag from a checkpoint option's structured action +
+/// target phase — e.g. "BRANCH→EXPERIMENT", "ADVANCE→POST", "STAY", "STOP".
+/// Empty when the agent supplied no action.
+fn checkpoint_action_tag(action: Option<&str>, target: Option<&str>) -> String {
+    let Some(action) = action.map(str::trim).filter(|a| !a.is_empty()) else {
+        return String::new();
+    };
+    let action = action.to_ascii_uppercase();
+    match target.map(str::trim).filter(|t| !t.is_empty()) {
+        Some(t) => format!("{action}→{}", t.to_ascii_uppercase()),
+        None => action,
+    }
+}
+
 /// The always-visible loop phase timeline (INIT → DISCUSS → EXPERIMENT → POST),
 /// rendered as a single slim line above the input box while a `/loop` runs.
 /// Returns nothing when no loop is active.
@@ -2584,10 +2625,19 @@ fn build_checkpoint_lines(
     let max_rows = (input_area_height as usize)
         .saturating_sub(header_rows + 1)
         .max(1);
-    let label_width = input_area_width.saturating_sub(8).max(20);
+    // Reserve room for the routing tag rendered to the right of each label.
+    let tag_room = app
+        .checkpoint_actions
+        .iter()
+        .map(|t| t.chars().count())
+        .max()
+        .unwrap_or(0);
+    let label_width = input_area_width
+        .saturating_sub(8 + tag_room + 2)
+        .max(16);
     for (idx, option) in question.options.iter().take(max_rows).enumerate() {
         let selected = idx == app.checkpoint_choice_index;
-        lines.push(Line::from(vec![
+        let mut spans = vec![
             Span::styled(
                 if selected { "❯ " } else { "  " },
                 Style::default()
@@ -2608,7 +2658,16 @@ fn build_checkpoint_lines(
                     Style::default().fg(Color::Gray)
                 },
             ),
-        ]));
+        ];
+        // Structured routing tag (e.g. "BRANCH→EXPERIMENT") in a distinct dim
+        // color, sourced from the IPC rather than the label text.
+        if let Some(tag) = app.checkpoint_actions.get(idx).filter(|t| !t.is_empty()) {
+            spans.push(Span::styled(
+                format!("   {tag}"),
+                Style::default().fg(Color::Cyan),
+            ));
+        }
+        lines.push(Line::from(spans));
     }
     lines
 }
@@ -3963,10 +4022,10 @@ fn loop_checkpoint_prompt(
          - question: ONE sentence asking the human to decide.\n\
          - assessment: ONE short line that LEADS with the coverage numbers that matter \
            (e.g. 'src 6 · proposals 1 · open hyp 2 — a testable hypothesis crystallized').\n\
-         - options: recommended option FIRST; each option must carry action \
-           (STAY/ADVANCE/BRANCH/STOP) and target_phase for BRANCH. Make each option LABEL short \
-           and end it with the routing in caps, e.g. 'Run the experiment — BRANCH→EXPERIMENT', \
-           'Keep discussing — STAY', 'Stop the loop — STOP', so the human sees the action inline.",
+         - options: recommended option FIRST. Each option carries action \
+           (STAY/ADVANCE/BRANCH/STOP) and target_phase for BRANCH as STRUCTURED fields — the TUI \
+           shows the routing tag itself, so keep each LABEL a short human phrase WITHOUT the action \
+           (e.g. label 'Run the experiment' with action BRANCH + target_phase EXPERIMENT).",
     );
     s
 }
@@ -6534,7 +6593,18 @@ mod tests {
             let req = crate::checkpoint_ipc::CheckpointRequest {
                 question: "Advance?".to_string(),
                 assessment: Some("a hypothesis crystallized".to_string()),
-                options: vec!["stay".to_string(), "advance".to_string()],
+                options: vec![
+                    crate::checkpoint_ipc::CheckpointOption {
+                        label: "stay".to_string(),
+                        action: Some("STAY".to_string()),
+                        target_phase: None,
+                    },
+                    crate::checkpoint_ipc::CheckpointOption {
+                        label: "advance".to_string(),
+                        action: Some("ADVANCE".to_string()),
+                        target_phase: Some("DISCUSS".to_string()),
+                    },
+                ],
             };
             for _ in 0..100 {
                 if let Ok(r) = crate::checkpoint_ipc::ask(&dir2, &req) {
@@ -6548,9 +6618,11 @@ mod tests {
         // TUI-side: receive the surfaced question and answer with option index 1.
         let msg = rx.recv_timeout(Duration::from_secs(5)).expect("checkpoint msg");
         match msg {
-            UiMsg::Checkpoint(pq, _assessment, responder) => {
+            UiMsg::Checkpoint(pq, _assessment, actions, responder) => {
                 assert!(pq.question.contains("Advance?"));
                 assert_eq!(pq.options.len(), 2);
+                // Routing tags are composed deterministically from the IPC.
+                assert_eq!(actions, vec!["STAY", "ADVANCE→DISCUSS"]);
                 responder.send(1).unwrap();
             }
             _ => panic!("expected a Checkpoint message"),

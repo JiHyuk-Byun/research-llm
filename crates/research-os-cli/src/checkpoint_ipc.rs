@@ -19,6 +19,21 @@ pub fn socket_path(root: &Path) -> PathBuf {
     root.join(".mcp.sock")
 }
 
+/// One selectable checkpoint option. Carries the routing the option maps to as
+/// structured data so the TUI can render (and the driver can act on) the action
+/// deterministically, instead of relying on the agent to encode it in the label.
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct CheckpointOption {
+    /// Display label for this choice.
+    pub label: String,
+    /// The transition this option routes to: STAY, ADVANCE, BRANCH, or STOP.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub action: Option<String>,
+    /// For BRANCH: the target phase (INIT, DISCUSS, EXPERIMENT, POST).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub target_phase: Option<String>,
+}
+
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct CheckpointRequest {
     /// The phase-transition question.
@@ -27,7 +42,7 @@ pub struct CheckpointRequest {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub assessment: Option<String>,
     /// Options to choose from; the recommended one first.
-    pub options: Vec<String>,
+    pub options: Vec<CheckpointOption>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -87,7 +102,7 @@ mod tests {
             let req: CheckpointRequest = serde_json::from_str(line.trim()).unwrap();
             let resp = CheckpointResponse {
                 chosen: 1,
-                label: req.options[1].clone(),
+                label: req.options[1].label.clone(),
             };
             let mut w = stream;
             let mut out = serde_json::to_string(&resp).unwrap();
@@ -99,7 +114,18 @@ mod tests {
         let req = CheckpointRequest {
             question: "Advance to EXPERIMENT?".to_string(),
             assessment: Some("a hypothesis crystallized".to_string()),
-            options: vec!["stay".to_string(), "advance".to_string()],
+            options: vec![
+                CheckpointOption {
+                    label: "stay".to_string(),
+                    action: Some("STAY".to_string()),
+                    target_phase: None,
+                },
+                CheckpointOption {
+                    label: "advance".to_string(),
+                    action: Some("ADVANCE".to_string()),
+                    target_phase: None,
+                },
+            ],
         };
         let r = ask(&dir, &req).unwrap();
         assert_eq!(r.chosen, 1);
