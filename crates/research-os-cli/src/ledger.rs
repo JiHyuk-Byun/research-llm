@@ -190,6 +190,25 @@ pub struct Experiment {
     pub updated_at: Option<String>,
 }
 
+/// A routing decision produced by a checkpoint (by `checkpoint_ask` after a
+/// human choice, or by `phase_route` for a low-stakes LLM self-decision). The
+/// phase driver reads `Ledger::pending_route`, routes on it, records it into
+/// `decisions`, and clears it.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct RouteDecision {
+    pub action: DecisionAction,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub target_phase: Option<Phase>,
+    pub by: DecisionBy,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub reason: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub question: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub chosen_label: Option<String>,
+    pub at: String,
+}
+
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct Ledger {
     pub session_id: String,
@@ -197,6 +216,9 @@ pub struct Ledger {
     pub current_phase: Phase,
     #[serde(default)]
     pub phases: BTreeMap<String, PhaseState>,
+    /// Set by a checkpoint tool, consumed and cleared by the driver.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub pending_route: Option<RouteDecision>,
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub decisions: Vec<Decision>,
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
@@ -215,6 +237,7 @@ impl Ledger {
             schema_version: SCHEMA_VERSION.to_string(),
             current_phase: Phase::Init,
             phases: BTreeMap::new(),
+            pending_route: None,
             decisions: Vec::new(),
             hypotheses: Vec::new(),
             proposals: Vec::new(),

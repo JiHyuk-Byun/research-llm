@@ -18,8 +18,8 @@ use rmcp::{schemars, tool, tool_handler, tool_router, ErrorData as McpError, Ser
 use serde::Deserialize;
 
 use crate::ledger::{
-    self, Experiment, ExperimentStatus, Hypothesis, HypothesisStatus, Ledger, Outcome, Proposal,
-    ProposalStatus,
+    self, DecisionAction, DecisionBy, Experiment, ExperimentStatus, Hypothesis, HypothesisStatus,
+    Ledger, Outcome, Phase, Proposal, ProposalStatus, RouteDecision,
 };
 
 #[derive(Clone)]
@@ -94,14 +94,37 @@ struct CaptureResultsParams {
 }
 
 #[derive(Debug, Deserialize, schemars::JsonSchema)]
+struct CheckpointOption {
+    /// Display label for this choice (put the recommended option first).
+    label: String,
+    /// The transition this option routes to: STAY, ADVANCE, BRANCH, or STOP.
+    action: String,
+    /// For BRANCH: the target phase (INIT, DISCUSS, EXPERIMENT, POST).
+    #[serde(default)]
+    target_phase: Option<String>,
+}
+
+#[derive(Debug, Deserialize, schemars::JsonSchema)]
 struct CheckpointAskParams {
     /// The phase-transition / checkpoint question to put to the user.
     question: String,
     /// Your self-assessment / why you're asking now (shown to the user).
     #[serde(default)]
     assessment: Option<String>,
-    /// The options to choose from; put your recommended option first.
-    options: Vec<String>,
+    /// The options to choose from; put your recommended option first. Each
+    /// option carries the transition it routes to.
+    options: Vec<CheckpointOption>,
+}
+
+#[derive(Debug, Deserialize, schemars::JsonSchema)]
+struct PhaseRouteParams {
+    /// The transition to take without asking: STAY, ADVANCE, or BRANCH.
+    action: String,
+    /// For BRANCH: the target phase (INIT, DISCUSS, EXPERIMENT, POST).
+    #[serde(default)]
+    target_phase: Option<String>,
+    /// Why you're routing this way (recorded in the decision log).
+    reason: String,
 }
 
 #[tool_router]
@@ -266,25 +289,72 @@ impl Sidecar {
         &self,
         Parameters(p): Parameters<CheckpointAskParams>,
     ) -> Result<CallToolResult, McpError> {
+        let labels: Vec<String> = p.options.iter().map(|o| o.label.clone()).collect();
         let req = crate::checkpoint_ipc::CheckpointRequest {
-            question: p.question,
+            question: p.question.clone(),
             assessment: p.assessment,
-            options: p.options,
+            options: labels,
         };
-        match crate::checkpoint_ipc::ask(&self.root, &req) {
-            Ok(r) => {
-                let out = format!(
-                    "{{\"chosen\":{},\"label\":\"{}\"}}",
-                    r.chosen,
-                    r.label.replace('"', "'")
-                );
-                Ok(CallToolResult::success(vec![Content::text(out)]))
-            }
-            Err(e) => Err(McpError::internal_error(
+        let r = crate::checkpoint_ipc::ask(&self.root, &req).map_err(|e| {
+            McpError::internal_error(
                 format!("checkpoint_ask failed: {e} (is the research-os TUI running?)"),
                 None,
-            )),
-        }
+            )
+        })?;
+        // Record the route the human chose for the driver to act on.
+        let chosen = p.options.get(r.chosen);
+        let action = chosen
+            .and_then(|o| parse_action(&o.action))
+            .unwrap_or(DecisionAction::Stay);
+        let target = chosen
+            .and_then(|o| o.target_phase.as_deref())
+            .and_then(parse_phase);
+        let mut l = self.load();
+        l.pending_route = Some(RouteDecision {
+            action,
+            target_phase: target,
+            by: DecisionBy::Human,
+            reason: None,
+            question: Some(p.question),
+            chosen_label: Some(r.label.clone()),
+            at: ledger::now_ms().to_string(),
+        });
+        self.save(&l)
+            .map_err(|e| McpError::internal_error(format!("save ledger: {e}"), None))?;
+        let out = format!(
+            "{{\"chosen\":{},\"label\":\"{}\"}}",
+            r.chosen,
+            r.label.replace('"', "'")
+        );
+        Ok(CallToolResult::success(vec![Content::text(out)]))
+    }
+
+    #[tool(
+        description = "Low-stakes self-routing WITHOUT asking the human: record the chosen phase transition (STAY, ADVANCE, or BRANCH) in the ledger for the driver to act on. Only granted on low-stakes boundaries; high-stakes transitions (starting an experiment, committing to the wiki, stopping) must use checkpoint_ask instead."
+    )]
+    fn phase_route(
+        &self,
+        Parameters(p): Parameters<PhaseRouteParams>,
+    ) -> Result<CallToolResult, McpError> {
+        let action = parse_action(&p.action).ok_or_else(|| {
+            McpError::internal_error(format!("invalid action: {}", p.action), None)
+        })?;
+        let target = p.target_phase.as_deref().and_then(parse_phase);
+        let mut l = self.load();
+        l.pending_route = Some(RouteDecision {
+            action,
+            target_phase: target,
+            by: DecisionBy::Llm,
+            reason: Some(p.reason),
+            question: None,
+            chosen_label: None,
+            at: ledger::now_ms().to_string(),
+        });
+        self.save(&l)
+            .map_err(|e| McpError::internal_error(format!("save ledger: {e}"), None))?;
+        Ok(CallToolResult::success(vec![Content::text(
+            "{\"routed\":true}".to_string(),
+        )]))
     }
 }
 
@@ -293,6 +363,26 @@ fn parse_outcome(s: &str) -> Option<Outcome> {
         "supports" => Some(Outcome::Supports),
         "contradicts" => Some(Outcome::Contradicts),
         "inconclusive" => Some(Outcome::Inconclusive),
+        _ => None,
+    }
+}
+
+fn parse_action(s: &str) -> Option<DecisionAction> {
+    match s.trim().to_ascii_uppercase().as_str() {
+        "STAY" => Some(DecisionAction::Stay),
+        "ADVANCE" => Some(DecisionAction::Advance),
+        "BRANCH" => Some(DecisionAction::Branch),
+        "STOP" => Some(DecisionAction::Stop),
+        _ => None,
+    }
+}
+
+fn parse_phase(s: &str) -> Option<Phase> {
+    match s.trim().to_ascii_uppercase().as_str() {
+        "INIT" => Some(Phase::Init),
+        "DISCUSS" => Some(Phase::Discuss),
+        "EXPERIMENT" => Some(Phase::Experiment),
+        "POST" => Some(Phase::Post),
         _ => None,
     }
 }
@@ -504,5 +594,16 @@ mod tests {
             hypothesis_status_from_outcome("contradicts"),
             HypothesisStatus::Refuted
         ));
+    }
+
+    #[test]
+    fn action_and_phase_parse_case_insensitively() {
+        assert!(matches!(parse_action("advance"), Some(DecisionAction::Advance)));
+        assert!(matches!(parse_action("BRANCH"), Some(DecisionAction::Branch)));
+        assert!(matches!(parse_action(" stop "), Some(DecisionAction::Stop)));
+        assert!(parse_action("nope").is_none());
+        assert!(matches!(parse_phase("experiment"), Some(Phase::Experiment)));
+        assert!(matches!(parse_phase("POST"), Some(Phase::Post)));
+        assert!(parse_phase("bogus").is_none());
     }
 }
