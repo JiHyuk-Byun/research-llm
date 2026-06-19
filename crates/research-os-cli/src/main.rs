@@ -38,6 +38,9 @@ mod mcp_sidecar;
 // Phase-driver decision logic; consumed by the driver integration (Phase 3b).
 #[allow(dead_code)]
 mod phase;
+// Derived wiki relationship graph; consumed by graph_query + Context Assembler.
+#[allow(dead_code)]
+mod graph;
 
 const SKILLS: &[&str] = &[
     "research-os-planner",
