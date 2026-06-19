@@ -29,6 +29,11 @@ use ratatui::widgets::{
 use ratatui::Terminal;
 use unicode_width::UnicodeWidthStr;
 
+// Consumed by the MCP sidecar (Phase 2) and the phase driver (Phase 3); allow
+// dead_code until those call sites land so the build stays warning-clean.
+#[allow(dead_code)]
+mod ledger;
+
 const SKILLS: &[&str] = &[
     "research-os-planner",
     "research-os-doc-search",
