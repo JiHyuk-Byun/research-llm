@@ -4015,8 +4015,10 @@ fn run_phase_loop_tui(
                 .map_err(|e| e.to_string())?;
         }
 
-        // 2. Compute the exit signal and decide whether to checkpoint.
+        // 2. Refresh the persisted graph artifact (work stages may have mutated
+        //    the wiki), compute the exit signal, and decide whether to checkpoint.
         let led = Ledger::load_or_new(&ledger_path, session_id).map_err(|e| e.to_string())?;
+        let _ = graph::build_graph(&session_root, &led).save(&graph::graph_path(&session_root));
         let signal = compute_exit_signal(phase, &led, &session_root);
         let forced = suppressed + 1 >= LOOP_FORCE_CHECKPOINT_AFTER;
         // v1: hysteresis-suppression is OFF — always checkpoint on a met gate.

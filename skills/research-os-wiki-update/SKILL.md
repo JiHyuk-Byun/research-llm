@@ -31,7 +31,7 @@ Read `sessions/{session_id}/doc_search_manifest.json` when present, session raw 
 - Treat `log.md` as append-only chronological history.
 - Cite `sessions/{session_id}/wiki/sources/` or raw provenance for every non-trivial technical claim.
 - Mark conflicts instead of overwriting them.
-- Record supports, contradicts, refines, extends, and duplicates relationships when useful.
+- Record supports, contradicts, refines, extends, and duplicates relationships when useful. In addition to describing them in prose, emit them as a structured `relations:` list in the source note's YAML frontmatter — each entry `{ type: <supports|contradicts|refines|extends|duplicates>, target: src:<source_id>, note: <short reason> }`. A deterministic builder reads this frontmatter to materialize `wiki/graph.json`; prose relationships that are not in `relations:` will not appear in the graph.
 - Do not silently delete existing claims.
 - Do not use `wiki/topics/` as a catch-all. Put specific algorithms or procedures in `methods/`, datasets and benchmarks in `datasets/`, named models/projects/institutions in `entities/`, terminology in `concepts/`, and side-by-side analyses in `comparisons/`.
 - When `doc_search_manifest.json` includes `code_status`, carry it into the source note. Distinguish official code/model/demo/dataset artifacts from unofficial reproductions, and preserve lookup uncertainty rather than implying that missing code is definitively unavailable.
@@ -58,6 +58,9 @@ source_type: paper
 date: ...
 raw_path: sessions/{session_id}/raw/sources/...
 extracted_path: sessions/{session_id}/artifacts/extracted/... or null
+relations:
+  - { type: supports, target: src:other-source-id, note: short reason }
+  - { type: contradicts, target: src:another-id }
 ---
 
 # Source Title
